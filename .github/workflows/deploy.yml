@@ -50,8 +50,12 @@ jobs:
             --cache-control "no-store,no-cache,max-age=0,must-revalidate"
       - name: Invalidate CloudFront
         if: success()
+        env:
+          DIST_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
         run: |
+          set -euo pipefail
+          [ -n "${DIST_ID:-}" ] || { echo "❌ Missing CLOUDFRONT_DISTRIBUTION_ID secret"; exit 1; }
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.DISTRIBUTION_ID }} \
+            --distribution-id "$DIST_ID" \
             --paths "/*"
 
