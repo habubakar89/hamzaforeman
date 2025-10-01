@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { format, parseISO, isToday } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { DayNote } from '../types';
 import { useEffect, useState, useRef } from 'react';
 import { LOCKED_MESSAGES, DEFAULT_LOCKED_MESSAGE } from '../data/notes';
