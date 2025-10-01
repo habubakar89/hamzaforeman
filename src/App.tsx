@@ -9,7 +9,12 @@ import { BirthdaySurprise } from './components/BirthdaySurprise';
 import { EasterEgg } from './components/EasterEgg';
 import { AudioPlayer } from './components/AudioPlayer';
 import { EntryBanner } from './components/EntryBanner';
+import { InstructionBox } from './components/InstructionBox';
+import { WelcomePopup } from './components/WelcomePopup';
 import { NOTES } from './data/notes';
+
+// Control flag for post-login welcome popup
+const SHOW_POST_LOGIN_POPUP = true;
 
 function App() {
   // Password is always required - no persistence
@@ -18,6 +23,7 @@ function App() {
   const [showMainSite, setShowMainSite] = useState(false);
   const [showBirthdaySurprise, setShowBirthdaySurprise] = useState(false);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
 
   useEffect(() => {
     // Check if today is October 21, 2025 (birthday)
@@ -40,6 +46,14 @@ function App() {
     // Hide banner and show main site
     setShowBanner(false);
     setShowMainSite(true);
+    // Show welcome popup after banner if enabled
+    if (SHOW_POST_LOGIN_POPUP) {
+      setShowWelcomePopup(true);
+    }
+  };
+
+  const handleCloseWelcomePopup = () => {
+    setShowWelcomePopup(false);
   };
 
   if (!isUnlocked) {
@@ -61,11 +75,15 @@ function App() {
       <LoveMeter />
       <AudioPlayer shouldAutoPlay={shouldAutoPlay} />
       <EasterEgg />
+      <InstructionBox />
 
       <main className="relative z-10">
         <Timeline notes={NOTES} />
         <BirthdaySurprise show={showBirthdaySurprise} />
       </main>
+
+      {/* Post-login welcome popup */}
+      {showWelcomePopup && <WelcomePopup onClose={handleCloseWelcomePopup} />}
     </div>
   );
 }

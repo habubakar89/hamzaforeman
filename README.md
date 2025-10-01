@@ -60,6 +60,62 @@ Before deploying, you need to customize several parts of the application:
 
 **The password is now required on every page reload/visit** - there is no persistence between sessions. This ensures privacy and creates a fresh experience each time. The user must enter the password each time they visit the site.
 
+### 💕 Login Popup (Toggleable)
+
+When the password gate loads, a romantic popup modal appears automatically with:
+- A picture area (expects `/public/popup.jpg`)
+- A romantic description text
+- A "Got it 💖" button to close
+
+**To enable/disable:**
+- Edit `src/components/PasswordGate.tsx`
+- Set `SHOW_LOGIN_POPUP = true` (enabled) or `false` (disabled)
+
+**To customize:**
+1. Add your image as `/public/popup.jpg`
+2. Look for the TODO comments in `src/components/LoginPopup.tsx`:
+   - `// TODO: replace placeholder image src in /public/popup.jpg`
+   - `// TODO: replace with your romantic text here`
+
+### 💖 Post-Login Welcome Popup
+
+A romantic welcome popup appears **immediately after successful login** (after the entry banner fades), overlaying the main site with:
+- Romantic welcome message with dreamy styling
+- "Let's go 💖" button to dismiss
+- Closeable by clicking outside the modal
+
+**To enable/disable:**
+- Edit `src/App.tsx`
+- Set `SHOW_POST_LOGIN_POPUP = true` (enabled) or `false` (disabled)
+
+**Default message:**
+"Welcome to a journey through our story, one day at a time. Each note holds a piece of my heart, written just for you. Let the music play, and let's relive every beautiful moment together. ✨"
+
+**To customize:**
+- Edit `src/components/WelcomePopup.tsx`
+- Replace the text in the `<p>` tag with your own romantic message
+- The popup features:
+  - Semi-transparent glowing background with rose-gold border
+  - Centered modal with soft glow effects
+  - Elegant typography (font-heading with letter-spacing)
+  - Gradient button with hover scale effect
+
+### 📦 Instruction Box (Toggleable)
+
+A helpful instruction box appears on the main site (after login) with:
+- "How to use ✨" title
+- Bullet points explaining features
+- A "?" toggle button in bottom-right corner
+- Default state: open (visible)
+
+**To enable/disable:**
+- Edit `src/components/InstructionBox.tsx`
+- Set `SHOW_INSTRUCTION_BOX = true` (enabled) or `false` (disabled)
+
+**To customize instructions:**
+- Look for the TODO comment: `// TODO: replace with real instructions`
+- Update the bullet points with your own text
+
 ### 1. Background Music Setup
 
 **⚠️ REQUIRED: Add your audio file first!**
@@ -82,11 +138,14 @@ The music toggle button appears in the bottom-right corner. Music is paused by d
 **Set the password question and answer** (`src/components/PasswordGate.tsx`):
 
 ```typescript
-// Line 11: Customize your riddle/question
-const RIDDLE = "Where were we first gonna meet?";
+// Set your plain text answer (used for underscore hints)
+const CORRECT_ANSWER = 'Baby Jaan';
 
-// Line 9: Replace with your SHA-256 hash (current: "turkey")
-const CORRECT_HASH = 'your-new-hash-here';
+// SHA-256 hash of the answer above
+const CORRECT_HASH = '8d7d5397f8842b4181d38bc57b85b9ff1860456f92872c43f991a904c45062d5';
+
+// Customize your riddle/question
+const RIDDLE = "Where were we first gonna meet?";
 ```
 
 **To generate the SHA-256 hash of your answer:**
@@ -99,6 +158,44 @@ await crypto.subtle.digest('SHA-256', new TextEncoder().encode('your answer'))
 ```
 
 Or use an online SHA-256 generator: https://emn178.github.io/online-tools/sha256.html
+
+### 2.5. Riddle Helper Slots
+
+**Interactive letter slots appear inside the question card:**
+- Shows the number of words & letters in the correct answer as individual slots
+- Typed letters appear **on top of their corresponding blank** (live fill)
+- Backspace removes letters from the last filled slot
+- Example: Answer `"turkey"` → shows 6 empty slots
+- Example: Answer `"new york"` → shows 3 slots, gap, 4 slots
+- Punctuation in the answer is ignored (only letters/digits create slots)
+
+**How it works:**
+- The `CORRECT_ANSWER` constant is parsed to extract fillable slots (letters/digits only)
+- Each word is separated with a visible gap (no underline in the gap)
+- As you type in the input, letters fill the slots in order
+- Extra characters beyond the total slot count are ignored
+- Controlled by `parseAnswerSlots()` function
+
+**To update:**
+1. Change `CORRECT_ANSWER` to your new plain text answer
+2. Generate new SHA-256 hash for `CORRECT_HASH`
+3. Slots are recalculated automatically
+
+**Visual design:**
+- Monospace font for clean alignment
+- Each slot: gold underline (1.5-2px) with soft glow
+- Empty slots: dim underline
+- Filled slots: bright underline + letter appears above with text shadow
+- Active slot: gentle pulse animation
+- Word gaps: fixed 10px spacing (configurable via `SLOT_GAP_SIZE`)
+- Staggered fade-in animation (50ms per slot)
+- Respects `prefers-reduced-motion`
+
+**Example behavior:**
+- User types "t" → first slot fills with "T"
+- User types "u" → second slot fills with "U"
+- User presses backspace → "U" disappears from second slot
+- Multi-word answer: "new york" shows as `N E W    Y O R K` (with gap)
 
 **Edit the note box text** (appears under the password question):
 
@@ -208,19 +305,26 @@ const HABITS: Habit[] = [
 
 ### 6. Love Meter Behavior
 
-The love meter now **never shows 0%**:
-- On **October 1**: Shows at least **5%**
-- Scales smoothly to **100% on October 21**
+The love meter is **synced with manually revealed timeline notes**:
+- Shows **5%** when 1 note is visible (Oct 1)
+- Shows **~10%** when 2 notes are visible (Oct 1-2)
+- Shows **~14%** when 3 notes are visible (Oct 1-3)
+- Scales smoothly to **100%** when all 21 notes are visible
+- Day counter shows "day X of 21" based on visible notes count
 
-This ensures the love level is always visible and meaningful from day one!
+**Important**: The love meter uses the `isBlurred` boolean from notes.ts, NOT the system date. When you flip `isBlurred: false` on a note, the love meter automatically updates!
 
-### 7. Timeline Blurring
+This ensures the love level always matches your manual timeline progression.
+
+### 7. Timeline Reveal (Boolean-based)
+
+**Timeline visibility is manually controlled** - no automatic date-based unlocking.
 
 Each note in `NOTES` has a boolean `isBlurred` property:
-- If `isBlurred: true`, the card renders blurred (title + content)
-- If `isBlurred: false`, the card is fully visible
+- If `isBlurred: false`, the card is **fully visible**
+- If `isBlurred: true`, the card is **blurred** (title + content hidden)
 - **Reveal chain logic**: Once one note is unblurred, all notes before it are automatically unblurred
-- To control which days unlock, set that day's `isBlurred` to `false` and keep future ones `true`
+- **You control which notes are visible** by flipping the `isBlurred` flag
 
 Example in `src/data/notes.ts`:
 ```typescript
@@ -228,15 +332,23 @@ Example in `src/data/notes.ts`:
   date: '2025-10-01',
   title: 'When I first saw you',
   content: 'Your message here',
-  isBlurred: false, // Visible
+  isBlurred: false, // Fully visible
 },
 {
   date: '2025-10-02',
-  title: 'title for oct 2',
+  title: 'When you first confessed your love for me',
   content: 'TODO: Add your message',
-  isBlurred: true, // Blurred until you change this
+  isBlurred: true, // Blurred - flip to false to reveal
 },
 ```
+
+**To reveal a note:**
+1. Edit `src/data/notes.ts`
+2. Find the note you want to reveal
+3. Change `isBlurred: true` to `isBlurred: false`
+4. Save and reload the page
+
+**No date checks** - You have full control over which notes are visible at any time!
 
 ### 7.5. Locked Note Messages
 
@@ -300,6 +412,34 @@ Below the password question, a subtitle appears:
 - **Text**: "A daily dose of 'us' question to make you smile, everyday."
 - Styled in italic, muted white color (text-white/70)
 - Centered below the question for a warm, inviting feel
+
+### 12. Night Sky Reveal Surprise
+
+A special interactive surprise effect for today's unlocked note:
+
+**How it works:**
+- When today's note is clicked, the background fades into a starry night sky
+- A glowing constellation forms "E + H" in the center
+- Effect lasts ~4 seconds (fade in → display → fade out)
+- Runs **once per session only** - reloading resets it
+
+**Visual details:**
+- Starfield with 80 twinkling stars (soft white/blue dots)
+- Constellation: 5-6 larger glowing golden points connected by faint lines
+- Pulse effect on constellation letters before fade-out
+- Today's note becomes clickable with hover effect
+
+**Accessibility:**
+- Respects `prefers-reduced-motion`: Shows static "E + H ✨" text instead of animation
+- Non-blocking: Doesn't prevent site interaction
+
+**To enable/disable:**
+- Edit `src/components/Timeline.tsx`
+- Set `ENABLE_NIGHT_SKY_REVEAL = true` (enabled) or `false` (disabled)
+
+**Instruction box hint:**
+- When enabled, instruction box shows: "Psst… try clicking today's note 🌙"
+- Hint automatically hides if feature is disabled
 
 ### 6. Adding Images/Media
 

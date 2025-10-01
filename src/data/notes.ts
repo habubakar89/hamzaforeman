@@ -35,15 +35,15 @@ export const NOTES: DayNote[] = [
     date: '2025-10-01',
     title: 'When I first saw you',
     emoji: '🌹',
-    content: 'More than a year ago, I saw you for the first time. It was never the usual way people look at the one they’ll forever love. Hidden beneath the blurred picture was a face that would forever capture my heart. \n\nEman, Wallahi, the moment I actually saw you, my mouth was wide open in awe and disbelief. I literally said the exact words: “Omg she’s beautiful”. There has never been a day where you do not look more angelic than the night before. I will never not be enchanted by you, drawn to you, and in love with you \u2665. \n\nFunnily enough, your heart has captured me even more. But that’s for the next time, see you tomorrow love :)',
+    content: 'More than a year ago, I saw you for the first time. It was never the usual way people look at the one they\'ll forever love. Hidden beneath the blurred picture was a face that would forever capture my heart. \n\nEman, Wallahi, the moment I actually saw you, my mouth was wide open in awe and disbelief. I literally said the exact words: "Omg she\'s beautiful". There has never been a day where you do not look more angelic than the night before. I will never not be enchanted by you, drawn to you, and in love with you ♥. \n\nFunnily enough, your heart has captured me even more. But that\'s for the next time, see you tomorrow love :)',
     isBlurred: false, // First note is visible by default
   },
   {
     date: '2025-10-02',
-    title: 'title for oct 2',
+    title: 'April 8, 2025 - When you said "I love you more Hamza"',
     emoji: '💝',
-    content: 'TODO: Add your message for day 2.',
-    isBlurred: true, // Future notes start blurred
+    content: 'The day you first told me you love me. You said you love me more, but you could not be wrong. If you love me a 100, at minimum I will love you 1 more than that. That\'s how it is always gonna be.\n\nEvery day, every time you talk to me, every time you text me, send me a snap, anything: It is your "I love you" to me. Eman, I can not tell you the number of times i go back and read your chats, look at your pictures, and just smile at your smile.\n\nIt means the world to me, that you chose me. More than anything or anyone, you love me. And while it mind sound cheezy, it is an honor. What makes me even happier is that your love is not about just feelings in the moment, it is also about what you think of me. What you want to be to me, and everything you want to do for me.\n\nEvery time you say that, it makes me want to be a better man. Every day, every waking moment.\n\nI love you, Eman Faiz 💕 Always one more than you 😉',
+    isBlurred: false, // Set as "today" - will be the current active note
   },
   {
     date: '2025-10-03',

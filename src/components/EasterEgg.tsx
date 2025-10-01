@@ -9,16 +9,28 @@ interface Habit {
 // TODO: replace the 3 placeholder habits with personal ones
 const HABITS: Habit[] = [
   {
-    text: 'How you always do that hmmm every time you are sleepy',
+    text: 'The first thing I do, wake up to first check the phone and your message. I know you\'re at the school, and must\'ve send a few snaps by now',
     // Optional: Add an image URL
     // image: '/images/habit1.jpg'
   },
   {
-    text: 'When I bombard you with the world of information and you say okkkk, just melts my heart sm!',
+    text: 'When I send you my gym pics! No one sees any of those biceps hehe, all my gains are only for you to enjoy 😘',
     // image: '/images/habit2.jpg'
   },
   {
-    text: 'How you send me cute snaps, making cute faces that makes me melt away every single time!',
+    text: 'How during the middle of the day, you come up with \'Kese hain\' just to check up on me!',
+    // image: '/images/habit3.jpg'
+  },
+  {
+    text: 'How I talk to you before you sleep. Even when you\'re super tired, you make sure you talk to me',
+    // image: '/images/habit3.jpg'
+  },
+  {
+    text: 'Now comes the bad part, when you\'re asleep. I love it you\'re sleeping, but I wish I could tell you about my day!',
+    // image: '/images/habit3.jpg'
+  },
+  {
+    text: 'The best part of my day, when I wake you up! How do I not love hearing you that way??',
     // image: '/images/habit3.jpg'
   },
 ];
@@ -75,7 +87,7 @@ export function EasterEgg() {
             <div className="bg-midnight-800/90 backdrop-blur-lg rounded-2xl p-8 md:p-12 border-2 border-gold/40 shadow-2xl">
               <div className="text-center mb-6">
                 <h3 className="text-3xl font-playfair text-gold mb-2">
-                  your cutesy lil habits i can't stop loving
+                  How my day starts and ends with you 💖
                 </h3>
                 <p className="text-sm text-gray-400">
                   {currentIndex + 1} of {HABITS.length}

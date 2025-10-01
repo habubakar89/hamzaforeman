@@ -1,15 +1,37 @@
-import { useState, FormEvent, useRef } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Heart } from 'lucide-react';
+import { LoginPopup } from './LoginPopup';
+
+// TODO: Set to false to disable the login popup
+const SHOW_LOGIN_POPUP = false;
 
 interface PasswordGateProps {
   onUnlock: () => void;
 }
 
-// SHA-256 hash of "turkey" (case insensitive)
-const CORRECT_HASH = '8d7d5397f8842b4181d38bc57b85b9ff1860456f92872c43f991a904c45062d5';
+// TODO: update the plain-text correct answer here (used to compute slots)
+const CORRECT_ANSWER = 'Baby Jaan';
+// SHA-256 hash of "babyjaan" (spaces are removed during validation, so both "baby jaan" and "babyjaan" work)
+const CORRECT_HASH = '3b6a4105343fa4b2472f8002c402b7cd4c713acf05360753ef742e51d97626c7';
 
-const RIDDLE = "Where were we first gonna meet (or second)?";
+const RIDDLE = "What do we call each other pyaar se?";
+
+// TODO: tweak slot gap size and underline thickness if desired
+const SLOT_GAP_SIZE = 10; // px between words
+
+// Helper to extract fillable slots from answer (letters/digits only, preserving word boundaries)
+function parseAnswerSlots(answer: string): string[][] {
+  return answer
+    .trim()
+    .split(/\s+/)
+    .map(word => 
+      word
+        .split('')
+        .filter(char => /[a-zA-Z0-9]/.test(char))
+    )
+    .filter(word => word.length > 0);
+}
 
 // TODO: Add/remove lines in WRONG_NOTES to tune voice later
 const WRONG_NOTES = [
@@ -72,20 +94,48 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [microNote, setMicroNote] = useState<string | null>(null);
   const [floatingEmojis, setFloatingEmojis] = useState<FloatingEmoji[]>([]);
+  const [showPopup, setShowPopup] = useState(false);
   const lastWrongTimeRef = useRef<number>(0);
   const lastNoteIndexRef = useRef<number>(-1);
   const lastEmojiSetIndexRef = useRef<number>(-1);
   
+  // Parse answer slots on mount
+  const answerSlots = parseAnswerSlots(CORRECT_ANSWER);
+  const totalSlots = answerSlots.flat().length;
+  
+  // Track filled letters (normalized from input)
+  const [filledLetters, setFilledLetters] = useState<string[]>([]);
+  
   // Check if user prefers reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Show popup on mount if enabled
+  useEffect(() => {
+    if (SHOW_LOGIN_POPUP) {
+      setShowPopup(true);
+    }
+  }, []);
+
   const hashString = async (str: string): Promise<string> => {
     const encoder = new TextEncoder();
-    const data = encoder.encode(str.toLowerCase().trim());
+    // Remove all spaces, lowercase, and trim - this makes "baby jaan" and "babyjaan" equivalent
+    const data = encoder.encode(str.toLowerCase().trim().replace(/\s+/g, ''));
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   };
+
+  // Update filled letters when answer changes
+  useEffect(() => {
+    // Normalize: lowercase, remove non-alphanumeric
+    const normalized = answer
+      .toLowerCase()
+      .split('')
+      .filter(char => /[a-z0-9]/.test(char));
+    
+    // Take only up to totalSlots
+    setFilledLetters(normalized.slice(0, totalSlots));
+  }, [answer, totalSlots]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -157,7 +207,13 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <>
+      {/* Login Popup */}
+      <AnimatePresence>
+        {showPopup && <LoginPopup onClose={() => setShowPopup(false)} />}
+      </AnimatePresence>
+
+      <div className="min-h-screen flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ 
@@ -251,6 +307,78 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             <p className="font-body text-white/70 text-xs italic text-center mb-4">
               A daily dose of 'us' question to make you smile, everyday.
             </p>
+            
+            {/* Letter slots with live fill */}
+            <div 
+              className="mb-3 mt-3 flex flex-wrap justify-center items-end gap-1"
+              aria-label="Answer letter slots (visual hint)"
+              style={{ gap: `${SLOT_GAP_SIZE}px` }}
+            >
+              {answerSlots.map((word, wordIndex) => (
+                <div key={wordIndex} className="flex gap-1">
+                  {word.map((_, slotIndex) => {
+                    const globalIndex = answerSlots
+                      .slice(0, wordIndex)
+                      .flat().length + slotIndex;
+                    const letter = filledLetters[globalIndex];
+                    const isFilled = !!letter;
+                    const isActive = globalIndex === filledLetters.length;
+
+                    return (
+                      <motion.div
+                        key={slotIndex}
+                        initial={prefersReducedMotion ? {} : { opacity: 0, y: 5 }}
+                        animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                        transition={{ delay: globalIndex * 0.05 }}
+                        className="relative flex flex-col items-center font-mono"
+                        style={{ width: '16px', height: '28px' }}
+                      >
+                        {/* Letter (if filled) */}
+                        <AnimatePresence mode="wait">
+                          {isFilled && (
+                            <motion.span
+                              key={letter}
+                              initial={prefersReducedMotion ? {} : { opacity: 0, y: 3 }}
+                              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                              exit={prefersReducedMotion ? {} : { opacity: 0, y: -3 }}
+                              transition={{ duration: 0.15 }}
+                              className="absolute top-0 text-gold/90 text-lg font-semibold"
+                              style={{
+                                textShadow: '0 0 6px rgba(245, 230, 196, 0.4)'
+                              }}
+                            >
+                              {letter.toUpperCase()}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+
+                        {/* Underline */}
+                        <motion.div
+                          className="absolute bottom-0 w-full h-0.5 rounded-full"
+                          style={{
+                            backgroundColor: isFilled 
+                              ? 'rgba(245, 230, 196, 0.8)' 
+                              : 'rgba(245, 230, 196, 0.3)',
+                            boxShadow: isFilled 
+                              ? '0 0 6px rgba(245, 230, 196, 0.4)' 
+                              : 'none'
+                          }}
+                          animate={isActive && !prefersReducedMotion ? {
+                            opacity: [0.5, 1, 0.5],
+                          } : {}}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+            
             <input
               type="text"
               value={answer}
@@ -292,6 +420,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
           </motion.p>
         )}
       </motion.div>
-    </div>
+      </div>
+    </>
   );
 }

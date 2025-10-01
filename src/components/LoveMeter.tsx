@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
-import { differenceInDays, parseISO } from 'date-fns';
+import { NOTES } from '../data/notes';
 
 export function LoveMeter() {
-  const startDate = parseISO('2025-10-01');
-  const endDate = parseISO('2025-10-21');
-  const today = new Date();
+  // Count visible (unblurred) notes to determine progress
+  const totalNotes = NOTES.length;
+  const visibleNotes = NOTES.filter(note => note.isBlurred === false).length;
   
-  const totalDays = differenceInDays(endDate, startDate);
-  const daysPassed = Math.min(Math.max(differenceInDays(today, startDate), 0), totalDays);
-  
-  // Calculate percentage with minimum of 5% on day 1, scaling to 100% on day 21
-  const basePercentage = (daysPassed / totalDays) * 95; // Scale from 0-95%
+  // Calculate percentage based on manually revealed notes (minimum 5% when at least 1 note visible)
+  const basePercentage = ((visibleNotes - 1) / (totalNotes - 1)) * 95; // Scale from 0-95%
   const percentage = Math.round(basePercentage + 5); // Add 5% minimum
+  
+  // Display day count based on visible notes
+  const currentDay = visibleNotes;
 
   return (
     <div className="fixed top-4 right-4 z-50 md:block">
@@ -56,7 +56,7 @@ export function LoveMeter() {
 
         <div className="mt-3 text-center">
           <p className="font-body text-xs text-gray-500">
-            day {daysPassed + 1} of {totalDays + 1}
+            day {currentDay} of {totalNotes}
           </p>
         </div>
       </div>

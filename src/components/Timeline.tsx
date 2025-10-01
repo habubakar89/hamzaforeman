@@ -3,6 +3,10 @@ import { format, parseISO, isToday } from 'date-fns';
 import { DayNote } from '../types';
 import { useEffect, useState, useRef } from 'react';
 import { LOCKED_MESSAGES, DEFAULT_LOCKED_MESSAGE } from '../data/notes';
+import { NightSkyReveal } from './NightSkyReveal';
+
+// TODO: Set to false to disable the night sky reveal feature
+export const ENABLE_NIGHT_SKY_REVEAL = true;
 
 interface TimelineProps {
   notes: DayNote[];
@@ -15,7 +19,9 @@ export function Timeline({ notes }: TimelineProps) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [lockedToast, setLockedToast] = useState<string | null>(null);
   const [revealingNoteIndex, setRevealingNoteIndex] = useState<number | null>(null);
+  const [showNightSky, setShowNightSky] = useState(false);
   const hasScrolled = useRef(false);
+  const hasShownNightSky = useRef(false);
   const timelineRef = useRef<HTMLDivElement>(null);
   
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,6 +44,19 @@ export function Timeline({ notes }: TimelineProps) {
     // This note and all after it are blurred
     return true;
   };
+
+  // Find the "today" note - the last unblurred note in the list
+  const getTodayNoteIndex = (): number => {
+    let lastUnblurredIndex = -1;
+    for (let i = 0; i < notes.length; i++) {
+      if (!getEffectiveBlurState(notes[i], i)) {
+        lastUnblurredIndex = i;
+      }
+    }
+    return lastUnblurredIndex;
+  };
+
+  const todayNoteIndex = getTodayNoteIndex();
 
   const renderMedia = (media: DayNote['media']) => {
     if (!media) return null;
@@ -108,19 +127,19 @@ export function Timeline({ notes }: TimelineProps) {
     // Auto-scroll to today's note on first load
     if (hasScrolled.current || prefersReducedMotion) return;
 
-    const todayNoteIndex = notes.findIndex(note => isToday(parseISO(note.date)));
+    const targetIndex = todayNoteIndex;
     
-    if (todayNoteIndex !== -1) {
+    if (targetIndex !== -1) {
       hasScrolled.current = true;
       
       // Wait for DOM to be ready
       setTimeout(() => {
-        const noteElement = document.getElementById(`note-${notes[todayNoteIndex].date}`);
+        const noteElement = document.getElementById(`note-${notes[targetIndex].date}`);
         if (noteElement) {
           noteElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
           
           // Trigger reveal animation
-          setRevealingNoteIndex(todayNoteIndex);
+          setRevealingNoteIndex(targetIndex);
           setTimeout(() => setRevealingNoteIndex(null), 1500);
         }
       }, 100);
@@ -139,7 +158,7 @@ export function Timeline({ notes }: TimelineProps) {
         }, 100);
       }
     }
-  }, [notes, prefersReducedMotion]);
+  }, [notes, prefersReducedMotion, todayNoteIndex]);
 
   const handleLockedCardClick = (date: string) => {
     const noteDate = parseISO(date);
@@ -148,8 +167,24 @@ export function Timeline({ notes }: TimelineProps) {
     setTimeout(() => setLockedToast(null), 2500);
   };
 
+  const handleTodayNoteClick = () => {
+    // Trigger night sky reveal effect (once per session)
+    if (ENABLE_NIGHT_SKY_REVEAL && !hasShownNightSky.current) {
+      hasShownNightSky.current = true;
+      setShowNightSky(true);
+    }
+  };
+
+  const handleNightSkyComplete = () => {
+    setShowNightSky(false);
+  };
+
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12" ref={timelineRef}>
+    <>
+      {/* Night Sky Reveal Effect */}
+      <NightSkyReveal isActive={showNightSky} onComplete={handleNightSkyComplete} />
+
+      <div className="max-w-3xl mx-auto px-4 py-12" ref={timelineRef}>
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
           {[...Array(50)].map((_, i) => (
@@ -181,7 +216,7 @@ export function Timeline({ notes }: TimelineProps) {
       <div className="space-y-8">
         {notes.map((note, index) => {
           const noteDate = parseISO(note.date);
-          const isCurrent = isToday(noteDate);
+          const isCurrent = index === todayNoteIndex; // Use boolean-based logic instead of system date
           const isBirthdayCard = note.date === '2025-10-21';
           const isBlurred = getEffectiveBlurState(note, index);
           const isRevealing = revealingNoteIndex === index;
@@ -210,7 +245,10 @@ export function Timeline({ notes }: TimelineProps) {
                     initial={isRevealing ? { opacity: 0.3, filter: 'blur(8px)' } : (isCurrent || isBirthdayCard ? { scale: 0.95, opacity: 0 } : {})}
                     animate={isRevealing ? { opacity: 1, filter: 'blur(0px)' } : (isCurrent || isBirthdayCard ? { scale: 1, opacity: 1 } : {})}
                     transition={{ duration: isRevealing ? 1.5 : 0.5, ease: 'easeOut' }}
+                    onClick={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleTodayNoteClick : undefined}
                     className={`bg-midnight-800/50 backdrop-blur-sm rounded-lg p-6 border ${
+                      isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'cursor-pointer hover:border-rose/40 transition-colors' : ''
+                    } ${
                       isBirthdayCard 
                         ? 'border-rose/60 shadow-2xl shadow-rose/40 md:p-8 md:scale-105' 
                         : isCurrent 
@@ -248,7 +286,7 @@ export function Timeline({ notes }: TimelineProps) {
 
                     {isCurrent && !isBirthdayCard && (
                       <div className="mt-4 text-center">
-                        <span className="text-rose text-sm font-medium">✨ today's message</span>
+                        <span className="text-rose text-sm font-medium">✨ Today's message</span>
                       </div>
                     )}
                     
@@ -327,6 +365,7 @@ export function Timeline({ notes }: TimelineProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+      </div>
+    </>
   );
 }
