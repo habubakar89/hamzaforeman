@@ -9,16 +9,16 @@ interface Habit {
 // TODO: replace the 3 placeholder habits with personal ones
 const HABITS: Habit[] = [
   {
-    text: 'TODO: Add the first little habit you can\'t stop loving',
+    text: 'How you always do that hmmm every time you are sleepy',
     // Optional: Add an image URL
     // image: '/images/habit1.jpg'
   },
   {
-    text: 'TODO: Add the second little habit you can\'t stop loving',
+    text: 'When I bombard you with the world of information and you say okkkk, just melts my heart sm!',
     // image: '/images/habit2.jpg'
   },
   {
-    text: 'TODO: Add the third little habit you can\'t stop loving',
+    text: 'How you send me cute snaps, making cute faces that makes me melt away every single time!',
     // image: '/images/habit3.jpg'
   },
 ];
@@ -75,7 +75,7 @@ export function EasterEgg() {
             <div className="bg-midnight-800/90 backdrop-blur-lg rounded-2xl p-8 md:p-12 border-2 border-gold/40 shadow-2xl">
               <div className="text-center mb-6">
                 <h3 className="text-3xl font-playfair text-gold mb-2">
-                  the little habits i can't stop loving
+                  your cutesy lil habits i can't stop loving
                 </h3>
                 <p className="text-sm text-gray-400">
                   {currentIndex + 1} of {HABITS.length}
