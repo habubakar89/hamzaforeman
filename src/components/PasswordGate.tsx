@@ -9,7 +9,7 @@ interface PasswordGateProps {
 // SHA-256 hash of "turkey" (case insensitive)
 const CORRECT_HASH = '8d7d5397f8842b4181d38bc57b85b9ff1860456f92872c43f991a904c45062d5';
 
-const RIDDLE = "Where were we first gonna meet?";
+const RIDDLE = "Where were we first gonna meet (or second)?";
 
 // TODO: Add/remove lines in WRONG_NOTES to tune voice later
 const WRONG_NOTES = [
