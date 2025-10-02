@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { format, parseISO } from 'date-fns';
 import { DayNote } from '../types';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { LOCKED_MESSAGES, DEFAULT_LOCKED_MESSAGE } from '../data/notes';
 import { NightSkyOverlay } from './NightSkyOverlay';
+import { LoveFlurryOverlay } from './LoveFlurryOverlay';
 import { useNightSkyReveal } from '../hooks/useNightSkyReveal';
 
 // TODO: Set to false to disable the night sky reveal feature
@@ -25,6 +26,12 @@ export function Timeline({ notes }: TimelineProps) {
   
   // Use the new state machine hook for night sky reveal
   const nightSky = useNightSkyReveal();
+  
+  // Love Flurry state for Oct 3
+  const [flurryVisible, setFlurryVisible] = useState(false);
+  const [flurryKey, setFlurryKey] = useState(0);
+  const oct3CardRef = useRef<HTMLDivElement | null>(null);
+  const lastFlurryTrigger = useRef(0);
   
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -182,6 +189,22 @@ export function Timeline({ notes }: TimelineProps) {
       handleTodayNoteClick();
     }
   };
+  
+  // Handle Oct 3 Love Flurry trigger with debouncing
+  const handleOct3Click = useCallback(() => {
+    const now = Date.now();
+    if (now - lastFlurryTrigger.current < 250) {
+      return; // Debounce: ignore if triggered within 250ms
+    }
+    lastFlurryTrigger.current = now;
+    
+    setFlurryVisible(true);
+    setFlurryKey(k => k + 1);
+  }, []);
+  
+  const handleFlurryDismiss = useCallback(() => {
+    setFlurryVisible(false);
+  }, []);
 
   return (
     <>
@@ -190,6 +213,14 @@ export function Timeline({ notes }: TimelineProps) {
         visible={nightSky.revealVisible} 
         revealKey={nightSky.revealKey}
         onAutoDismiss={nightSky.onAutoDismiss}
+      />
+      
+      {/* Love Flurry Effect for Oct 3 */}
+      <LoveFlurryOverlay
+        visible={flurryVisible}
+        flurryKey={flurryKey}
+        onAutoDismiss={handleFlurryDismiss}
+        originElement={oct3CardRef.current}
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12" ref={timelineRef}>
@@ -226,6 +257,7 @@ export function Timeline({ notes }: TimelineProps) {
           const noteDate = parseISO(note.date);
           const isCurrent = index === todayNoteIndex; // Use boolean-based logic instead of system date
           const isBirthdayCard = note.date === '2025-10-21';
+          const isOct3 = note.date === '2025-10-03';
           const isBlurred = getEffectiveBlurState(note, index);
           const isRevealing = revealingNoteIndex === index;
 
@@ -270,7 +302,12 @@ export function Timeline({ notes }: TimelineProps) {
                     aria-expanded={isCurrent && ENABLE_NIGHT_SKY_REVEAL && nightSky.revealVisible ? 'true' : 'false'}
                     aria-label={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'Reveal night sky surprise' : undefined}
                   >
-                    <div className="flex items-center gap-2 mb-3">
+                    <div 
+                      className={`flex items-center gap-2 mb-3 ${isOct3 && !isBlurred ? 'cursor-pointer' : ''}`}
+                      onPointerUp={isOct3 && !isBlurred ? handleOct3Click : undefined}
+                      style={isOct3 && !isBlurred ? { touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' } : undefined}
+                      ref={isOct3 && !isBlurred ? oct3CardRef : undefined}
+                    >
                       {note.emoji && (
                         <span className={isBirthdayCard ? 'text-4xl' : 'text-2xl'}>
                           {note.emoji}

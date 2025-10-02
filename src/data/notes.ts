@@ -50,7 +50,7 @@ export const NOTES: DayNote[] = [
     title: 'title for oct 3',
     emoji: '✨',
     content: 'TODO: Add your message for day 3.',
-    isBlurred: true,
+    isBlurred: false,
   },
   {
     date: '2025-10-04',
