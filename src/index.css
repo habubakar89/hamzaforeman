@@ -27,3 +27,49 @@
     text-shadow: 0 0 20px rgba(245, 230, 196, 0.5);
   }
 }
+
+/* Responsive layout improvements for corner buttons */
+@layer components {
+  /* Ensure proper z-index hierarchy */
+  .z-corner-button {
+    z-index: 30;
+  }
+  
+  .z-corner-panel {
+    z-index: 35;
+  }
+  
+  .z-modal {
+    z-index: 40;
+  }
+  
+  /* Mobile spacing adjustments to prevent overlap */
+  @media (max-width: 768px) {
+    /* Add slight inward margins on mobile for corner elements */
+    .mobile-corner-spacing {
+      margin: 0.75rem;
+    }
+    
+    /* Ensure touch targets are adequately sized */
+    .min-touch-target {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    /* Prevent text from being too small on mobile */
+    .mobile-text-readable {
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Constellation visibility enhancements for mobile */
+  @media (max-width: 768px) {
+    .constellation-line {
+      stroke-width: 2.5px;
+    }
+    
+    .constellation-dot {
+      r: 3.5;
+    }
+  }
+}

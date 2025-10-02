@@ -54,10 +54,10 @@ export function EntryBanner({ onComplete }: EntryBannerProps) {
             }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-rose-300 drop-shadow-lg tracking-wide">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-rose-300 drop-shadow-lg tracking-wide">
               To the Happiest 25th
             </h1>
-            <p className="mt-4 text-xl md:text-2xl font-body italic text-white/80">
+            <p className="mt-3 md:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl font-body italic text-white/80">
               (almost hehe)
             </p>
           </motion.div>

@@ -3,7 +3,8 @@ import { format, parseISO } from 'date-fns';
 import { DayNote } from '../types';
 import { useEffect, useState, useRef } from 'react';
 import { LOCKED_MESSAGES, DEFAULT_LOCKED_MESSAGE } from '../data/notes';
-import { NightSkyReveal } from './NightSkyReveal';
+import { NightSkyOverlay } from './NightSkyOverlay';
+import { useNightSkyReveal } from '../hooks/useNightSkyReveal';
 
 // TODO: Set to false to disable the night sky reveal feature
 export const ENABLE_NIGHT_SKY_REVEAL = true;
@@ -19,10 +20,11 @@ export function Timeline({ notes }: TimelineProps) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [lockedToast, setLockedToast] = useState<string | null>(null);
   const [revealingNoteIndex, setRevealingNoteIndex] = useState<number | null>(null);
-  const [showNightSky, setShowNightSky] = useState(false);
   const hasScrolled = useRef(false);
-  const hasShownNightSky = useRef(false);
   const timelineRef = useRef<HTMLDivElement>(null);
+  
+  // Use the new state machine hook for night sky reveal
+  const nightSky = useNightSkyReveal();
   
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -168,23 +170,29 @@ export function Timeline({ notes }: TimelineProps) {
   };
 
   const handleTodayNoteClick = () => {
-    // Trigger night sky reveal effect (once per session)
-    if (ENABLE_NIGHT_SKY_REVEAL && !hasShownNightSky.current) {
-      hasShownNightSky.current = true;
-      setShowNightSky(true);
+    // Trigger night sky reveal effect (reopens on every tap, debounced in hook)
+    if (ENABLE_NIGHT_SKY_REVEAL) {
+      nightSky.show();
     }
   };
 
-  const handleNightSkyComplete = () => {
-    setShowNightSky(false);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleTodayNoteClick();
+    }
   };
 
   return (
     <>
       {/* Night Sky Reveal Effect */}
-      <NightSkyReveal isActive={showNightSky} onComplete={handleNightSkyComplete} />
+      <NightSkyOverlay 
+        visible={nightSky.revealVisible} 
+        revealKey={nightSky.revealKey}
+        onAutoDismiss={nightSky.onAutoDismiss}
+      />
 
-      <div className="max-w-3xl mx-auto px-4 py-12" ref={timelineRef}>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12" ref={timelineRef}>
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
           {[...Array(50)].map((_, i) => (
@@ -209,11 +217,11 @@ export function Timeline({ notes }: TimelineProps) {
         </div>
       )}
 
-      <h2 className="text-3xl md:text-4xl font-heading text-gold text-center mb-12 text-shadow-glow tracking-wide">
-        Through Hamza’s Eyes, Eman ✨
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading text-gold text-center mb-8 md:mb-12 text-shadow-glow tracking-wide">
+        Through Hamza's Eyes, Eman ✨
       </h2>
 
-      <div className="space-y-8">
+      <div className="space-y-6 md:space-y-8">
         {notes.map((note, index) => {
           const noteDate = parseISO(note.date);
           const isCurrent = index === todayNoteIndex; // Use boolean-based logic instead of system date
@@ -244,8 +252,9 @@ export function Timeline({ notes }: TimelineProps) {
                   <motion.div
                     initial={isRevealing ? { opacity: 0.3, filter: 'blur(8px)' } : (isCurrent || isBirthdayCard ? { scale: 0.95, opacity: 0 } : {})}
                     animate={isRevealing ? { opacity: 1, filter: 'blur(0px)' } : (isCurrent || isBirthdayCard ? { scale: 1, opacity: 1 } : {})}
-                    transition={{ duration: isRevealing ? 1.5 : 0.5, ease: 'easeOut' }}
-                    onClick={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleTodayNoteClick : undefined}
+                    transition={{ duration: isRevealing ? 1.5 : (prefersReducedMotion ? 0.15 : 0.5), ease: 'easeOut' }}
+                    onPointerUp={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleTodayNoteClick : undefined}
+                    onKeyDown={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleKeyDown : undefined}
                     className={`bg-midnight-800/50 backdrop-blur-sm rounded-lg p-6 border ${
                       isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'cursor-pointer hover:border-rose/40 transition-colors' : ''
                     } ${
@@ -255,6 +264,11 @@ export function Timeline({ notes }: TimelineProps) {
                         ? 'border-rose/50 shadow-lg shadow-rose/20' 
                         : 'border-gold/20'
                     }`}
+                    style={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? { touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' } : undefined}
+                    role={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'button' : undefined}
+                    tabIndex={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 0 : undefined}
+                    aria-expanded={isCurrent && ENABLE_NIGHT_SKY_REVEAL && nightSky.revealVisible ? 'true' : 'false'}
+                    aria-label={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'Reveal night sky surprise' : undefined}
                   >
                     <div className="flex items-center gap-2 mb-3">
                       {note.emoji && (
@@ -274,7 +288,7 @@ export function Timeline({ notes }: TimelineProps) {
                       </div>
                     </div>
 
-                    <p className={`font-body text-gray-200 whitespace-pre-line leading-relaxed mb-4 ${isBirthdayCard ? 'text-base md:text-lg' : 'text-base'}`}>
+                    <p className={`font-body text-gray-200 whitespace-pre-line leading-relaxed mb-4 ${isBirthdayCard ? 'text-base md:text-lg' : 'text-[15px] sm:text-base md:text-[17px]'}`}>
                       {note.content}
                     </p>
 
@@ -300,7 +314,7 @@ export function Timeline({ notes }: TimelineProps) {
                   <motion.div
                     onClick={() => handleLockedCardClick(note.date)}
                     whileHover={{ scale: 1.01 }}
-                    className="bg-midnight-800/30 backdrop-blur-sm rounded-lg p-6 border border-gold/10 cursor-pointer relative overflow-hidden"
+                    className="bg-midnight-800/30 backdrop-blur-sm rounded-lg p-4 sm:p-5 md:p-6 border border-gold/10 cursor-pointer relative overflow-hidden shadow-sm md:shadow-md"
                   >
                     {/* Date area - not blurred */}
                     <div className="flex items-center gap-2 mb-3">

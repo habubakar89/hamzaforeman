@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export function ParallaxPetals() {
-  const petals = [
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile on mount
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Reduce petal count on mobile (40% of desktop)
+  const allPetals = [
     { id: 1, delay: 0, duration: 15, left: '10%', size: 'text-2xl' },
     { id: 2, delay: 3, duration: 18, left: '25%', size: 'text-xl' },
     { id: 3, delay: 6, duration: 20, left: '40%', size: 'text-3xl' },
@@ -12,8 +21,11 @@ export function ParallaxPetals() {
     { id: 8, delay: 7, duration: 18, left: '60%', size: 'text-2xl' },
   ];
 
+  // Show only first 3 petals on mobile (40% density)
+  const petals = isMobile ? allPetals.slice(0, 3) : allPetals;
+
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
       {petals.map((petal) => (
         <motion.div
           key={petal.id}

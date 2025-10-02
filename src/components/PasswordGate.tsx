@@ -213,7 +213,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
         {showPopup && <LoginPopup onClose={() => setShowPopup(false)} />}
       </AnimatePresence>
 
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-10 md:pt-14">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ 
@@ -224,7 +224,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full"
       >
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 md:mb-8">
           <motion.div
             animate={{ rotate: isUnlocking ? 360 : 0 }}
             transition={{ duration: 1 }}
@@ -236,10 +236,10 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
               <Lock className="w-16 h-16 text-gold mx-auto" />
             )}
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-heading text-gold mb-2 text-shadow-glow tracking-wide">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-gold mb-2 text-shadow-glow tracking-wide">
             Hamza for Eman
           </h1>
-          <p className="font-body text-gray-300 text-sm">
+          <p className="font-body text-gray-300 text-sm md:text-base text-white/80">
             one little question before the magic opens ✨
           </p>
         </div>
@@ -300,11 +300,11 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
               </AnimatePresence>
             </div>
           )}
-          <div className="bg-midnight-800/50 backdrop-blur-sm rounded-lg p-6 border border-gold/20">
-            <p className="font-heading text-gray-200 mb-2 text-center">
+          <div className="bg-midnight-800/50 backdrop-blur-sm rounded-lg p-4 sm:p-5 md:p-6 border border-gold/20">
+            <p className="font-heading text-gray-200 text-base md:text-lg mb-2 text-center">
               {RIDDLE}
             </p>
-            <p className="font-body text-white/70 text-xs italic text-center mb-4">
+            <p className="font-body text-white/70 text-xs md:text-sm italic text-center mb-4">
               A daily dose of 'us' question to make you smile, everyday.
             </p>
             
@@ -384,16 +384,16 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               placeholder="Your answer..."
-              className="w-full px-4 py-3 bg-midnight-900/50 border border-gold/30 rounded-lg 
-                       text-gray-100 placeholder-gray-500 focus:outline-none focus:border-gold/60
-                       transition-colors"
+              className="w-full px-4 py-3 md:py-3.5 bg-midnight-900/50 border border-gold/30 rounded-lg 
+                       text-gray-100 text-base placeholder-gray-500 focus:outline-none focus:border-gold/60
+                       transition-colors min-h-[44px]"
               autoFocus
             />
           </div>
 
           {/* TODO: replace this note-box text with your own description later */}
-          <div className="bg-midnight-800/40 backdrop-blur-sm rounded-lg p-5 border border-gold/10 shadow-lg shadow-gold/5">
-            <p className="font-body text-gray-300 text-sm leading-relaxed text-center">
+          <div className="bg-midnight-800/40 backdrop-blur-sm rounded-lg p-4 sm:p-5 border border-gold/10 shadow-md md:shadow-lg shadow-gold/5">
+            <p className="font-body text-gray-300 text-[15px] sm:text-base leading-relaxed text-center">
               Hi baby! This is something that took months in the making. For the most special one in my life; for now and forever, I want to forever document us. From the moment I first saw you, to where we are: This is the story of us. A very Happy Birthday to my cutie patootie pie! This is not simply a website, this is a window to what I have felt about us, at different times of our relationship. It includes notes from God Knows When, how I felt, and just the idea of how I will feel when I first see you. I can only try writing what and how I feel for you. I love you so much, and I hope you love this gift as much as I loved making it for you. <p>{"\u2665"}</p>
             </p>
           </div>
@@ -402,9 +402,9 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3 bg-gradient-to-r from-gold/20 to-rose/20 
-                     border border-gold/40 rounded-lg text-gold font-medium
-                     hover:from-gold/30 hover:to-rose/30 transition-all"
+            className="w-full py-3 md:py-3.5 bg-gradient-to-r from-gold/20 to-rose/20 
+                     border border-gold/40 rounded-lg text-gold font-medium text-base
+                     hover:from-gold/30 hover:to-rose/30 transition-all min-h-[44px]"
           >
             {isUnlocking ? '✨ Unlocking...' : 'Unlock'}
           </motion.button>

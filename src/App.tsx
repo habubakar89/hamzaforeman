@@ -7,6 +7,7 @@ import { FloatingHeartCursor } from './components/FloatingHeartCursor';
 import { ParallaxPetals } from './components/ParallaxPetals';
 import { BirthdaySurprise } from './components/BirthdaySurprise';
 import { EasterEgg } from './components/EasterEgg';
+import { HiddenHeartButton } from './components/HiddenHeartButton';
 import { AudioPlayer } from './components/AudioPlayer';
 import { EntryBanner } from './components/EntryBanner';
 import { InstructionBox } from './components/InstructionBox';
@@ -24,6 +25,7 @@ function App() {
   const [showBirthdaySurprise, setShowBirthdaySurprise] = useState(false);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState(false);
+  const [showHiddenFeature, setShowHiddenFeature] = useState(false);
 
   useEffect(() => {
     // Check if today is October 21, 2025 (birthday)
@@ -72,10 +74,17 @@ function App() {
     <div className="relative min-h-screen overflow-x-hidden">
       <ParallaxPetals />
       <FloatingHeartCursor />
-      <LoveMeter />
       <AudioPlayer shouldAutoPlay={shouldAutoPlay} />
-      <EasterEgg />
+      <EasterEgg 
+        isOpen={showHiddenFeature} 
+        onToggle={setShowHiddenFeature} 
+      />
+      <HiddenHeartButton 
+        isActive={showHiddenFeature}
+        onToggle={() => setShowHiddenFeature(!showHiddenFeature)}
+      />
       <InstructionBox />
+      <LoveMeter />
 
       <main className="relative z-10">
         <Timeline notes={NOTES} />

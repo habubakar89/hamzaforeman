@@ -610,4 +610,127 @@ Special touches include:
 
 ---
 
+### Responsive behavior
+- **Mobile (<md)**: 
+  - Compact spacing and typography (text scales from 3xl → 6xl based on viewport)
+  - Instruction box becomes a toggleable bottom sheet with safe-area support
+  - Love-meter relocates below page title as a full-width card
+  - Music ribbon becomes a compact single-line pill above the toggle button (truncates with ellipsis)
+  - Touch targets meet 44×44px minimum for accessibility
+  - Reduced animation density: 3 petals (vs 8), 1 heart per 7-10s (vs 3-5s), 30 stars (vs 80)
+  - Entry banner duration: ~2s
+  - Night sky reveal duration: 3s (vs 4s on desktop)
+- **Desktop (≥lg)**: 
+  - Previous layout retained: right-rail love-meter, floating instruction box on right
+  - Full typography scale and spacing
+  - Orbiting music ribbon with animation
+  - All animation densities at full capacity
+- **Safe-areas**: iOS safe-area-inset applied for bottom-docked elements (music toggle, instruction sheet)
+- **Accessibility**: All interactive elements meet WCAG 2.1 touch target guidelines (44×44px minimum)
+
+---
+
+### Hidden Feature Toggle
+- **Control flag**: `SHOW_HIDDEN_HEART_BUTTON` in `src/components/EasterEgg.tsx` (default: `true`)
+- **Access methods**:
+  - Press `H` key anywhere on the site
+  - Click/tap the heart button in the bottom-left corner
+- **Heart button features**:
+  - Desktop: Fixed at bottom-left (8px from edges)
+  - Mobile: Fixed at bottom-left with safe-area support (min 48×48px tap target)
+  - Visual: Outline heart with soft gold glow, fills with rose color when active
+  - Animation: Subtle pulse every 15 seconds (disabled on `prefers-reduced-motion`)
+  - Accessibility: ARIA labels, focus-visible ring, debounced to prevent double-fires (500ms)
+- **Instruction box**: Automatically includes tip about heart button usage
+
+### Love Meter Collapse
+- **Control flag**: `LOVE_METER_PERSIST_SESSION` in `src/components/LoveMeter.tsx` (default: `false`)
+- **Behavior**:
+  - Click chevron in card header to collapse meter
+  - When collapsed, shows as tiny floating badge with current % and mini ring
+  - Click badge to restore full meter
+  - Desktop: Badge appears in same right-rail position
+  - Mobile: Badge floats at bottom-right, 64px above music toggle
+- **Session persistence**: When enabled, remembers collapsed state per browser tab using `sessionStorage`
+- **Design**: 
+  - Collapsed badge: 64×64px (minimum 44×44px hit target)
+  - Smooth scale/fade transitions (respects `prefers-reduced-motion`)
+  - Focus-visible rings for accessibility
+  - Non-blocking: Doesn't interfere with other controls
+
+### Mobile Tap Fix
+- **Implementation**: Note activators now use pointer events (`onPointerUp`) with `touch-action: manipulation`
+- **Benefits**:
+  - Removes 300ms tap delay on iOS Safari
+  - Reliable tap detection on all mobile devices
+  - Desktop click behavior unchanged
+  - Debounced to prevent double-fires (300ms guard)
+- **Accessibility**:
+  - Keyboard support: Enter/Space keys work on focused cards
+  - ARIA attributes: `role="button"`, `tabIndex={0}`, `aria-expanded`
+  - Reduced animation duration on mobile (150-180ms vs 500ms)
+- **Z-index layering**: Decorative overlays (petals, hearts) use `-z-10` and `pointer-events-none` to avoid intercepts
+
+---
+
+### Corner Layout System
+
+All four corners have fixed anchors for controls and their panels:
+
+**BR (Bottom-Right): Music**
+- Button: Fixed at `bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4` with z-30
+- Min tap target: 48×48px
+- Panel: Opens upward from BR, max-w-[85vw] on mobile, sm:max-w-sm on desktop
+- Ribbon displays current music note with word-wrap
+- Origin: bottom-right for inward animation
+
+**TR (Top-Right): Love-meter**
+- Expanded: Fixed at `top-6 right-6` with z-20
+- Mobile compact card: `top-4 right-4 w-[52vw] max-w-[280px]`
+- Collapsed badge: Fixed at `top-4 right-4` (44×44px min)
+- Never overlaps with other UI elements
+
+**TL (Top-Left): Hidden feature**
+- Heart button: Fixed at `top-6 left-6` with z-30 (48×48px, scales to 56px on sm)
+- Panel: Modal overlay at z-40, centered with max-w-2xl
+- Press 'H' or tap heart to toggle
+
+**BL (Bottom-Left): How to use ✨**
+- Toggle pill: Fixed at `bottom-[calc(env(safe-area-inset-bottom)+16px)] left-4` with z-30
+- Panel: Opens upward from BL, max-w-[85vw] on mobile, sm:max-w-sm on desktop
+- Origin: bottom-left for inward animation
+- Text wraps with max-h-[50vh] and overflow-auto
+
+**Z-index hierarchy:**
+- Background (petals/hearts): z-0, pointer-events-none
+- Night sky constellation: z-10, pointer-events-none
+- Timeline/cards: z-10
+- Love-meter: z-20
+- Toggles/panels: z-30
+- Modals/EasterEgg: z-40
+
+**Constellation (E+H):**
+- Desktop: 60vw × 60vh, max 900×600px
+- Mobile: 80vw × 40vh, max 340×240px
+- Simplified on mobile (fewer stars ~24-32, fewer points per letter 3-4)
+- Star size: mobile 1.5-2px radius, desktop 2.5-3px
+- Line stroke: mobile 1px, desktop 1.5px
+- Duration: ≤3s on mobile, 4s on desktop
+- Reduced-motion: Static "E + H ✨" text at 70% canvas size
+
+**Safe areas & touch targets:**
+- All buttons ≥44×44px (WCAG 2.1 compliant)
+- Safe-area-inset applied to bottom-docked elements
+- Panels use max-w-[85vw] to prevent edge clipping
+- All activators use `onPointerUp` + `touch-action: manipulation`
+- Decorative layers have `pointer-events-none`
+
+**Accessibility:**
+- Every toggle has `aria-pressed`, `aria-controls`, `focus-visible` ring
+- Animations respect `prefers-reduced-motion` (fade-only, no scale)
+- Motion duration: 160-220ms for panels
+- Text wraps with soft scroll on overflow
+
+---
+
 **For Eman, with all my love 💕**

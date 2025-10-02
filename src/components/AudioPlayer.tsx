@@ -96,127 +96,93 @@ export function AudioPlayer({ shouldAutoPlay = false }: AudioPlayerProps) {
         <source src={AUDIO_SOURCE} type="audio/mpeg" />
       </audio>
 
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
-        {/* Lyric Ribbon */}
+      {/* Lyric Ribbon Panel - opens upward from BR corner */}
+      <AnimatePresence>
+        {showRibbon && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.18 }}
+            className="fixed bottom-[calc(env(safe-area-inset-bottom)+74px)] right-4 z-30
+                     max-w-[85vw] sm:max-w-sm origin-bottom-right"
+            style={{ transformOrigin: 'bottom right' }}
+            onClick={toggleRibbon}
+            role="button"
+            aria-label="Daily music note"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleRibbon();
+              }
+            }}
+          >
+            <div className="bg-midnight-800/90 backdrop-blur-lg border border-gold/30 rounded-2xl 
+                          px-4 py-3 shadow-lg cursor-pointer hover:border-gold/50 transition-colors"
+                 id="music-ribbon-panel">
+              <p className="text-sm text-gray-300 leading-relaxed break-words">
+                {musicNote}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Music Button - BR corner, fixed position */}
+      <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4 z-30">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onPointerUp={togglePlay}
+          onMouseEnter={() => setShowControls(true)}
+          onMouseLeave={() => setShowControls(false)}
+          className="bg-midnight-800/80 backdrop-blur-sm rounded-full 
+                   p-3 border border-gold/20 
+                   hover:border-gold/40 transition-colors 
+                   shadow-lg
+                   min-w-[48px] min-h-[48px] flex items-center justify-center
+                   touch-manipulation"
+          style={{ touchAction: 'manipulation' }}
+          aria-label={isPlaying ? 'Pause music' : 'Play music'}
+          aria-pressed={isPlaying}
+          aria-controls="music-ribbon-panel"
+        >
+          <motion.div
+            animate={{ rotate: isPlaying ? 360 : 0 }}
+            transition={{ duration: 3, repeat: isPlaying ? Infinity : 0, ease: 'linear' }}
+          >
+            <Music className="w-6 h-6 text-gold" />
+          </motion.div>
+        </motion.button>
+
         <AnimatePresence>
-          {showRibbon && (
+          {showControls && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={
-                prefersReducedMotion
-                  ? { opacity: 1, scale: 1 }
-                  : {
-                      opacity: 1,
-                      scale: 1,
-                      x: [0, -8, 0, 8, 0],
-                      y: [0, -4, 0, 4, 0],
-                    }
-              }
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={
-                prefersReducedMotion
-                  ? { duration: 0.3 }
-                  : {
-                      x: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-                      y: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
-                      opacity: { duration: 0.3 },
-                      scale: { duration: 0.3 },
-                    }
-              }
-              className="relative max-w-xs"
-              onClick={toggleRibbon}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute bottom-full right-0 mb-2 bg-midnight-800/90 backdrop-blur-sm 
+                       rounded-lg px-3 py-2 border border-gold/20 text-xs text-gray-300 whitespace-nowrap z-40"
             >
-              <div className="bg-midnight-800/90 backdrop-blur-lg border border-gold/30 rounded-full px-4 py-2 shadow-lg shadow-gold/10 cursor-pointer hover:border-gold/50 transition-colors">
-                <p className="text-xs text-gray-300 text-center leading-relaxed">
-                  {musicNote}
-                </p>
-                
-                {/* Sparkles */}
-                {!prefersReducedMotion && (
-                  <>
-                    <motion.span
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: 0,
-                      }}
-                      className="absolute -top-1 -right-1 text-xs"
-                    >
-                      ✨
-                    </motion.span>
-                    <motion.span
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: 1,
-                      }}
-                      className="absolute -bottom-1 -left-1 text-xs"
-                    >
-                      ✨
-                    </motion.span>
-                  </>
-                )}
-              </div>
+              {audioMissing ? (
+                <span className="flex items-center gap-1 text-yellow-400">
+                  ⚠️ add bg-music.mp3
+                </span>
+              ) : isPlaying ? (
+                <span className="flex items-center gap-1">
+                  <Volume2 className="w-3 h-3" />
+                  playing
+                </span>
+              ) : (
+                <span className="flex items-center gap-1">
+                  <VolumeX className="w-3 h-3" />
+                  click to play
+                </span>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Music Button */}
-        <div className="relative">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={togglePlay}
-            onMouseEnter={() => setShowControls(true)}
-            onMouseLeave={() => setShowControls(false)}
-            className="bg-midnight-800/80 backdrop-blur-sm rounded-full p-4 border border-gold/20 
-                       hover:border-gold/40 transition-colors shadow-lg"
-            aria-label={isPlaying ? 'Pause music' : 'Play music'}
-          >
-            <motion.div
-              animate={{ rotate: isPlaying ? 360 : 0 }}
-              transition={{ duration: 3, repeat: isPlaying ? Infinity : 0, ease: 'linear' }}
-            >
-              <Music className="w-6 h-6 text-gold" />
-            </motion.div>
-          </motion.button>
-
-          <AnimatePresence>
-            {showControls && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="absolute bottom-full right-0 mb-2 bg-midnight-800/90 backdrop-blur-sm 
-                         rounded-lg px-3 py-2 border border-gold/20 text-xs text-gray-300 whitespace-nowrap"
-              >
-                {audioMissing ? (
-                  <span className="flex items-center gap-1 text-yellow-400">
-                    ⚠️ add bg-music.mp3
-                  </span>
-                ) : isPlaying ? (
-                  <span className="flex items-center gap-1">
-                    <Volume2 className="w-3 h-3" />
-                    playing
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-1">
-                    <VolumeX className="w-3 h-3" />
-                    click to play
-                  </span>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
       </div>
     </>
   );

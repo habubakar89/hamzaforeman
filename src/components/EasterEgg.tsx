@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Control flag for the heart button visibility
+export const SHOW_HIDDEN_HEART_BUTTON = true;
+
 interface Habit {
   text: string;
   image?: string;
+}
+
+interface EasterEggProps {
+  isOpen?: boolean;
+  onToggle?: (open: boolean) => void;
 }
 
 // TODO: replace the 3 placeholder habits with personal ones
@@ -35,9 +43,13 @@ const HABITS: Habit[] = [
   },
 ];
 
-export function EasterEgg() {
-  const [isOpen, setIsOpen] = useState(false);
+export function EasterEgg({ isOpen: externalIsOpen, onToggle }: EasterEggProps = {}) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Use external state if provided, otherwise use internal state
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = onToggle || setInternalIsOpen;
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -52,7 +64,7 @@ export function EasterEgg() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+  }, [setIsOpen]);
 
   useEffect(() => {
     if (isOpen && HABITS.length > 1) {
@@ -70,7 +82,7 @@ export function EasterEgg() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4"
           onClick={() => {
             setIsOpen(false);
             setCurrentIndex(0);
@@ -81,12 +93,12 @@ export function EasterEgg() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: 'spring', damping: 25 }}
-            className="max-w-2xl w-full"
+            className="max-w-2xl w-full mx-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-midnight-800/90 backdrop-blur-lg rounded-2xl p-8 md:p-12 border-2 border-gold/40 shadow-2xl">
-              <div className="text-center mb-6">
-                <h3 className="text-3xl font-playfair text-gold mb-2">
+            <div className="bg-midnight-800/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-12 border-2 border-gold/40 shadow-2xl">
+              <div className="text-center mb-4 sm:mb-6">
+                <h3 className="text-2xl sm:text-3xl font-playfair text-gold mb-2">
                   How my day starts and ends with you 💖
                 </h3>
                 <p className="text-sm text-gray-400">
@@ -107,16 +119,16 @@ export function EasterEgg() {
                     <img
                       src={HABITS[currentIndex].image}
                       alt={`Habit ${currentIndex + 1}`}
-                      className="w-full max-h-64 object-cover rounded-lg mb-6 shadow-lg"
+                      className="w-full max-h-48 sm:max-h-64 object-cover rounded-lg mb-4 sm:mb-6 shadow-lg"
                     />
                   )}
-                  <p className="text-xl md:text-2xl text-gray-200 font-poppins leading-relaxed">
+                  <p className="text-lg sm:text-xl md:text-2xl text-gray-200 font-poppins leading-relaxed">
                     {HABITS[currentIndex].text}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-6 sm:mt-8">
                 {HABITS.map((_, index) => (
                   <button
                     key={index}
@@ -136,13 +148,15 @@ export function EasterEgg() {
                   setIsOpen(false);
                   setCurrentIndex(0);
                 }}
-                className="mt-8 w-full py-3 bg-gold/20 border border-gold/40 rounded-lg 
-                         text-gold hover:bg-gold/30 transition-colors"
+                className="mt-6 sm:mt-8 w-full py-3 bg-gold/20 border border-gold/40 rounded-lg 
+                         text-gold hover:bg-gold/30 transition-colors
+                         min-h-[44px] touch-manipulation"
+                style={{ touchAction: 'manipulation' }}
               >
                 Close (or press ESC)
               </button>
 
-              <p className="text-center text-xs text-gray-500 mt-4">
+              <p className="text-center text-xs text-gray-500 mt-3 sm:mt-4">
                 💡 Tip: Press 'H' anytime to see this again
               </p>
             </div>
