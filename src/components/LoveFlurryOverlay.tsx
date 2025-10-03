@@ -41,8 +41,8 @@ export function LoveFlurryOverlay({
 }: LoveFlurryOverlayProps) {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [state, setState] = useState<'idle' | 'playing' | 'fading' | 'removed'>('idle');
-  const failsafeTimeout = useRef<number>();
-  const playingTimeout = useRef<number>();
+  const failsafeTimeout = useRef<number | undefined>(undefined);
+  const playingTimeout = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!visible) {
