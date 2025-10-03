@@ -139,13 +139,14 @@ The music toggle button appears in the bottom-right corner. Music is paused by d
 
 ```typescript
 // Set your plain text answer (used for underscore hints)
-const CORRECT_ANSWER = 'Baby Jaan';
+
+const CORRECT_ANSWER = 'Kheruwala';
 
 // SHA-256 hash of the answer above
-const CORRECT_HASH = '8d7d5397f8842b4181d38bc57b85b9ff1860456f92872c43f991a904c45062d5';
+const CORRECT_HASH = 'b1e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2';
 
 // Customize your riddle/question
-const RIDDLE = "Where were we first gonna meet?";
+const RIDDLE = "I mess with you by calling you Eman Faiz _________";
 ```
 
 **To generate the SHA-256 hash of your answer:**
@@ -440,6 +441,58 @@ A special interactive surprise effect for today's unlocked note:
 **Instruction box hint:**
 - When enabled, instruction box shows: "Psst… try clicking today's note 🌙"
 - Hint automatically hides if feature is disabled
+
+### 13. Bird Flurry Celebration (October 3)
+
+A replayable celebration animation for the October 3 card:
+
+**How it works:**
+- **Trigger**: Tap/click the October 3 card header (emoji + title area)
+- **Replayable**: Every tap triggers a fresh animation - unlimited replays
+- **Duration**: Desktop 2.2-2.6s, Mobile 1.8-2.2s
+- **Auto-cleanup**: Animation auto-dismisses, no residual overlays
+
+**Particles (Desktop / Mobile):**
+- **Birds**: 6 / 4 → Soft dove colors (#e7f5ff, #c8e7ff), arc upward with wing flap
+- **Hearts**: 15 / 10 → Gold (#f5e6c4), blush (#ff8fa3), pale rose (#ffd0d8), rise + drift
+- **Text sprites**: 6 / 4 → "i love you", "love you", "ily" in heading font, float with sway
+
+**Motion effects:**
+- Birds: Bezier arc path, scaleY flap oscillation, rotation, opacity fade
+- Hearts: Cubic-bezier rise + horizontal drift, scale pulse, opacity fade
+- Text: Sine-wave sway, blur 0→2px transition, opacity 0→1→0
+- All particles: drop-shadow glow (8px rgba gold)
+
+**Accessibility:**
+- **Keyboard support**: Press Enter or Space on focused Oct 3 header to trigger
+- **Screen readers**: Live region announces "Birds and hearts take flight" on each trigger
+- **Reduced motion**: Falls back to 1 bird + 2 hearts + 1 text, fade-only (≤700ms)
+- **Non-blocking**: Overlay uses `pointer-events-none`, never blocks input
+
+**Config flags** (controlled in code):
+```typescript
+// In src/data/notes.ts:
+date: '2025-10-03',
+isBlurred: false,  // Set to false to enable Oct 3 card
+
+// In src/components/BirdFlurryOverlay.tsx:
+BIRD_COUNT: 6 (desktop) / 4 (mobile)
+HEART_COUNT: 15 (desktop) / 10 (mobile)  
+TEXT_COUNT: 6 (desktop) / 4 (mobile)
+TOTAL_DURATION: 2400ms (desktop) / 2000ms (mobile)
+FAILSAFE_DELAY: 4500ms (safety cleanup)
+
+// In src/components/Timeline.tsx:
+- 250ms debounce prevents double-fires
+- Tracks flurryKey to force fresh remounts
+```
+
+**Implementation notes:**
+- Uses one-shot local state: `celebrateVisible` + `celebrateKey` (increments per trigger)
+- Each tap increments key → forces fresh overlay mount → guarantees replay
+- Portal overlay: `fixed inset-0 z-20`, aria-hidden for decoration
+- Particles spawn from Oct 3 card center (±12px jitter)
+- All timers cleared on unmount, no memory leaks
 
 ### 6. Adding Images/Media
 

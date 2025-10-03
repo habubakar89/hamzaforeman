@@ -47,9 +47,9 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-03',
-    title: 'title for oct 3',
+    title: 'The day I realized it was forever',
     emoji: '✨',
-    content: 'TODO: Add your message for day 3.',
+    content: 'Baby, this is from one of my notes I wrote during the summer:\n\nEman, a man says he loved you. He promises a lot of things, and he does a lot of them as well\n\nHowever, there is a day, there is a moment, when he thinks, \"This is it, this is forever, and she is the one!\" Truly, today is the day I have. Today is some day in the summer, but I will not write the date down, because starting today, it is every day I will want to marry you. Give you what I have and everything I will ever be. You keep me grounded, make me want to be a better man, and are truly my home 💕\n\nToday is nothing special, but when I think of a glimpse into our future: When I envision my wife with my kids, my partner with her lazy mornings, and my safe haven in the strongest tides, I see you there. You were right, and I trust you to always protect my heart.\n\nEman, I know I am not perfect, and I don\'t deserve you, but to me, I will always strive to be a better man, a better partner, and a better Muslim because of you. No matter what I have to endure, it all is nothing compared to what you mean to me! \n\nI am not sure, maybe I will give you this note, or I will save it for a special occasion. Either way, the day you meet me, you will see it in my eyes how much I mean all of this. In Sha Allah <3\n\nNow, tap on this box love, hope you like it!',
     isBlurred: false,
   },
   {

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HelpCircle, X } from 'lucide-react';
-import { ENABLE_NIGHT_SKY_REVEAL } from './Timeline';
 
 // TODO: Set to false to disable the instruction box
 export const SHOW_INSTRUCTION_BOX = true;
@@ -51,11 +50,9 @@ export function InstructionBox() {
                 <p>
                   • The love meter tracks our progress to the special day
                 </p>
-                {ENABLE_NIGHT_SKY_REVEAL && (
-                  <p className="mt-3 pt-3 border-t border-white/10 text-gold/80">
-                    Psst… try clicking today's note 🌙
-                  </p>
-                )}
+                <p className="mt-3 pt-3 border-t border-white/10 text-gold/80">
+                  Psst… try tapping the Oct 3 card header 🕊️
+                </p>
               </div>
             </div>
           </motion.div>

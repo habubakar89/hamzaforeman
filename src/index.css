@@ -62,14 +62,4 @@
     }
   }
   
-  /* Constellation visibility enhancements for mobile */
-  @media (max-width: 768px) {
-    .constellation-line {
-      stroke-width: 2.5px;
-    }
-    
-    .constellation-dot {
-      r: 3.5;
-    }
-  }
 }

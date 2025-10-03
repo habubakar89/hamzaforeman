@@ -3,12 +3,7 @@ import { format, parseISO } from 'date-fns';
 import { DayNote } from '../types';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { LOCKED_MESSAGES, DEFAULT_LOCKED_MESSAGE } from '../data/notes';
-import { NightSkyOverlay } from './NightSkyOverlay';
-import { LoveFlurryOverlay } from './LoveFlurryOverlay';
-import { useNightSkyReveal } from '../hooks/useNightSkyReveal';
-
-// TODO: Set to false to disable the night sky reveal feature
-export const ENABLE_NIGHT_SKY_REVEAL = true;
+import { BirdFlurryOverlay } from './BirdFlurryOverlay';
 
 interface TimelineProps {
   notes: DayNote[];
@@ -24,14 +19,12 @@ export function Timeline({ notes }: TimelineProps) {
   const hasScrolled = useRef(false);
   const timelineRef = useRef<HTMLDivElement>(null);
   
-  // Use the new state machine hook for night sky reveal
-  const nightSky = useNightSkyReveal();
-  
-  // Love Flurry state for Oct 3
+  // Bird Flurry state for Oct 3
   const [flurryVisible, setFlurryVisible] = useState(false);
   const [flurryKey, setFlurryKey] = useState(0);
   const oct3CardRef = useRef<HTMLDivElement | null>(null);
   const lastFlurryTrigger = useRef(0);
+  const [liveRegionMessage, setLiveRegionMessage] = useState('');
   
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -175,22 +168,8 @@ export function Timeline({ notes }: TimelineProps) {
     setLockedToast(`This note updates on ${formattedDate} in the morning ✨`);
     setTimeout(() => setLockedToast(null), 2500);
   };
-
-  const handleTodayNoteClick = () => {
-    // Trigger night sky reveal effect (reopens on every tap, debounced in hook)
-    if (ENABLE_NIGHT_SKY_REVEAL) {
-      nightSky.show();
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleTodayNoteClick();
-    }
-  };
   
-  // Handle Oct 3 Love Flurry trigger with debouncing
+  // Handle Oct 3 Bird Flurry trigger with debouncing
   const handleOct3Click = useCallback(() => {
     const now = Date.now();
     if (now - lastFlurryTrigger.current < 250) {
@@ -200,7 +179,19 @@ export function Timeline({ notes }: TimelineProps) {
     
     setFlurryVisible(true);
     setFlurryKey(k => k + 1);
+    
+    // Announce to screen readers
+    setLiveRegionMessage('Birds and hearts take flight');
+    setTimeout(() => setLiveRegionMessage(''), 100);
   }, []);
+  
+  // Handle keyboard trigger for Oct 3
+  const handleOct3KeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleOct3Click();
+    }
+  }, [handleOct3Click]);
   
   const handleFlurryDismiss = useCallback(() => {
     setFlurryVisible(false);
@@ -208,15 +199,8 @@ export function Timeline({ notes }: TimelineProps) {
 
   return (
     <>
-      {/* Night Sky Reveal Effect */}
-      <NightSkyOverlay 
-        visible={nightSky.revealVisible} 
-        revealKey={nightSky.revealKey}
-        onAutoDismiss={nightSky.onAutoDismiss}
-      />
-      
-      {/* Love Flurry Effect for Oct 3 */}
-      <LoveFlurryOverlay
+      {/* Bird Flurry Effect for Oct 3 */}
+      <BirdFlurryOverlay
         visible={flurryVisible}
         flurryKey={flurryKey}
         onAutoDismiss={handleFlurryDismiss}
@@ -285,29 +269,29 @@ export function Timeline({ notes }: TimelineProps) {
                     initial={isRevealing ? { opacity: 0.3, filter: 'blur(8px)' } : (isCurrent || isBirthdayCard ? { scale: 0.95, opacity: 0 } : {})}
                     animate={isRevealing ? { opacity: 1, filter: 'blur(0px)' } : (isCurrent || isBirthdayCard ? { scale: 1, opacity: 1 } : {})}
                     transition={{ duration: isRevealing ? 1.5 : (prefersReducedMotion ? 0.15 : 0.5), ease: 'easeOut' }}
-                    onPointerUp={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleTodayNoteClick : undefined}
-                    onKeyDown={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? handleKeyDown : undefined}
                     className={`bg-midnight-800/50 backdrop-blur-sm rounded-lg p-6 border ${
-                      isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'cursor-pointer hover:border-rose/40 transition-colors' : ''
-                    } ${
                       isBirthdayCard 
                         ? 'border-rose/60 shadow-2xl shadow-rose/40 md:p-8 md:scale-105' 
                         : isCurrent 
                         ? 'border-rose/50 shadow-lg shadow-rose/20' 
                         : 'border-gold/20'
-                    }`}
-                    style={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? { touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' } : undefined}
-                    role={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'button' : undefined}
-                    tabIndex={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 0 : undefined}
-                    aria-expanded={isCurrent && ENABLE_NIGHT_SKY_REVEAL && nightSky.revealVisible ? 'true' : 'false'}
-                    aria-label={isCurrent && ENABLE_NIGHT_SKY_REVEAL ? 'Reveal night sky surprise' : undefined}
+                    } ${isOct3 && !isBlurred ? 'cursor-pointer select-none' : ''}`}
+                    onClick={isOct3 && !isBlurred ? handleOct3Click : undefined}
+                    onPointerUp={isOct3 && !isBlurred ? handleOct3Click : undefined}
+                    onTouchEnd={isOct3 && !isBlurred ? (e) => { e.preventDefault(); handleOct3Click(); } : undefined}
+                    onKeyDown={isOct3 && !isBlurred ? handleOct3KeyDown : undefined}
+                    tabIndex={isOct3 && !isBlurred ? 0 : undefined}
+                    role={isOct3 && !isBlurred ? 'button' : undefined}
+                    aria-label={isOct3 && !isBlurred ? 'Tap anywhere on this card to celebrate with birds and hearts' : undefined}
+                    style={isOct3 && !isBlurred ? { 
+                      touchAction: 'manipulation', 
+                      WebkitTapHighlightColor: 'transparent',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none'
+                    } : undefined}
+                    ref={isOct3 && !isBlurred ? oct3CardRef : undefined}
                   >
-                    <div 
-                      className={`flex items-center gap-2 mb-3 ${isOct3 && !isBlurred ? 'cursor-pointer' : ''}`}
-                      onPointerUp={isOct3 && !isBlurred ? handleOct3Click : undefined}
-                      style={isOct3 && !isBlurred ? { touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' } : undefined}
-                      ref={isOct3 && !isBlurred ? oct3CardRef : undefined}
-                    >
+                    <div className="flex items-center gap-2 mb-3">
                       {note.emoji && (
                         <span className={isBirthdayCard ? 'text-4xl' : 'text-2xl'}>
                           {note.emoji}
@@ -396,6 +380,16 @@ export function Timeline({ notes }: TimelineProps) {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* Accessibility: Live region for bird flurry announcements */}
+      <div
+        className="sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {liveRegionMessage}
       </div>
 
       {/* Locked card micro-toast */}
