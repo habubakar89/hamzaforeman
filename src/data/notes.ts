@@ -61,10 +61,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-05',
-    title: 'title for oct 5',
+    title: 'The day that we dreamt of?',
     emoji: '💕',
-    content: 'TODO: Add your message for day 5.',
-    isBlurred: true,
+    content: 'While I did have something else in mind, I wanted to share this with you baby. For the months we have been together, for days we have fought, for nights we\'ve lived with uncertainties, there now is a day that will counter them on end. It was never easy loving someone and not seeing them, not feeling their presence, not able to appreciate their presence, and just not look into their eyes, and tell them, you love them. \n\nAlhamdulillah, whatever we went through, we will finally be meeting each other, In Sha Allah. I know you and I have been waiting for so long for this to come, it almost feels unreal. But here it is, less than two weeks, maybe in this very moment, I might be reminding you this same thing ❤️.\n\nMeri jaan, my love, just pray for us that it is all over soon, and we get to be together the way we were destined. In Sha Allah. And love, don\'t worry too much, what will happen, what if something goes wrong, and what else. Just think of it as an innocent and pure testament to our relationship that we went through this so far from each other, and that we finally get to hold each other the way we deserve 😊! It will be perfect, it will be right, and In Sha Allah, it will be the two of us. I simply can not wait now, bas jaldi se yeh din nikal jaaye. My baby, my love, my cutie, we did it!!!! Kisses inbond 😘😘😘',
+    isBlurred: false,
   },
   {
     date: '2025-10-06',
