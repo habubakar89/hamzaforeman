@@ -54,10 +54,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-04',
-    title: 'title for oct 4',
+    title: 'Notes from when I told my mom about you!',
     emoji: '🌸',
-    content: 'TODO: Add your message for day 4.',
-    isBlurred: true,
+    content: ' Today, I discussed you with my mom. For the first time. Wow, how was that even? I had the courage to talk to my parents about a girl? How?\n\nTwo things I’ve realized. It’s easy when you know you’re going to marry this person, and that person is more than worthy of being yours for lifetime. \n\nBut as I went on to tell you how you are, it suddenly seemed so easy. I have never done this, and this still fella so easy so right. And Eman, where do I begin? I told her about how you value family, how I see a lot of inherent qualities in you which are just like hers. How you are like a girl I’ve never met, a person I’ve never seen yet I just know. How I trust you more than I do myself, and how you’re plain beautiful Mashallah. And these are not understatements baby, look at yourself? I mean, you’re a 100 times more than all the Hoors combined!\n\nMy mom has already asked for your mom’s number haha! But I’ll wait until I meet you. In Sha Allah ❤️',
+    isBlurred: false,
   },
   {
     date: '2025-10-05',
