@@ -11,11 +11,11 @@ interface PasswordGateProps {
 }
 
 // TODO: update the plain-text correct answer here (used to compute slots)
-const CORRECT_ANSWER = '34d';
-// SHA-256 hash of "34d" (case-insensitive, spaces are removed during validation)
-const CORRECT_HASH = '0fabbe72fd38db3b3152d2a0bbb15b8414230684094657d8410075a14efde50e';
+const CORRECT_ANSWER = 'software';
+// SHA-256 hash of "software" (case-insensitive, spaces are removed during validation)
+const CORRECT_HASH = '35390f5453e810b6248028c63e5860ce4b2ec6401d3849a7f4f871c0d183c22b';
 
-const RIDDLE = "The 'size' I am always after, am fascinated by, and can't wait to check out 😉";
+const RIDDLE = "What do I work in 😉?";
 
 // TODO: tweak slot gap size and underline thickness if desired
 const SLOT_GAP_SIZE = 10; // px between words

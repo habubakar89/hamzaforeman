@@ -68,10 +68,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-06',
-    title: 'title for oct 6',
+    title: 'Urmm...when we fight',
     emoji: '🌺',
-    content: 'TODO: Add your message for day 6.',
-    isBlurred: true,
+    content: 'Every time we fight, I am soon enough reminded of how much I already miss you and every time, how much I love you. Yeah, it has been a dreadful long distance, and I do not believe there is every anything between us that would cause us to fight. Even if we do, baby know that nothing matters than each of us, and the two of us together. \n\n We are not perfect for each other, just like veryone ese. However, I do believe that we are right for one another. Right to keep the other above all our anger, our frustrations, and our misundestandings. \n\n And I know for sure that once we meet, we finally will see each other for who we really are, and not a chat or a 2D video on the phone. It will be special, it will be real, and it will be us. \n\n For every fight, I will keep you ahead, and I will love you more. I know you are the sweetest, cutest and most loving creatuer to walk the earth, and you deserve more love than one could every imagine, and that is only the beginining. I will show you, I will tell you, and I will make you feel every ounce of it. \n\n And right now, I am in your heart, so much so that wou will again message me something cute hehe. Love you baby 💕',
+    isBlurred: false,
   },
   {
     date: '2025-10-07',
