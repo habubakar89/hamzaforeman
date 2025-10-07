@@ -13,7 +13,7 @@ interface PasswordGateProps {
 // TODO: update the plain-text correct answer here (used to compute slots)
 const CORRECT_ANSWER = 'software';
 // SHA-256 hash of "software" (case-insensitive, spaces are removed during validation)
-const CORRECT_HASH = '35390f5453e810b6248028c63e5860ce4b2ec6401d3849a7f4f871c0d183c22b';
+const CORRECT_HASH = '35390f5453e810b6248028c63e5860ce4b2ec3849a7f4f871c0d183c22b';
 
 const RIDDLE = "What do I work in 😉?";
 
