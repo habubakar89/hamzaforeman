@@ -75,10 +75,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-07',
-    title: 'title for oct 7',
+    title: 'A special day for the both of us',
     emoji: '💖',
-    content: 'TODO: Add your message for day 7.',
-    isBlurred: true,
+    content: 'It is a typical morning. Wind bustling through the leaves, birds chirping, and people getting along their usual day. Amidst all the hustle and bustle, there is a cry. The cry of a baby who would bring forth the most amazing smile, the most innocent love, and all the more precious presence. \n\n Little do mama and baba know, that this baby would grow up to be a lady who exhibits love, who preaches kindness, and who spreads laughs. Little did a year old kid near Makkah know that this girl who would mean so much to him, would even then make his heart skip a beat. \n\n Two weeks to go to your birthday meri jaan, and I can not wait to see you, kiss you, and wish you the happiest birthday, yet. I am so happy to be the one to spend it with you. Look at you, tell you how beautifully gorgeaous you always look, and that every minute I waited to see you, has been worth it. \n\n I am almost there baby, and I know my words can not express a cent percent of what my eyes will\' on your day, on our day 💖 💕 💞',
+    isBlurred: false,
   },
   {
     date: '2025-10-08',
