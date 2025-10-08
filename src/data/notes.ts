@@ -82,10 +82,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-08',
-    title: 'title for oct 8',
+    title: 'What makes you, you!',
     emoji: '🌼',
-    content: 'TODO: Add your message for day 8.',
-    isBlurred: true,
+    content: 'You are just another girl, one our of a billion others. What really does make you special? What is it that has you stand out in a crowd that has a million others? It is your smile. They say, a smile is a window to one\'s soul, and I couldn\'t agree more. \n\n It is pure, it is authentic, and it is a testament to your heart, to all that you stand for. Just like how easy it can fade away, it is as easy to win it back. I know it is not easy. Smiling and being yourself in a world that truly doesn\'t appreciate very moment you breathe. Every step you take, and every word you say. Yet, despite all that you see and endure, you still smile. You still love. For yourself, and for those around you. While it must seem all I have talked about is a single word today, believe me: It is what I so genuinely think of, all the time. I pray to Allah you never lose that smile, only that it grows brighter. \n\n Eman, I wish with every step I take, I can be the reason behind that. To every word I say, I make you laugh. Just like you would smile everyday, and just like I made you smile right now 💕',
+    isBlurred: false,
   },
   {
     date: '2025-10-09',
