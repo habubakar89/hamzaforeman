@@ -89,10 +89,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-09',
-    title: 'title for oct 9',
+    title: 'How\'d it feel touching you for the first time?',
     emoji: '💗',
-    content: 'TODO: Add your message for day 9.',
-    isBlurred: true,
+    content: 'Gori Pakori! That\'s how I think you look. A milky smooth skin, a face as pure as the moonlight, and skin as sof as silk. Yaar, I am not even sure how you would feel with these big, rugged hands of mine touching yours. Bahot carefully cheezen krni hogi Eman! \n\n But jokes apart, kind of a week to go. I can not wait to feel your touch baby. How you would look when you just took a shower, how you would you look having just woke up, and how amazing you\'d go with morning coffee 💝. I truly believe that soft skin of yours is a testament to who you are as a person love. Maybe you\'re even better, softer than the steps you take, more heart than the smile you have, and more so full of life that you already seem. I know you speak less, but I want to thread through every word, every letter to uncover the story written beneath! 8 days to go, see you soon hottie 😘',
+    isBlurred: false,
   },
   {
     date: '2025-10-10',
