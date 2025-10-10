@@ -96,10 +96,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-10',
-    title: 'title for oct 10',
+    title: 'Turning a dream into a reality :)',
     emoji: '🌷',
-    content: 'TODO: Add your message for day 10.',
-    isBlurred: true,
+    content: 'Turning a dream into a reality :) \n\nAs I embark on my journey to you, it feels different. Unlike every other time, it’s not just a destination I have in mind. Hurdles, fights, long days and longer night: they’re all a part of the journey I think had just begun. It’s different, it’s special, it’s scary even.\n\nBut we’ve come all the way here, and it’s only fitting we go right ahead. I’m no longer going to have to ask you to believe. I’m no longer going to have to ask you to wait or hope for the best. \n\nYaar Eman, kya nahi kiya nahi humne? Saudi fair, Turkey fair and so much. Funnily enough, humara aapke hi shehr Mei milna likha tha. Alhamdulillah, no matter the time, I do get to meet you my love :) \n\nAnd for the scary part, baby it’s just me. Pookie :) I’m gonna be calm, a cutie and yours just like always am. So don’t put too much thought into this. It’s natural, it’s us :) ',
+    isBlurred: false,
   },
   {
     date: '2025-10-11',

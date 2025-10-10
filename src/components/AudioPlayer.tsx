@@ -6,7 +6,7 @@ import { MUSIC_NOTES_BY_DAY, DEFAULT_MUSIC_NOTE } from '../data/notes';
 
 // TODO: drop your MP3 at /public/audio/bg-music.mp3
 // TODO: to use different tracks per day, add files under /public/audio and map by date here
-const AUDIO_SOURCE = '/audio/bg-music.mp3';
+const AUDIO_SOURCE = '/audio/music.mp3';
 
 interface AudioPlayerProps {
   shouldAutoPlay?: boolean;
