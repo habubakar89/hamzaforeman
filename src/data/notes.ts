@@ -103,10 +103,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-11',
-    title: 'title for oct 11',
+    title: 'Kaun hai vo?',
     emoji: '💓',
-    content: 'TODO: Add your message for day 11.',
-    isBlurred: true,
+    content: 'Hmm, what do we talk about today? Let’s talk about Eman. Eman Faiz, a girl who’s shy and innocent, and one who’s always the sweetest little human in the room. \n\nYes, the Eman who always puts others ahead of her own. The girl who lets things go, who gets hurt by the smallest things yet finds it in her heart to love like no one else. She is light, she is love, and she is life. \n\nAnd the little smile she gives when she’s happy. She doesn’t laugh like mad, she doesn’t cry loud when she’s sad. And maybe she doesn’t know this much, but she’s the perfect portrayal of a lady. What I absolutely love about her is how much she loves her family. In a world full of material, she’s one who believes in family. ',
+    isBlurred: false,
   },
   {
     date: '2025-10-12',
