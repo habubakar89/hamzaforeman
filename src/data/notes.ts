@@ -113,7 +113,7 @@ export const NOTES: DayNote[] = [
     title: 'What a cute little dream baby!!',
     emoji: '🌻',
     content: 'I honestly now love this ritual we have, and the fact that you open this everyday and are so invested in what I have so say about you, about us :)\n\n Okay so maybe you deserve to know what I dream of! I honestly felt so real, it all felt so magical baby!\n\nSothe most important thing I dreamt of was how close we were. In the life, in the lobby and all of it, I literally pulled you towards me every time I had a chance. I kissed you and you only had your eyes set on me. Just looking into my eyes, filled with passion and smiles. We got married even, and we got married in such a hurry that I even forgot to even invite so many friends. \n\n More than anything, the idea, the mood and the setting behind the dream was how it is all just about you and me, alone. Even with so many people around us, so much happening, it was just us. I absoltely love it how I am getting such strong feeling right when I am going to meet you for the first time! I will tell you more actually, gonna save some content for when we meet lol. Maybe I will get more content tonight :p.\n\n4 days for me to catch my flight, 96 more hours to see you, and 5760 minutes to hold you in my arms. I can not wait baby, I can not wait 💕!',
-    isBlurred: true,
+    isBlurred: false,
   },
   {
     date: '2025-10-13',
