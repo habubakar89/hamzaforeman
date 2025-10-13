@@ -117,10 +117,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-13',
-    title: 'title for oct 13',
+    title: 'Life without you? Not for long cutie, In Sha Allah',
     emoji: '💞',
-    content: 'TODO: Add your message for day 13.',
-    isBlurred: true,
+    content: 'Hi my love,\n\nThis is an amalgamation of all the days I have missed you. I probably do not share it much, but it breaks me seeing my right half all the way in the other part of the world. \n\nI miss you so so damn much, even when I might be the busiest. I wanna have you right next to me, so that I can share all the stories, and all about my entire days. Let it be me climbing the half dome, or my smallest tussles at work. I absolutely love it when you listen to me, every detail, every single thing. And I know Mei apple annoy karta hu kabhi kabhi asking you the same questions, but baby I love to know every detail of your day :) Aapko sach batau na, it makes me feel closer to you. And my love, itna lamba time distance hoagya, I just want to live my life not just share those deets with you. \n\nAnd pata hai, it is not just this: everything I do. Love, I am not the guy who stays out late, or is out with friends a lot or much, mujhe sab aapke saath karna hai. It hurts my so damn much, ki I go to the gym and you go there. I wish jaldi saath ho. Mujhe aapko sab pyaar se sikhana hai. I actually stare at the gym. Not girls but couples who look so cute together. It only reminds me of how cute and hot we would look! \n\nAnd every place I visit, ab pata hai I feel less excited. As I get closer to you every day, I feel the urge to see all these with you. I think I am coming to an end to these trips without you. My first trip will be to Riyadh with you baby Jaan, and that will be our beginning. Eman; Norway, Greece, Yellowstone, Italy, Paris, and so much more, this is just the beginning. And yeh sab to Mei definitely akele nahi kar rha. I dream of the days when you have no idea where we are going. Aap bas pyaari lag rhi ho, baaki trip and the planning is all on me. In Sha Allah I will soon be able to show this side of mine to you. \n\nYou make me happy, you make me more of myself. And with you and you alone, all these places, they will be a tad more special :)',
+    isBlurred: false,
   },
   {
     date: '2025-10-14',

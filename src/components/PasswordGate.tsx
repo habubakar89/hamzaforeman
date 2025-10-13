@@ -11,10 +11,10 @@ interface PasswordGateProps {
 }
 
 // TODO: update the plain-text correct answer here (used to compute slots)
-const CORRECT_ANSWER = 'northern lights';
-const CORRECT_HASH = 'c80b8f2288732af7dc9d6d7faceccdecfc04d1cf8bd630ff13837aefb97f7569';
+const CORRECT_ANSWER = 'Half dome';
+const CORRECT_HASH = 'ec692ed0329d362849b486d029eb7ea786a60c4bd694c95b4ca3df5b64dedf19';
 
-const RIDDLE = "My dream come true: the place which I want to first see with my love, meri jaan 💞";
+const RIDDLE = "What mountain did I climb last month? ";
 
 // TODO: tweak slot gap size and underline thickness if desired
 const SLOT_GAP_SIZE = 10; // px between words
