@@ -124,10 +124,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-14',
-    title: 'title for oct 14',
+    title: 'Making up for the lost time, In Sha Allah',
     emoji: '🌹',
-    content: 'TODO: Add your message for day 14.',
-    isBlurred: true,
+    content: 'Okay I am just a guy haa, I make mistakes baby...But yes I do have to do better. \n\n First reason, mujhe bahut dar lagta inn madam se. Second maybe because she is just the most wonderful girl ever! Anyway, Eman ofc I love to tell you about my day, always. From the moment I open my eyes in the morning to the one I sleep at night. I want to tell you everything, and I want to hear everything about you 💕. \n\n Even if it is me ranting about anyone at work, or my smallest wins to the biggest ones, you are the first and mostly the only one I wanna share it with. I have always felt like I was the best listener, but you always outdo me. Better than me, you listen to me with love, respect and admiration. And I love that about you. My baby, my honey bloom and my cutie, I love youuuuuu so much. And soon enough not only do I wanna share stories with you, but end up living them together!',
+    isBlurred: false,
   },
   {
     date: '2025-10-15',
