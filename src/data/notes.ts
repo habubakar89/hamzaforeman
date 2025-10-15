@@ -131,10 +131,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-15',
-    title: 'title for oct 15',
+    title: 'Less than 24 hours to go 🤩!!',
     emoji: '💝',
-    content: 'TODO: Add your message for day 15.',
-    isBlurred: true,
+    content: 'Two days before I meet my love…\nMy heart’s already packed and above.\nThe suitcase? Maybe half a mess—\nBut my feelings? Oh, no less!\n\nI\’ve triple-checked my flight, my shoes,\nStill can\’t believe it\’s finally you.\nEvery hour feels twice as long,\nEven coffee hums a waiting song.\n\nTomorrow I leave, all nerves and glee,\nButterflies booked the seat with me.\nWill I trip? Probably. Forget to breathe? For sure.\nBut your smile\’s the cure I\’m waiting for.\n\nFrom texts to calls to hearts that knew,\nIt\’s time the world sees me and you.\nSo here\’s to hugs, to sparks, to fate—\nJust one more sleep… I can\’t wait! 💕✈️',
+    isBlurred: false,
   },
   {
     date: '2025-10-16',
