@@ -138,10 +138,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-16',
-    title: 'title for oct 16',
+    title: 'Almost there, my love!',
     emoji: '🌸',
-    content: 'TODO: Add your message for day 16.',
-    isBlurred: true,
+    content: 'Less than two days before I see my baby, \nI know she’s gonna be the most beautiful lady \n\nSomeone whose presence I’ve wanted to feel for so long \nEven from a thousand miles away, every word of her feels like a song\n\nShe’s peace to my eyes, music to my ears, calm to my presence \nShe doesn’t realize how much everything she’s stands for is of essence \n\nThey say you’ve got to wait for something that truly deserves you \nHad I known it’ll be this girl, I’d know \n\nEman, my love. My baby and my life\nI’m coming for you. It’s now time, I’ve waited enough for all my life :) ',
+    isBlurred: false,
   },
   {
     date: '2025-10-17',
