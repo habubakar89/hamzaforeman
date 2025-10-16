@@ -12,7 +12,7 @@ interface PasswordGateProps {
 
 // TODO: update the plain-text correct answer here (used to compute slots)
 const CORRECT_ANSWER = 'Dubai';
-const CORRECT_HASH = '2ff277b10da3a6fbabf7b4a7385855f24fe3bb04a4688bbf35d092a0740344c';
+const CORRECT_HASH = '22ff277b10da3a6fbabf7b4a7385855f24fe3bb04a4688bbf35d092a0740344c';
 
 const RIDDLE = "The stop I am making, two hours before I am with you :)";
 
