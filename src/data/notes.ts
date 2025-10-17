@@ -145,10 +145,10 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-17',
-    title: 'title for oct 17',
+    title: 'After Six Moons Apart',
     emoji: '💕',
-    content: 'TODO: Add your message for day 17.',
-    isBlurred: true,
+    content: 'Six moons have passed, yet you stayed in my heart,\nMiles tried their best, but couldn’t keep us apart.\nFrom Turkey’s skies to Riyadh’s glow,\nIn hours, I’ll see the love I know.\n\nYour face — my calm, your voice — my peace,\nAll waiting moments now find release.\nThe wait is done, the distance ends,\nToday I meet my love, my heart, my friend. 🤍',
+    isBlurred: false,
   },
   {
     date: '2025-10-18',
