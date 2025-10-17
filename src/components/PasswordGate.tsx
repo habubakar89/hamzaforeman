@@ -12,7 +12,7 @@ interface PasswordGateProps {
 
 // TODO: update the plain-text correct answer here (used to compute slots)
 const CORRECT_ANSWER = 'Mariott';
-const CORRECT_HASH = '82eaf348d48ce5d4fb59f754e055aecb5a5a8694e8d73c2ba4486abf8bb5a7fd';
+const CORRECT_HASH = '455085a5a1589352a7136e3563f56c323440adfca2306cc67f7f5c2770a0a4c1';
 
 const RIDDLE = "Where are we meeting first? (The hotel)";
 
