@@ -152,7 +152,7 @@ export const NOTES: DayNote[] = [
   },
   {
     date: '2025-10-18',
-    title: 'title for oct 18',
+    title: 'We meet, fianlly ❤️',
     emoji: '🌺',
     content: `Seconds, minutes, hours, days and months. That’s the metric of how much we’ve waited and envisioned ourselves with each other. 
 
