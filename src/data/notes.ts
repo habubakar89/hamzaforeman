@@ -169,7 +169,7 @@ Baby, love had always been my downfall. I’m not talking about my relationships
 I’m 100x the man you still know. Eman, with you by my side I have no idea the man I can be, In Sha Allah. The job I’ve been talking about? The move? Now I’ll do it, dil se. Just delkhte jaao ab, In Sha Allah. I wanna give you a better life than I have lived, and what’s even written for me, In Sha Allah. I can honestly write a 1000 more words right now. But I’ll keep it short. More of these things; my eyes will speak to you, more than my words ever can. 
 
 I love you, H.`,
-    isBlurred: true,
+    isBlurred: false,
   },
   {
     date: '2025-10-19',
