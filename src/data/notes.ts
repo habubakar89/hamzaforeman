@@ -154,7 +154,21 @@ export const NOTES: DayNote[] = [
     date: '2025-10-18',
     title: 'title for oct 18',
     emoji: '🌺',
-    content: 'TODO: Add your message for day 18.',
+    content: `Seconds, minutes, hours, days and months. That’s the metric of how much we’ve waited and envisioned ourselves with each other. 
+
+Tears of joy, those of sorrow, the laughs and the anger, the frustration and everything that came along, we’ve endured it all. 
+
+Eman, you turned out to be 10x the lady I envisioned I would meet. You’re so soft baby, and I’m not talking just about the touch here. Your presence is healing. Concealing of the noise in the streets around us. Your voice is soothing to my ears, and to my heart. I’m so happy we waited. Waited so long for a moment that sure feels like one beautiful song ❤️. 
+
+I’ll be honest with you baby. I didn’t get you my 100% yet. I’ve made mistakes, I’ve hurt you, and I’ve been way off about the person you are. Baby, from today and especially now on, you’re gonna have more of me. And I’ll tell you, it will never be a 100%. Not through my efforts, but how much love I strive to give you, and how much more you deserve it 💕. 
+
+There’s this breeze moving around, one that reinstates everything I’ve asked for, everything I’ve believed in. My life, at this exact moment, has come to a freeze. Suddenly everything is so beautiful, I have a special smile that soothes my existence down. I’m at peace in a way I’ve never been. Maybe the way I slept on your arms already showed you how I now feel. 
+
+Baby, love had always been my downfall. I’m not talking about my relationships, but life in general. Trust me, I’ve been through so much hurt, and that’s why you didn’t see that side of me before. But look at you, how can I be around you and not be full of love, life and laughter? It’s realistically straight impossible. With you, my love is always going to be my biggest strength. 
+
+I’m 100x the man you still know. Eman, with you by my side I have no idea the man I can be, In Sha Allah. The job I’ve been talking about? The move? Now I’ll do it, dil se. Just delkhte jaao ab, In Sha Allah. I wanna give you a better life than I have lived, and what’s even written for me, In Sha Allah. I can honestly write a 1000 more words right now. But I’ll keep it short. More of these things; my eyes will speak to you, more than my words ever can. 
+
+I love you, H.`,
     isBlurred: true,
   },
   {
