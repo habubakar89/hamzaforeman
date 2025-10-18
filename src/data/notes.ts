@@ -171,12 +171,24 @@ I’m 100x the man you still know. Eman, with you by my side I have no idea the 
 I love you, H.`,
     isBlurred: false,
   },
-  {
+   {
     date: '2025-10-19',
-    title: 'title for oct 19',
+    title: 'I will be back ',
     emoji: '💖',
-    content: 'TODO: Add your message for day 19.',
-    isBlurred: true,
+    content: `Last evening, when I sat right next to you: That was the closest connection I have felt with the human being. There are now words that can remotely describe the weight, the importance, and purity of the talk we shared. 
+
+This is not me going away, baby this is me taking the next step in our relationship. And I have never been more proud, happier, luckier than I have been until today; to walk with you, to talk to you, and to call you my baby!
+
+I just want you to know, I have now seen your smile. One that beings calm to my heart in a way, nothing ever will, and I want you to know nothing in my life beats that feeling than when I see you smile! 
+
+I have fallen for you, in a way I didn't think was possible. I wish I could already live my life with you, but like all the best things, all in due time. In Sha Allah. You are mine and I am yours. You have my heart, my soul, and my eveything. Life seems so much easier honestly, I have found the right person. Again, I don't strive to be perfect for you, I only want to be the right one for the one I love.
+
+Your touch is calming, your aura is soothing, your voice is like a bird on song, and your existence is my honor. I really hope I made this trip as memorable for you as you did for me. 
+
+I pray to Almighty Allah, that He makes all this possible for us. A few hiccups on the road are no match for who we are. My words might be good, but my feelings are more than genuine. 
+
+My baby, I will be back sooner than you think. And this time, maybe with my folks, In Sha Allah.`,
+    isBlurred: false,
   },
   {
     date: '2025-10-20',

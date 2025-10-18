@@ -22,25 +22,21 @@ const HABITS: Habit[] = [
     // image: '/images/habit1.jpg'
   },
   {
-    text: 'When I send you my gym pics! No one sees any of those biceps hehe, all my gains are only for you to enjoy 😘',
+    text: 'Looking into your eyes, all I could see was peace and tranquility, and the shit ton of love you hold for me 😘',
     // image: '/images/habit2.jpg'
   },
   {
-    text: 'How during the middle of the day, you come up with \'Kese hain\' just to check up on me!',
+    text: 'I do not know how to live without all this anymore. This is something I dreamt of so bad. The little kid in me is going to the happiest now!',
     // image: '/images/habit3.jpg'
   },
   {
-    text: 'How I talk to you before you sleep. Even when you\'re super tired, you make sure you talk to me',
+    text: 'The touch of your hands. So much grace, so much love, and such goodness. You are the best human I know baby, just the absolute best',
     // image: '/images/habit3.jpg'
   },
   {
-    text: 'Now comes the bad part, when you\'re asleep. I love it you\'re sleeping, but I wish I could tell you about my day!',
+    text: 'I only wish I can give you a glimpse of what I see through my eyes. You will only see waterfalls, mountains, and flowers. All your life, baby it wil all come to a standdstill!',
     // image: '/images/habit3.jpg'
-  },
-  {
-    text: 'The best part of my day, when I wake you up! How do I not love hearing you that way??',
-    // image: '/images/habit3.jpg'
-  },
+  }
 ];
 
 export function EasterEgg({ isOpen: externalIsOpen, onToggle }: EasterEggProps = {}) {
@@ -99,7 +95,7 @@ export function EasterEgg({ isOpen: externalIsOpen, onToggle }: EasterEggProps =
             <div className="bg-midnight-800/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-12 border-2 border-gold/40 shadow-2xl">
               <div className="text-center mb-4 sm:mb-6">
                 <h3 className="text-2xl sm:text-3xl font-playfair text-gold mb-2">
-                  How my day starts and ends with you 💖
+                  To the first time we met 💖
                 </h3>
                 <p className="text-sm text-gray-400">
                   {currentIndex + 1} of {HABITS.length}
