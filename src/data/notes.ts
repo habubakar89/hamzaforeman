@@ -192,10 +192,20 @@ My baby, I will be back sooner than you think. And this time, maybe with my folk
   },
   {
     date: '2025-10-20',
-    title: 'title for oct 20',
+    title: 'I leave only to come back to hold you in my arms',
     emoji: '🌼',
-    content: 'TODO: Add your message for day 20.',
-    isBlurred: true,
+    content: `I have shared a lot of words with you, over text and in person. I will "try" keeping this consize, although I can not be sure of it. All because I love to talk to you. About the good and the bad, the past and the future, the sorrow and the happy. 
+
+Eman, I met you for a few hours this weekend. You have no idea who you are. Even I did not, not until the moment I first saw you. You are beautiful in ways, in ideas, at times one can not really understand. Trust me, I now see you. I see you for who you are. From losing it over the first sight of me hurting myself to talking to me about how we can save money, I learn from you. Yes, I might be more experienced, older a bit, and all. Yet, I learn from you. More so, every single day. Not about the big things that are evident, but the little ones that really do matter. 
+
+Happiest birthday muy love. I wish the best for you. I am so glad you look at a future with us hand in hand, together. I only wish I can make it better every passing year. I wish to lead my family such that you are always proud of me. Be the man the kid Hamza always envisioned to be. It has never been easy living like this, but meeting you now makes me realize all of it was worth it. More than I imagined even. 
+
+I want you to succeed, I want you to feel, I want you to be yourself more so than you have ever been. Baby, I know it is not easy, but remember, you being 'Eman' is the best thing you can do for yourself and for others around you. It is a gift, a blessing, something only I can see. And I pray I see it all my life.
+
+I love you. Not just because of us, I do love you just even. I can not really explain how or why, but suddenly the air turns sweeter, the music sounds melodious, everything seems better every time I even think of you. 
+
+Take care my love, as I fly away: I will only be back, soon. I love you, and only you. I will be back soon for all the kisses, all the love, and all the happiness I find in and with you.`,
+    isBlurred: false,
   },
   // TODO: insert final birthday letter and media on Oct 21
   {
