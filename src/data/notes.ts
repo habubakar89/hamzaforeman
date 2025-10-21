@@ -207,24 +207,26 @@ I love you. Not just because of us, I do love you just even. I can not really ex
 Take care my love, as I fly away: I will only be back, soon. I love you, and only you. I will be back soon for all the kisses, all the love, and all the happiness I find in and with you.`,
     isBlurred: false,
   },
-  // TODO: insert final birthday letter and media on Oct 21
   {
     date: '2025-10-21',
-    title: '🎂 The Special Day',
+    title: 'To a year and more of knowing you',
     emoji: '🎉',
-    isBlurred: true,
-    content: `TODO: This is your final birthday message. Make it extra special and heartfelt.
-    
-Write multiple paragraphs here expressing your deepest feelings.
-Tell her everything you want her to know on her birthday.
-    
-This card will display larger with special effects, so make it memorable!`,
-    // TODO: Add special birthday media (image/video)
-    // media: {
-    //   type: 'image',
-    //   src: '/images/birthday-special.jpg',
-    //   alt: 'Happy Birthday'
-    // }
+    isBlurred: false,
+    content: `Eman, I have known you as a friend. As a partner, at times even as my horny cupcake. I have seen so many sides of you. From the loveliest dove, to the cute little pocket of anger that you are. And must I say, I love all of you. It makes me so happy to have known you so close from yet so far. Don't you ever feel the need to change Eman. Yes, we will grow into different, better individuals, but I love you as you are. Pure of heart, strong willed, and loving. Your essence of who you are, I cherish it the most.
+
+To the times we fought
+
+We have had quite some fights over the past few months, haven't we? Baby, I am so sorry for every time I hurt you. It was all my desperate need to finally be with you. Feel you, understand you, and love you. I am also proud that we made it out of all those as well. It was not easy, but we chose each other over the things we do not even remember we fought on. Always remember and if needed, remind me: Nothing, nothing is as important as the bond we hold, the love we share, and the friendship we cherish. It should be something even the kids would be amazed by.
+
+I do not deserve you!
+
+Never say this. Ever. At this point my love, we know that we met, we are in love, and we chose each other because we DO deserve each other. I love you, and I do these things because you deserve them all. Same the other way baby. Let us get past this my love, we have grown so much, and it will only get better for each of us. You would do the same for me the moment you have the resources. Although, you being in my life is everything I ever need. I love you!
+
+To your year ahead
+
+We have done much this year my love. It is a foundation of love, respect and friendship that we've built over the past few months. One that will be strong to sustain our ups and downs, happiness and sorrows, and all of it mixed up together. For the coming year, let us not put too much thought into it. Only that every year, we put in the best of ourselves for each other. Let that be love, picking the other one up when they're down, hard work, family and much more.
+
+I strongly believe that if anyone can do it, it's us. Cheers to all that we hold together, and more of it to the future that awaits us. As we close the chapter to your amazing birthday this year, I am the luckiest to now be spending the rest of them coming up for us together. I pray to Allah He Gives us the best of both worlds, gives us strength, keep us on the right path, and have us both bring the best out of each other.`,
   },
 ];
 
@@ -244,13 +246,9 @@ export const DEFAULT_MUSIC_NOTE = 'Every day, a different song will play, depict
 export const BIRTHDAY_MESSAGE = {
   title: 'Happy Birthday, Eman! 🎂',
   content: `
-    TODO: Replace this with your personalized birthday message.
-    
-    This is the special message that will appear on her birthday (October 21, 2025).
-    Make it heartfelt, romantic, and memorable!
-    
-    You can write multiple paragraphs here.
-    Tell her how much she means to you.
+    My love, again the happiest birthday to you! I do love you, respect you, and more than that cherish your existence in my life. I hope, I really hope, I made this year a bit more special. And with the coming years, know that Hamza only learns to be better. This weekend, I enjoyed my birthday too. All those gifts love, all that time together, your smell, those kisses, all of them just made my birthday too. In a way, I finally got to celebrate my birthday, with you.
+
+You're my love, my comfort, and my peace. Love you lots my love, H.
   `,
   // TODO: Add images/videos for the birthday surprise
   media: [
