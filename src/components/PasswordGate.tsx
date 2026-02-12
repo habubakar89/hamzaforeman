@@ -11,10 +11,10 @@ interface PasswordGateProps {
 }
 
 // TODO: update the plain-text correct answer here (used to compute slots)
-const CORRECT_ANSWER = 'Eman Faiz';
-const CORRECT_HASH = 'e380e6cd9148afcea9170ce5c13e300fc3ac7492ba35422c8e86b4d7d8d707e4';
+const CORRECT_ANSWER = 'Rasmalai';
+const CORRECT_HASH = 'febccb0604b53853fcdd4a731c12132b87dde314afc876a50e92ffc62e8cd0e2';
 
-const RIDDLE = "Happiest Birthday ____ ____";
+const RIDDLE = "Happy Anniversary ________";
 
 // TODO: tweak slot gap size and underline thickness if desired
 const SLOT_GAP_SIZE = 10; // px between words
@@ -390,10 +390,10 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             />
           </div>
 
-          {/* TODO: replace this note-box text with your own description later */}
+          {/* Anniversary note */}
           <div className="bg-midnight-800/40 backdrop-blur-sm rounded-lg p-4 sm:p-5 border border-gold/10 shadow-md md:shadow-lg shadow-gold/5">
             <p className="font-body text-gray-300 text-[15px] sm:text-base leading-relaxed text-center">
-              Hi baby! This is something that took months in the making. For the most special one in my life; for now and forever, I want to forever document us. From the moment I first saw you, to where we are: This is the story of us. A very Happy Birthday to my cutie patootie pie! This is not simply a website, this is a window to what I have felt about us, at different times of our relationship. It includes notes from God Knows When, how I felt, and just the idea of how I will feel when I first see you. I can only try writing what and how I feel for you. I love you so much, and I hope you love this gift as much as I loved making it for you. <p>{"\u2665"}</p>
+              Hi baby! Happy Anniversary my love. I wrote you a constellation of letters — each one a piece of my heart. Open them slowly, read them gently, and know that every word comes from the deepest part of me. This is us, documented in stars. ♥
             </p>
           </div>
 
@@ -415,7 +415,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             animate={{ opacity: 1 }}
             className="text-center mt-4 text-rose text-sm"
           >
-            ✨ Welcome to your month, your world baby ✨
+            ✨ Welcome to our constellation, my love ✨
           </motion.p>
         )}
       </motion.div>
