@@ -1,12 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-midnight-900: #0b0f19;
-  --color-midnight-800: #111827;
-  --color-gold: #f5e6c4;
-  --color-rose: #ff8fa3;
+  /* Wedding palette */
+  --color-ivory:             #FAF3E8;
+  --color-cream:             #FFF9F0;
+  --color-emerald-deep:      #123D32;
+  --color-emerald-secondary: #2F5D50;
+  --color-sage:              #9AAE9A;
+  --color-gold:              #C7A45A;
+  --color-champagne:         #E8D7AA;
+  --color-blush:             #E7C7BD;
+  --color-sand:              #D8B98C;
+  --color-ocean:             #7EA8A9;
+  --color-peach:             #E8A77C;
 
-  --font-family-playfair: "Playfair Display", serif;
+  --font-family-playfair: "Playfair Display", Georgia, serif;
   --font-family-inter: Inter, sans-serif;
   --font-family-poppins: Poppins, sans-serif;
 }
@@ -14,11 +22,21 @@
 @layer base {
   * {
     @apply motion-reduce:transition-none motion-reduce:animate-none;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    min-height: 100%;
   }
 
   body {
-    @apply bg-gradient-to-br from-midnight-900 to-midnight-800 min-h-screen text-gray-100;
+    background: #FAF3E8;
+    color: #123D32;
     font-family: var(--font-family-poppins);
+    min-height: 100svh;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -98,6 +116,38 @@
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+}
+
+/* ── Wedding invite — mobile-first atmospheric overrides ─────────────────────── */
+
+/* Ceremony line — show horizontal on desktop, vertical on mobile */
+.ceremony-line-v,
+.ceremony-dot-v  { display: none; }
+
+@media (max-width: 767px) {
+  /* Ceremony line — swap to vertical on mobile */
+  .ceremony-line-h,
+  .ceremony-dot-h  { display: none !important; }
+  .ceremony-line-v { display: block !important; }
+  .ceremony-dot-v  { display: flex !important; align-items: center; justify-content: center; }
+
+  /* Sacred moments — single column with left-thread padding */
+  .sacred-moments-cards {
+    padding-left: 44px !important;
+  }
+
+  /* Nikaah section — reduce large desktop padding on mobile */
+  .nikaah-section { padding: 4rem 1.25rem !important; }
+
+  /* Jeddah section — reduce top gap */
+  .jeddah-inner  { padding-top: 1.5rem !important; }
+
+  /* Hearts cards — tighter mobile padding */
+  .hearts-card-inner { padding: 1.5rem 1.5rem 1.25rem !important; }
+
+  /* Nav pill — slimmer on mobile */
+  .nav-pill     { padding: 4px 8px !important; }
+  .nav-link-btn { padding: 2px 5px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -2,40 +2,28 @@
   "name": "hamza-for-eman",
   "version": "1.0.0",
   "type": "module",
-  "description": "A romantic daily surprise countdown website for Eman",
+  "description": "Wedding invite website for Hamza & Eman — Makkah to Jeddah, June 2026",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "check:overlay": "vitest run --reporter=verbose"
+    "preview": "vite preview"
   },
   "author": "Hamza",
   "license": "ISC",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
-    "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^15.0.0",
-    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
-    "@vitest/ui": "^1.0.4",
     "autoprefixer": "^10.4.21",
-    "jsdom": "^23.0.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.3",
-    "vite": "^7.1.7",
-    "vitest": "^1.0.4"
+    "vite": "^7.1.7"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
     "framer-motion": "^12.23.22",
-    "lucide-react": "^0.544.0",
     "react": "^19.1.1",
-    "react-confetti": "^6.4.0",
     "react-dom": "^19.1.1"
   }
 }
