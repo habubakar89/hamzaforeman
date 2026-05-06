@@ -9,6 +9,7 @@ import {
   useMotionValue,
   type MotionValue,
 } from 'framer-motion';
+import WeddingAudioExperience from './WeddingAudioExperience';
 
 // ─── Palette ──────────────────────────────────────────────────────────────────
 const C = {
@@ -1569,6 +1570,7 @@ function JeddahSection() {
 export default function WeddingInvitePage() {
   return (
     <div style={{ background: C.ivory, color: C.emerald, fontFamily: POPPINS }}>
+      <WeddingAudioExperience />
       <FloatingNav />
       <HeroSection />
       <HeartsSection />
