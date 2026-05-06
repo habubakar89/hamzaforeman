@@ -1049,25 +1049,6 @@ function HeartsSection() {
           </FadeFrom>
         </div>
 
-        {/* Together block */}
-        <FadeUp delay={0.12}>
-          <div style={{
-            textAlign: 'center', background: C.ivory, borderRadius: 28, padding: '2.25rem 2rem',
-            border: `1px solid ${C.champagne}`,
-            boxShadow: `0 4px 24px rgba(8,58,9,0.04)`,
-            maxWidth: 480, margin: '0 auto',
-          }}>
-            <p style={{ fontFamily: POPPINS, fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: C.forest, marginBottom: 12, opacity: 0.65 }}>
-              Together
-            </p>
-            <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem', marginBottom: 14 }}>
-              Two hearts, two homes, brought together through love, family, and duas.
-            </p>
-            <p style={{ fontFamily: PLAYFAIR, fontStyle: 'italic', color: C.gold, fontSize: '1rem' }}>
-              May Allah bless their beautiful beginning.
-            </p>
-          </div>
-        </FadeUp>
       </div>
     </section>
   );
@@ -1170,7 +1151,7 @@ function NikaahSection() {
             <div className="sacred-moments-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', position: 'relative', zIndex: 1 }}>
               <FadeUp delay={0.28}><MomentCard icon={<CameraIcon />}  title="After Nikaah"      desc="Family photography" /></FadeUp>
               <FadeUp delay={0.40}><MomentCard icon={<CrescentIcon />} title="Evening at Haram"  desc="Ibadah · Tawaf · Personal duas" iconColor={C.forest} /></FadeUp>
-              <FadeUp delay={0.52}><MomentCard icon={<CutleryIcon />} title="Dinner"             desc="Hosted by Eman's father and family" /></FadeUp>
+              <FadeUp delay={0.52}><MomentCard icon={<CutleryIcon />} title="Dinner"             desc="Hosted by Faiz and family" /></FadeUp>
             </div>
           </div>
         </div>
@@ -1431,7 +1412,7 @@ function JeddahSection() {
             By the Sea, With Love
           </h2>
           <p style={{ fontFamily: PLAYFAIR, fontStyle: 'italic', color: C.gold, fontSize: '1rem', marginBottom: 10 }}>
-            Ring Ceremony by the Shore
+            Golden Hour by the Sea
           </p>
           {/* Shore identity ornament — sun arc + wave line */}
           <div aria-hidden="true" style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
@@ -1498,7 +1479,7 @@ function JeddahSection() {
                 <CutleryIcon />
                 <span style={{ fontFamily: POPPINS, fontWeight: 600, fontSize: 13, color: C.emerald }}>Dinner</span>
               </div>
-              <p style={{ fontFamily: POPPINS, fontSize: 12, color: C.emerald2 }}>Hosted by Hamza's family</p>
+              <p style={{ fontFamily: POPPINS, fontSize: 12, color: C.emerald2 }}>Hosted by Abubakar and family</p>
             </div>
             <div style={{
               background: C.ivory, borderRadius: 18, padding: '1.25rem 1.5rem',
@@ -1517,7 +1498,7 @@ function JeddahSection() {
         {/* Schedule */}
         <FadeUp delay={0.08}>
           <h3 style={{ fontFamily: PLAYFAIR, fontWeight: 600, color: C.emerald, fontSize: '1.2rem', textAlign: 'center', marginBottom: '1.5rem' }}>
-            The Days Ahead
+            Celebration Schedule
           </h3>
           <div style={{ position: 'relative' }}>
             {/* Faint shoreline wave behind schedule */}
