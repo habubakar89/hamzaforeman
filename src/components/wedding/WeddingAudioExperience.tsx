@@ -109,54 +109,83 @@ export default function WeddingAudioExperience() {
       {/* Hidden audio element */}
       <audio ref={audioRef} src={WEDDING_AUDIO_SRC} preload="auto" />
 
-      {/* ── Floating caption overlay ── */}
+      {/* ── Caption ribbon overlay ── */}
+      {/*
+        Two-layer animation:
+          Outer  — fixed key "caption-ribbon", fades in/out when play state changes.
+          Inner  — keyed by captionText, slides each new line in from below and out upward.
+      */}
       <AnimatePresence>
-        {hasStarted && !audioError && (
+        {hasStarted && !audioError && isPlaying && (
           <motion.div
-            key="caption-layer"
+            key="caption-ribbon"
             initial={{ opacity: 0 }}
-            animate={{ opacity: isPlaying ? 1 : 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.45 }}
             style={{
               position:      'fixed',
-              bottom:        'calc(76px + env(safe-area-inset-bottom))',
+              bottom:        'calc(84px + env(safe-area-inset-bottom))',
               left:          '50%',
               transform:     'translateX(-50%)',
-              width:         'calc(100% - 56px)',
-              maxWidth:       360,
               zIndex:         188,
               pointerEvents: 'none',
               textAlign:     'center',
+              /* keeps it from bumping into the mini button on narrow screens */
+              maxWidth:      'calc(100vw - 96px)',
+              width:          'max-content',
             }}
           >
             <AnimatePresence mode="wait">
               {captionText && (
-                <motion.p
+                <motion.div
                   key={captionText}
-                  initial={reduced ? { opacity: 0 } : { opacity: 0, y: 10 }}
+                  initial={reduced ? { opacity: 0 }        : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={reduced   ? { opacity: 0 } : { opacity: 0, y: -7 }}
-                  transition={{ duration: reduced ? 0.15 : 0.32, ease: 'easeOut' }}
-                  style={{
-                    margin:       0,
-                    fontFamily:   POPPINS,
-                    fontSize:     14,
-                    fontStyle:    'italic',
-                    fontWeight:   400,
-                    lineHeight:   1.55,
-                    letterSpacing:'0.01em',
-                    color:        C.emerald,
-                    // Ivory halo makes text readable over any section background
-                    textShadow: [
-                      `0 0 18px rgba(250,243,232,1)`,
-                      `0 0 32px rgba(250,243,232,0.9)`,
-                      `0 1px 4px  rgba(250,243,232,0.8)`,
-                    ].join(', '),
+                  exit={reduced   ? { opacity: 0 }         : { opacity: 0, y: -6 }}
+                  transition={{
+                    duration: reduced ? 0.15 : 0.38,
+                    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
                   }}
                 >
-                  {captionText}
-                </motion.p>
+                  {/* ── Ribbon card ── */}
+                  <div style={{
+                    padding:             '7px 16px 10px',
+                    background:          'rgba(255,249,240,0.90)',
+                    border:              '1px solid rgba(199,164,90,0.42)',
+                    borderRadius:         12,
+                    boxShadow:           '0 4px 20px rgba(18,61,50,0.08), 0 1px 4px rgba(18,61,50,0.04)',
+                    backdropFilter:       'blur(14px)',
+                    WebkitBackdropFilter: 'blur(14px)',
+                    maxWidth:             320,
+                  }}>
+
+                    {/* Decorative gold rule + dot */}
+                    <div aria-hidden="true" style={{ textAlign: 'center', marginBottom: 5 }}>
+                      <svg width="80" height="8" viewBox="0 0 80 8" fill="none">
+                        <line x1="0"  y1="4" x2="34" y2="4" stroke={C.gold} strokeWidth="0.75" strokeLinecap="round" />
+                        <circle cx="40" cy="4" r="1.8" fill={C.gold} opacity="0.65" />
+                        <line x1="46" y1="4" x2="80" y2="4" stroke={C.gold} strokeWidth="0.75" strokeLinecap="round" />
+                      </svg>
+                    </div>
+
+                    {/* Caption text */}
+                    <p style={{
+                      margin:        0,
+                      fontFamily:    POPPINS,
+                      fontSize:      13,
+                      fontStyle:     'italic',
+                      fontWeight:    400,
+                      lineHeight:    1.55,
+                      letterSpacing: '0.01em',
+                      color:         C.emerald,
+                      whiteSpace:    'normal',
+                      wordBreak:     'break-word',
+                    }}>
+                      {captionText}
+                    </p>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
