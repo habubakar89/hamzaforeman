@@ -859,7 +859,7 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: [0.22,1,0.36,1], delay: 0.78 }}
               style={{ fontFamily: PLAYFAIR, fontWeight: 700, color: C.emerald, fontSize: 'clamp(2.4rem,9vw,4.8rem)', lineHeight: 1.1, marginBottom: '0.85rem', letterSpacing: '-0.01em' }}>
-              Hamza &amp; Eman
+              Eman &amp; Hamza
             </motion.h1>
 
             <motion.p
@@ -889,7 +889,7 @@ function HeroSection() {
               style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.9, fontSize: '0.88rem', maxWidth: 340, marginBottom: '1.75rem' }}>
               With love and duas,<br />
               we invite you to celebrate the Nikaah of<br />
-              <span style={{ color: C.emerald, fontWeight: 500 }}>Hamza &amp; Eman.</span>
+              <span style={{ color: C.emerald, fontWeight: 500 }}>Eman &amp; Hamza.</span>
               <br /><br />
               From Makkah to Jeddah,<br />
               a weekend of barakah, family, and joy.
@@ -992,6 +992,35 @@ function HeartsSection() {
           <FadeFrom direction="left" delay={0.1}>
             <div className="hearts-card-inner" style={{
               background: C.ivory, borderRadius: 24, padding: '2rem 2rem 1.75rem',
+              border: `1px solid rgba(231,199,189,0.55)`,
+              boxShadow: `0 4px 32px rgba(231,199,189,0.12)`,
+              height: '100%', position: 'relative', overflow: 'hidden',
+            }}>
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}>
+                <path d="M 1,14 L 1,4 Q 1,1 4,1 L 14,1" stroke={C.forest} strokeWidth="1" opacity="0.28" />
+              </svg>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 22, height: 1.5, borderRadius: 2, background: C.blush, opacity: 0.8 }} />
+                <h3 style={{ fontFamily: PLAYFAIR, fontWeight: 700, color: C.emerald, fontSize: '1.5rem' }}>Eman</h3>
+              </div>
+              <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem' }}>
+                Gentle, sweet-hearted, and graceful.
+              </p>
+              <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem', marginTop: 6 }}>
+                A presence full of warmth and light.
+              </p>
+              <svg width="68" height="18" viewBox="0 0 68 18" fill="none" style={{ marginTop: 20 }}>
+                <path d="M0,12 Q17,3 34,9 Q51,15 68,7" stroke={C.blush} strokeWidth="1.3" fill="none" opacity="0.45" />
+                <ellipse cx="17"  cy="6"  rx="6" ry="2.8" fill={C.blush}  opacity="0.32" transform="rotate(-12,17,6)" />
+                <ellipse cx="46"  cy="12" rx="6" ry="2.8" fill={C.forest} opacity="0.16" transform="rotate(14,46,12)" />
+              </svg>
+            </div>
+          </FadeFrom>
+
+          <FadeFrom direction="right" delay={0.2}>
+            <div className="hearts-card-inner" style={{
+              background: C.ivory, borderRadius: 24, padding: '2rem 2rem 1.75rem',
               border: `1px solid rgba(232,215,170,0.55)`,
               boxShadow: `0 4px 32px rgba(199,164,90,0.08)`,
               height: '100%', position: 'relative', overflow: 'hidden',
@@ -1015,35 +1044,6 @@ function HeartsSection() {
                 <path d="M0,14 Q17,4 34,10 Q51,16 68,8" stroke={C.sage} strokeWidth="1.3" fill="none" opacity="0.45" />
                 <ellipse cx="17"  cy="7"  rx="6" ry="2.8" fill={C.sage}   opacity="0.28" transform="rotate(-18,17,7)" />
                 <ellipse cx="46"  cy="13" rx="6" ry="2.8" fill={C.forest} opacity="0.16" transform="rotate(12,46,13)" />
-              </svg>
-            </div>
-          </FadeFrom>
-
-          <FadeFrom direction="right" delay={0.1}>
-            <div className="hearts-card-inner" style={{
-              background: C.ivory, borderRadius: 24, padding: '2rem 2rem 1.75rem',
-              border: `1px solid rgba(231,199,189,0.55)`,
-              boxShadow: `0 4px 32px rgba(231,199,189,0.12)`,
-              height: '100%', position: 'relative', overflow: 'hidden',
-            }}>
-              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none"
-                style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}>
-                <path d="M 1,14 L 1,4 Q 1,1 4,1 L 14,1" stroke={C.forest} strokeWidth="1" opacity="0.28" />
-              </svg>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                <div style={{ width: 22, height: 1.5, borderRadius: 2, background: C.blush, opacity: 0.8 }} />
-                <h3 style={{ fontFamily: PLAYFAIR, fontWeight: 700, color: C.emerald, fontSize: '1.5rem' }}>Eman</h3>
-              </div>
-              <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem' }}>
-                Gentle, sweet-hearted, and graceful.
-              </p>
-              <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem', marginTop: 6 }}>
-                A presence full of warmth and light.
-              </p>
-              <svg width="68" height="18" viewBox="0 0 68 18" fill="none" style={{ marginTop: 20 }}>
-                <path d="M0,12 Q17,3 34,9 Q51,15 68,7" stroke={C.blush} strokeWidth="1.3" fill="none" opacity="0.45" />
-                <ellipse cx="17"  cy="6"  rx="6" ry="2.8" fill={C.blush}  opacity="0.32" transform="rotate(-12,17,6)" />
-                <ellipse cx="46"  cy="12" rx="6" ry="2.8" fill={C.forest} opacity="0.16" transform="rotate(14,46,12)" />
               </svg>
             </div>
           </FadeFrom>
@@ -1124,7 +1124,7 @@ function NikaahSection() {
             Under the Mercy of Makkah
           </h2>
           <p style={{ fontFamily: PLAYFAIR, fontStyle: 'italic', color: C.gold, fontSize: '1rem', marginBottom: 16 }}>
-            The Nikaah of Hamza &amp; Eman
+            The Nikaah of Eman &amp; Hamza
           </p>
           <OrnDivider forest />
         </FadeUp>
@@ -1562,7 +1562,7 @@ function JeddahSection() {
         <FadeUp delay={0.1} style={{ textAlign: 'center', marginTop: '4rem' }}>
           <OrnDivider forest style={{ marginBottom: '1.5rem' }} />
           <p style={{ fontFamily: POPPINS, color: C.emerald2, lineHeight: 1.8, fontSize: '0.925rem', maxWidth: 400, margin: '0 auto 1rem' }}>
-            May Allah bless Hamza and Eman with barakah, mercy, and lifelong happiness.
+            May Allah bless Eman and Hamza with barakah, mercy, and lifelong happiness.
           </p>
           <p style={{ fontFamily: PLAYFAIR, fontStyle: 'italic', color: C.gold, fontSize: '1rem' }}>
             With love, honor, and duas.

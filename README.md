@@ -1,6 +1,6 @@
-# Hamza & Eman — Wedding Invite
+# Eman & Hamza — Wedding Invite
 
-Digital wedding invite website for Hamza & Eman.
+Digital wedding invite website for Eman & Hamza.
 Nikaah in Makkah · Ring Ceremony in Jeddah · June 18–20, 2026.
 
 ## Local development
