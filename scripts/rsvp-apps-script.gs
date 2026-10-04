@@ -14,6 +14,12 @@
  * EVERY LATER CODE CHANGE needs Deploy -> Manage deployments -> pencil ->
  * Version: New version -> Deploy, or the URL keeps running the old code.
  *
+ * EDITS: a guest who sends again is matched by email or WhatsApp number.
+ * In the sheet the earlier row is marked "superseded" and the new one
+ * "current" (filter the status column to see only current replies). In
+ * Notion the guest's existing card is updated in place, so there is always
+ * one card per guest. The email says "RSVP update" when that happened.
+ *
  * NOTION (optional, works on the free plan):
  *   1. notion.so/my-integrations -> New integration (internal) -> copy the
  *      secret.
@@ -40,10 +46,20 @@ var MAX_FIELD = 600;        // characters per field; longer is not a human reply
 var MAX_PER_MINUTE = 20;    // across all guests; a burst beyond this is a script
 
 var COLUMNS = [
-  'received', 'attending', 'name', 'headcount', 'party', 'days',
+  'received', 'status', 'attending', 'name', 'headcount', 'party', 'days',
   'email', 'whatsapp', 'arrive', 'depart', 'from_city',
   'diet', 'diet_note', 'note', 'know_by', 'page', 'ua'
 ];
+
+// how two replies are recognised as the same guest
+function contactKeys(p) {
+  var keys = [];
+  var e = String(p.email || '').trim().toLowerCase();
+  var w = String(p.whatsapp || '').replace(/[^\d]/g, '');
+  if (e) keys.push('e:' + e);
+  if (w.length >= 7) keys.push('w:' + w);
+  return keys;
+}
 
 var ANSWER = { yes: 'Coming', maybe: 'Not sure yet', no: 'Not coming' };
 
@@ -62,19 +78,59 @@ function doPost(e) {
 
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET);
-  if (sh.getLastRow() === 0) {
-    sh.appendRow(COLUMNS);
-    sh.setFrozenRows(1);
-  }
   var now = new Date();
-  sh.appendRow(COLUMNS.map(function (c) { return c === 'received' ? now : (p[c] || ''); }));
+  var previous = writeRow(sh, p, now);      // the reply this one replaces, if any
 
-  try { notify(p, ss.getUrl(), now); } catch (err) { console.error('email failed: ' + err); }
+  try { notify(p, ss.getUrl(), now, previous); } catch (err) { console.error('email failed: ' + err); }
   try { notion(p, now); } catch (err) { console.error('notion failed: ' + err); }
 
   return ContentService
     .createTextOutput(JSON.stringify({ ok: true }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ---------------------------------------------------------------------------
+// The sheet. Columns are found by header name, so the sheet can grow a column
+// without breaking older rows; a header that is missing gets added on the end.
+// ---------------------------------------------------------------------------
+function writeRow(sh, p, now) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    if (sh.getLastRow() === 0) { sh.appendRow(COLUMNS); sh.setFrozenRows(1); }
+    var header = sh.getRange(1, 1, 1, Math.max(sh.getLastColumn(), 1)).getValues()[0].map(String);
+    COLUMNS.forEach(function (c) {
+      if (header.indexOf(c) < 0) { header.push(c); sh.getRange(1, header.length).setValue(c); }
+    });
+    var col = {}; header.forEach(function (h, i) { col[h] = i; });
+
+    // find earlier current rows from the same guest and mark them superseded
+    var keys = contactKeys(p), previous = null;
+    var last = sh.getLastRow();
+    if (keys.length && last > 1) {
+      var rows = sh.getRange(2, 1, last - 1, header.length).getValues();
+      for (var r = rows.length - 1; r >= 0; r--) {
+        var row = rows[r];
+        var status = String(row[col.status] || '');
+        if (status === 'superseded') continue;
+        var rk = contactKeys({ email: row[col.email], whatsapp: row[col.whatsapp] });
+        var same = rk.some(function (k) { return keys.indexOf(k) >= 0; });
+        if (!same) continue;
+        if (!previous) previous = { name: row[col.name], attending: row[col.attending], headcount: row[col.headcount], days: row[col.days] };
+        sh.getRange(r + 2, col.status + 1).setValue('superseded');
+      }
+    }
+
+    var out = header.map(function (h) {
+      if (h === 'received') return now;
+      if (h === 'status') return 'current';
+      return p[h] || '';
+    });
+    sh.appendRow(out);
+    return previous;
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 // The page posts as text/plain (a URL-encoded string) so the browser can
@@ -107,14 +163,19 @@ function doGet() {
 // ---------------------------------------------------------------------------
 // The email: one glance tells you who, what, how many, and how to reach them.
 // ---------------------------------------------------------------------------
-function notify(p, sheetUrl, when) {
+function notify(p, sheetUrl, when, previous) {
   if (!NOTIFY) return;
   var answer = ANSWER[p.attending] || p.attending;
   var count = p.attending === 'yes' ? ' (' + (p.headcount || '1') + ')' : '';
-  var subject = 'RSVP · ' + p.name + ' · ' + answer + count;
+  var subject = (previous ? 'RSVP update · ' : 'RSVP · ') + p.name + ' · ' + answer + count;
+  var was = previous
+    ? (ANSWER[previous.attending] || previous.attending) + (previous.attending === 'yes' ? ' (' + (previous.headcount || '1') + ')' : '')
+      + (previous.days ? ', days ' + previous.days : '')
+    : '';
 
   var rows = [
     ['Answer', answer + count],
+    ['Replaces', was],
     ['With', p.party],
     ['Days', p.days],
     ['Arriving', p.arrive],
@@ -136,7 +197,7 @@ function notify(p, sheetUrl, when) {
     '<div style="padding:26px 30px 18px;border-bottom:1px solid #E0BA79;">' +
     '<div style="font:11px/1 Helvetica,Arial,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#B08442;">RSVP</div>' +
     '<div style="margin-top:10px;font-size:28px;line-height:1.15;color:#123D32;">' + esc(p.name) + '</div>' +
-    '<div style="margin-top:6px;font-style:italic;font-size:17px;color:#4A3A28;">' + esc(answer + count) + '</div>' +
+    '<div style="margin-top:6px;font-style:italic;font-size:17px;color:#4A3A28;">' + esc(answer + count) + (previous ? ' <span style="font-style:normal;font-size:12px;color:#B08442;">updated</span>' : '') + '</div>' +
     '</div>' +
     '<table cellpadding="0" cellspacing="0" style="width:100%;padding:14px 30px 6px;border-collapse:collapse;">' +
     rows.map(function (r) {
@@ -185,11 +246,16 @@ function notion(p, when) {
   var token = (props.getProperty('NOTION_TOKEN') || '').trim();
   var db = (props.getProperty('NOTION_DB') || '').trim();
   if (!token || !db) return;
+  ensureNotionKey(token, db, props);
+
+  var keys = contactKeys(p);
+  var existing = keys.length ? findNotionPage(token, db, keys) : null;
 
   var rt = function (s) { return { rich_text: s ? [{ text: { content: String(s).slice(0, 2000) } }] : [] }; };
   var body = {
     parent: { database_id: db },
     properties: {
+      'Contact key':   rt(keys.join(' ')),
       'Name':          { title: [{ text: { content: p.name } }] },
       'Answer':        { select: { name: ANSWER[p.attending] || p.attending } },
       'Headcount':     { number: Number(p.headcount || 0) },
@@ -206,11 +272,45 @@ function notion(p, when) {
       'Received':      { date: { start: when.toISOString() } }
     }
   };
-  var res = UrlFetchApp.fetch('https://api.notion.com/v1/pages', {
-    method: 'post', contentType: 'application/json', headers: notionHeaders(token),
-    payload: JSON.stringify(body), muteHttpExceptions: true
-  });
+  var res;
+  if (existing) {
+    delete body.parent;
+    res = UrlFetchApp.fetch('https://api.notion.com/v1/pages/' + existing, {
+      method: 'patch', contentType: 'application/json', headers: notionHeaders(token),
+      payload: JSON.stringify(body), muteHttpExceptions: true
+    });
+  } else {
+    res = UrlFetchApp.fetch('https://api.notion.com/v1/pages', {
+      method: 'post', contentType: 'application/json', headers: notionHeaders(token),
+      payload: JSON.stringify(body), muteHttpExceptions: true
+    });
+  }
   if (res.getResponseCode() >= 300) throw new Error('Notion ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 300));
+}
+
+/** The guest's existing card, by email or WhatsApp, or null. */
+function findNotionPage(token, db, keys) {
+  var filter = keys.length === 1
+    ? { property: 'Contact key', rich_text: { contains: keys[0] } }
+    : { or: keys.map(function (k) { return { property: 'Contact key', rich_text: { contains: k } }; }) };
+  var res = UrlFetchApp.fetch('https://api.notion.com/v1/databases/' + db + '/query', {
+    method: 'post', contentType: 'application/json', headers: notionHeaders(token),
+    payload: JSON.stringify({ filter: filter, page_size: 1 }), muteHttpExceptions: true
+  });
+  if (res.getResponseCode() >= 300) throw new Error('Notion query ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 300));
+  var results = JSON.parse(res.getContentText()).results || [];
+  return results.length ? results[0].id : null;
+}
+
+/** Adds the "Contact key" column to a database created before it existed. Runs once. */
+function ensureNotionKey(token, db, props) {
+  if (props.getProperty('NOTION_KEYED') === db) return;
+  var res = UrlFetchApp.fetch('https://api.notion.com/v1/databases/' + db, {
+    method: 'patch', contentType: 'application/json', headers: notionHeaders(token),
+    payload: JSON.stringify({ properties: { 'Contact key': { rich_text: {} } } }), muteHttpExceptions: true
+  });
+  if (res.getResponseCode() >= 300) throw new Error('Notion schema ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 300));
+  props.setProperty('NOTION_KEYED', db);
 }
 
 /** Run once from the editor after setting NOTION_TOKEN and NOTION_PARENT_PAGE. */
@@ -243,6 +343,7 @@ function setupNotion() {
       'Food':          { rich_text: {} },
       'Note':          { rich_text: {} },
       'Might know by': { rich_text: {} },
+      'Contact key':   { rich_text: {} },
       'Received':      { date: {} }
     }
   };
