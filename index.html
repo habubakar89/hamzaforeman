@@ -444,6 +444,7 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
 /* ---- Panel 6: the reply --------------------------------------------------- */
 .rsvp-form{display:flex;flex-direction:column;gap:2rem;text-align:left;}
 .rsvp-form[hidden]{display:none;}
+#r-arrive-other,#r-depart-other{margin-top:.5rem;}
 .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
 .rsvp-form fieldset{border:0;padding:0;margin:0;min-width:0;display:flex;flex-direction:column;gap:1rem;}
 .rsvp-form legend{padding:0;margin-bottom:1rem;}
@@ -855,15 +856,27 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
 
         <fieldset data-yes-only>
           <legend class="eyebrow">Getting here</legend>
-          <div class="row">
-            <label class="field">
-              <span class="eyebrow">Arriving</span>
-              <input class="inp" type="date" name="arrive" id="r-arrive" min="2026-12-01" max="2026-12-31" value="2026-12-11">
-            </label>
-            <label class="field">
-              <span class="eyebrow">Leaving</span>
-              <input class="inp" type="date" name="depart" id="r-depart" min="2026-12-01" max="2026-12-31" value="2026-12-13">
-            </label>
+          <div class="field">
+            <span class="eyebrow">Arriving</span>
+            <div class="choices" role="radiogroup" aria-label="Arriving">
+              <button type="button" class="choice" role="radio" aria-checked="false" data-arrive="Wed 9 Dec">Wed 9</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-arrive="Thu 10 Dec">Thu 10</button>
+              <button type="button" class="choice" role="radio" aria-checked="true" data-arrive="Fri 11 Dec">Fri 11</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-arrive="Sat 12 Dec">Sat 12</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-arrive="other">Another day</button>
+            </div>
+            <input class="inp" type="text" id="r-arrive-other" placeholder="Which day?" aria-label="Arriving, another day" hidden>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Leaving</span>
+            <div class="choices" role="radiogroup" aria-label="Leaving">
+              <button type="button" class="choice" role="radio" aria-checked="false" data-depart="Sat 12 Dec">Sat 12</button>
+              <button type="button" class="choice" role="radio" aria-checked="true" data-depart="Sun 13 Dec">Sun 13</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-depart="Mon 14 Dec">Mon 14</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-depart="Tue 15 Dec">Tue 15</button>
+              <button type="button" class="choice" role="radio" aria-checked="false" data-depart="other">Another day</button>
+            </div>
+            <input class="inp" type="text" id="r-depart-other" placeholder="Which day?" aria-label="Leaving, another day" hidden>
           </div>
           <label class="field">
             <span class="eyebrow">Flying from</span>
@@ -1271,7 +1284,7 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
     var yesOnly = form.querySelectorAll("[data-yes-only]");
     var maybeOnly = form.querySelectorAll("[data-maybe-only]");
     var nudge = document.getElementById("nudge");
-    var state = { attending: "" };
+    var state = { attending: "", arrive: "Fri 11 Dec", depart: "Sun 13 Dec" };
     var noConfirmed = false;
 
     function radio(selector, attr, onPick){
@@ -1307,6 +1320,16 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
       yesOnly.forEach(function(el){ el.hidden = (v !== "yes"); });
       maybeOnly.forEach(function(el){ el.hidden = (v !== "maybe"); });
       send.textContent = "Send RSVP";
+    });
+    var otherArrive = document.getElementById("r-arrive-other");
+    var otherDepart = document.getElementById("r-depart-other");
+    var setArrive = radio("[data-arrive]", "data-arrive", function(v){
+      state.arrive = v; otherArrive.hidden = (v !== "other");
+      if(v === "other" && document.activeElement && document.activeElement.getAttribute("data-arrive")) otherArrive.focus();
+    });
+    var setDepart = radio("[data-depart]", "data-depart", function(v){
+      state.depart = v; otherDepart.hidden = (v !== "other");
+      if(v === "other" && document.activeElement && document.activeElement.getAttribute("data-depart")) otherDepart.focus();
     });
     nudge.querySelectorAll("[data-nudge]").forEach(function(b){
       b.addEventListener("click", function(){
@@ -1394,8 +1417,8 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
         days: yes ? days.join(", ") : "",
         email: email,
         whatsapp: wa,
-        arrive: yes ? val("r-arrive") : "",
-        depart: yes ? val("r-depart") : "",
+        arrive: yes ? (state.arrive === "other" ? val("r-arrive-other") : state.arrive) : "",
+        depart: yes ? (state.depart === "other" ? val("r-depart-other") : state.depart) : "",
         from_city: yes ? val("r-from") : "",
         diet: yes ? pressed("data-diet").join(", ") : "",
         diet_note: yes ? val("r-dietnote") : "",
@@ -1461,8 +1484,14 @@ textarea.inp{resize:vertical;min-height:4rem;line-height:1.6;}
         document.getElementById("r-whatsapp").value = prev.whatsapp || "";
         document.getElementById("r-note").value = prev.note || "";
         if(prev.from_city) document.getElementById("r-from").value = prev.from_city;
-        if(prev.arrive) document.getElementById("r-arrive").value = prev.arrive;
-        if(prev.depart) document.getElementById("r-depart").value = prev.depart;
+        if(prev.arrive){
+          if(form.querySelector("[data-arrive=\"" + prev.arrive + "\"]")) setArrive(prev.arrive);
+          else { setArrive("other"); otherArrive.value = prev.arrive; }
+        }
+        if(prev.depart){
+          if(form.querySelector("[data-depart=\"" + prev.depart + "\"]")) setDepart(prev.depart);
+          else { setDepart("other"); otherDepart.value = prev.depart; }
+        }
         if(prev.party) prev.party.split(" | ").forEach(function(n){ addRow(n); });
         if(prev.know_by) document.getElementById("r-knowby").value = prev.know_by;
         if(prev.attending){ if(prev.attending === "no") noConfirmed = true; setAtt(prev.attending); }
