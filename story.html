@@ -1,0 +1,1910 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="Eman and Hamza are getting married - three days in Jeddah, 11-13 December 2026." />
+    <meta name="theme-color" content="#120C07" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eman &amp; Hamza" />
+    <meta property="og:description" content="Eman and Hamza are getting married - three days in Jeddah, 11-13 December 2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hamzaforeman.com/" />
+    <meta property="og:site_name" content="Eman &amp; Hamza" />
+    <meta property="og:image" content="https://hamzaforeman.com/og.jpg" />
+    <meta property="og:image:secure_url" content="https://hamzaforeman.com/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eman and Hamza - Jeddah, 11-13 December 2026" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hamzaforeman.com/og.jpg" />
+
+    <title>Eman &amp; Hamza &mdash; the beginning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap">
+
+<style>
+/* ---------------------------------------------------------------------------
+   Source is deliberately pure ASCII. Every typographic mark is an HTML entity
+   or a \u escape, so the page cannot mojibake on any server.
+
+   Palette: the deployed Nikaah invite (emerald / gold / champagne / ivory)
+   with the lacquered-room reference (gloss green, brass, marble). The
+   invite's gold IS the reference's brass, so the two meet there.
+   Single-theme on purpose: a lacquered room at night.
+
+   Everything below is scroll-driven. Nothing on this page has to be
+   discovered, dragged, or hovered to be read.
+   --------------------------------------------------------------------------- */
+:root{
+  --lacq-deep:  #120C07;
+  --lacq:       #2A1E12;
+  --lacq-lit:   #3E2C1A;
+  --emerald:    #241708;
+  --sage:       #A2907A;
+
+  --brass:      #B08442;
+  --brass-lit:  #E0BA79;
+  --brass-dim:  #6E5730;
+
+  --marble:     #E4D9C4;
+  --marble-sh:  #CBBB9C;
+  --vein:       #ADA085;
+
+  --ocean:      #7C9E99;
+  --glint:      #123D32;   /* the one thread kept from the Nikaah invite */
+  --champagne:  #E8D7AA;
+  --ivory:      #FAF3E8;
+
+  --display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --mid:     "Playfair Display", Georgia, serif;
+  --ui:      "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--lacq-deep);
+  color:var(--ivory);
+  font-family:var(--ui);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+.atmos{position:fixed;inset:0;pointer-events:none;z-index:1;}
+.atmos::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(100deg,
+      transparent 30%, rgba(120,88,48,.16) 43%,
+      rgba(224,186,121,.10) 47%, rgba(120,88,48,.12) 51%, transparent 62%),
+    radial-gradient(58% 44% at 50% 22%, rgba(78,56,32,.42), transparent 68%),
+    radial-gradient(112% 100% at 50% 50%, transparent 36%, rgba(11,7,4,.72) 100%);
+}
+.atmos::after{
+  /* The grain used to be a 160px turbulence tile REPEATED, and fractal noise
+     does not tile: every seam showed as a faint rectangle, which is the grid
+     of blocks visible on a phone. One large tile, stitched, scaled to cover,
+     never repeated -- so there are no seams to see. */
+  content:"";position:absolute;inset:0;opacity:.05;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='600' height='600' filter='url(%23n)'/></svg>");
+}
+
+/* ---- Shared type -------------------------------------------------------- */
+.eyebrow{
+  font-family:var(--ui);font-size:10px;font-weight:400;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--brass);margin:0;
+}
+.script{font-family:var(--mid);font-style:italic;color:var(--champagne);}
+.body-copy{
+  font-family:var(--ui);font-weight:300;font-size:.92rem;line-height:2;
+  color:var(--sage);max-width:34rem;margin:0;
+}
+.rule{
+  height:1px;border:0;
+  background:linear-gradient(90deg,transparent,var(--brass),transparent);
+}
+.brass-type{
+  background:linear-gradient(175deg,var(--brass-lit) 0%,var(--brass) 42%,var(--brass-dim) 78%,var(--brass-lit) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:var(--brass);
+}
+
+
+/* ===== HERO: the mehrab and the brass, together =========================
+   One scroll, three staged beats:
+     0.00 - 0.45  the dome draws, symmetrically, from the apex outward
+     0.30 - 0.70  the legs grow down to the floor
+     0.35 - 0.85  brass rises through the names from the floor up
+     0.82 - 1.00  the finial lights and the line beneath settles
+   ======================================================================= */
+.hero-wrap{position:relative;height:280vh;z-index:2;}
+.hero-pin{
+  position:sticky;top:0;height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem 1.5rem;overflow:hidden;text-align:center;
+  background:radial-gradient(closest-side at 50% 46%,
+    rgba(78,56,32,calc(.4 - var(--p,0) * .32)), transparent 72%);
+}
+/* The arch is a dome plus four straight legs, NOT one stretched SVG.
+   A single SVG scaled non-uniformly breaks stroke-dasharray (the dash is
+   measured in user units but drawn in screen units, so the line stops
+   short and leaves a gap). The dome keeps a uniform 2:1 box so its dash
+   is exact; the legs are plain elements that scale on the Y axis. */
+.archstack{
+  position:relative;width:min(88vw,470px);
+  display:flex;flex-direction:column;align-items:center;
+  opacity:calc(.32 + var(--p,0) * .68);
+}
+.dome{
+  /* IN FLOW, so it contributes its own height and nothing has to know what
+     that height is. viewBox 0 -20 200 120 makes the box 0.6x its width and
+     puts the dome's base (user y=100) exactly on the bottom edge, which is
+     where .archbody -- and therefore the legs -- begin. */
+  display:block;width:100%;aspect-ratio:5/3;
+  filter:drop-shadow(0 0 10px rgba(176,132,66,.22));
+}
+/* the shaft of the arch: starts where the dome lands, ends at the floor */
+.archbody{
+  position:relative;width:100%;
+  padding:1.5rem 11% 3.2rem;
+  display:flex;flex-direction:column;align-items:center;
+}
+.dome path{
+  fill:none;stroke:var(--brass);stroke-width:1.2;
+  vector-effect:non-scaling-stroke;stroke-linecap:round;
+}
+.dome .inner{stroke-width:.7;opacity:.55;}
+.dome .bud{
+  fill:rgba(18,61,50,.34);stroke:var(--brass);stroke-width:.8;
+  opacity:calc(max(0, var(--p,0) - .82) / .18);
+}
+/* legs span .archbody exactly, so they meet the dome's ends with no maths */
+.leg{
+  position:absolute;top:0;bottom:0;width:1px;
+  background:var(--brass);
+  transform-origin:top center;
+  transform:scaleY(clamp(0, (var(--p,0) - .3) / .4, 1));
+}
+.leg.l{left:0;}
+.leg.r{right:0;}
+.leg.inner{width:1px;opacity:.55;transform:scaleY(clamp(0, (var(--p,0) - .36) / .4, 1));}
+.leg.inner.l{left:7%;}
+.leg.inner.r{right:7%;}
+
+.hero-eyebrow{
+  margin:0 0 1.4rem;
+  opacity:calc(.45 + var(--p,0) * .55);
+}
+.namewrap{position:relative;display:inline-block;}
+.names{
+  font-family:var(--display);font-weight:300;
+  /* sized to sit inside the arch on one line at every width */
+  font-size:clamp(1.5rem,4.4vw,3.3rem);
+  line-height:1.08;margin:0;white-space:nowrap;
+  letter-spacing:calc(.09em - var(--p,0) * .07em);
+}
+/* the hairline the brass fills into */
+.names.outline{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(176,132,66,.5);
+}
+/* brass rising: clipped from the floor up, staged after the arch */
+.names.fill{
+  position:absolute;inset:0;-webkit-text-stroke:0;
+  background:linear-gradient(178deg,var(--brass-lit) 0%,var(--brass) 52%,var(--brass-dim) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  clip-path:inset(calc((1 - clamp(0, (var(--p,0) - .35) / .5, 1)) * 100%) 0 0 0);
+}
+.names .amp{font-style:italic;font-weight:400;}
+
+/* sits below the arch, at full width, so it never wraps to three lines */
+.after{
+  margin-top:1.8rem;display:flex;flex-direction:column;
+  align-items:center;gap:.85rem;width:min(92vw,560px);
+  opacity:calc(max(0, var(--p,0) - .78) / .22);
+}
+.scrollcue{
+  position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);
+  font-size:9px;letter-spacing:.34em;text-transform:uppercase;
+  color:rgba(162,144,122,.5);margin:0;white-space:nowrap;
+  opacity:calc(1 - var(--p,0) * 4);
+}
+
+/* ===== DATES: water runs down the mehrab and the dates come clear =======
+   The fall washes the lacquer screen away from the crown down. What is
+   left at the foot is a shallow pool that never drains -- it stays for
+   the rest of the page, and answers the fountain at the bottom.      */
+.dates-wrap{position:relative;height:170vh;z-index:2;}
+.dates-pin{
+  position:sticky;top:0;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.8rem;padding:4rem 1.5rem;
+}
+.panel{
+  position:relative;
+  width:min(80vw,400px);aspect-ratio:3/4;
+  border:1px solid var(--brass-dim);
+  border-radius:50% 50% 5px 5px / 33% 33% 5px 5px;
+  overflow:hidden;background:var(--lacq);
+  box-shadow:0 34px 90px rgba(0,0,0,.6), inset 0 1px 0 rgba(224,186,121,.16);
+}
+/* PHOTO SLOT: replace this element's background with a real image and the
+   reveal lands twice as hard. Everything else stays as is. */
+.plate{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(118deg, rgba(255,255,255,.45) 0%, transparent 34%),
+    radial-gradient(48% 54% at 26% 26%, rgba(173,160,133,.32), transparent 62%),
+    radial-gradient(40% 46% at 74% 72%, rgba(173,160,133,.26), transparent 64%),
+    linear-gradient(162deg, var(--marble) 0%, var(--marble-sh) 66%, #B6A585 100%);
+}
+.plate .veins{position:absolute;inset:0;opacity:.28;}
+.plate .veins path{fill:none;stroke:var(--vein);stroke-width:.9;vector-effect:non-scaling-stroke;}
+.plate .veins path.thin{stroke-width:.45;opacity:.7;}
+
+.datelayer{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.7rem;text-align:center;padding:17% 10% 10%;
+  /* the dates come up behind the water as the fall passes over them */
+  opacity:clamp(0, (var(--front,0) - .34) / .3, 1);
+}
+.date-eyebrow{
+  font-size:9px;letter-spacing:.38em;text-transform:uppercase;
+  color:#6E5730;margin:0;
+}
+.date-main{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(1.7rem,6vw,2.9rem);line-height:1.1;margin:0;
+  letter-spacing:.05em;font-variant-numeric:tabular-nums;color:var(--emerald);
+}
+.date-main .dot{color:var(--brass-dim);}
+.date-month{
+  font-family:var(--ui);font-weight:400;font-size:9.5px;
+  letter-spacing:.4em;text-transform:uppercase;color:#4A3A28;margin:.2rem 0 0;
+}
+.date-city{
+  font-family:var(--mid);font-style:italic;
+  font-size:clamp(.9rem,2.4vw,1.1rem);color:#4A3A28;margin:.3rem 0 0;
+}
+.date-fine{
+  font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:#6B5842;margin:0;
+}
+
+/* The lacquer screen the water washes off. --front is the waterline, 0 at
+   the crown of the arch and 1 at its base; the mask edge is feathered so
+   the canvas ripple drawn on top of it reads as the same edge. */
+.cover{
+  position:absolute;inset:0;z-index:3;
+  background:linear-gradient(172deg,var(--lacq-lit) 0%,var(--lacq) 30%,var(--emerald) 100%);
+  box-shadow:inset 0 0 50px rgba(18,12,7,.5);
+  -webkit-mask-image:var(--wash);mask-image:var(--wash);
+  --wash:linear-gradient(to bottom,
+    transparent calc(var(--front,0) * 100%),
+    #000 calc(var(--front,0) * 100% + 7%));
+}
+.cover::after{ /* gloss sweep, so it reads as lacquer rather than flat paint */
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(104deg,transparent 22%,rgba(224,186,121,.1) 45%,
+             rgba(120,88,48,.15) 52%,transparent 72%);
+}
+/* the water itself: the fall, its leading ripple, and the pool it leaves */
+.water{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none;}
+
+.dates-head{
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  opacity:calc(1 - clamp(0, (var(--front,0) - .5) / .35, 1));
+}
+
+
+
+/* ===== THE VEIL =========================================================
+   Browsers will not play unmuted audio until someone has interacted with
+   the page. Rather than promise music and fail, the required gesture IS
+   the opening: one tap dissolves the veil, starts the arch drawing, and
+   fades the piano in. The limitation becomes the first moment.        */
+.veil{
+  position:fixed;inset:0;z-index:200;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.1rem;text-align:center;padding:2rem 1.5rem;cursor:pointer;
+  background:radial-gradient(70% 55% at 50% 45%, #2A1E12 0%, #120C07 62%, #0B0704 100%);
+  transition:opacity .9s ease, visibility .9s;
+}
+.veil[hidden]{display:none;}
+body.entered .veil{opacity:0;visibility:hidden;pointer-events:none;}
+body.entered{overflow:auto;}
+body:not(.entered){overflow:hidden;}
+
+.veil-names{
+  font-family:var(--ui);font-size:10px;font-weight:400;
+  letter-spacing:.46em;text-transform:uppercase;color:var(--brass);
+  margin:0 0 .4rem;opacity:0;animation:veilin .9s ease .25s forwards;
+}
+.veil-line{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(2rem,7vw,4rem);line-height:1.06;
+  color:var(--ivory);margin:0;letter-spacing:.01em;
+  opacity:0;animation:veilin 1.1s ease .5s forwards;
+}
+.veil-rule{
+  width:96px;opacity:0;animation:veilin 1s ease .95s forwards;
+}
+.veil-cue{
+  font-family:var(--ui);font-size:9px;letter-spacing:.34em;
+  text-transform:uppercase;color:rgba(162,144,122,.5);margin:.6rem 0 0;
+  opacity:0;animation:veilcue 2.6s ease 1.5s infinite;
+}
+@keyframes veilin{to{opacity:1}}
+@keyframes veilcue{0%,100%{opacity:.28}50%{opacity:.72}}
+@media (prefers-reduced-motion:reduce){
+  .veil-names,.veil-line,.veil-rule{animation:none;opacity:1;}
+  .veil-cue{animation:none;opacity:.5;}
+}
+
+/* ---- Sound -------------------------------------------------------------
+   Carried over from the deployed Nikaah invite, which got this right: a
+   PLAY/PAUSE control rather than a mute toggle. A play triangle is the one
+   affordance nobody has to be taught, and it reads honestly when autoplay
+   is refused -- which it usually is until someone clicks.                */
+.sound{
+  position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom));
+  z-index:190;width:46px;height:46px;padding:0;border-radius:50%;
+  border:1.5px solid rgba(176,132,66,.5);
+  background:rgba(255,249,240,.95);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 4px 18px rgba(36,23,8,.18);
+  display:grid;place-items:center;cursor:pointer;
+  transition:transform .18s ease, box-shadow .25s;
+}
+.sound:hover{box-shadow:0 6px 22px rgba(36,23,8,.26);}
+.sound:active{transform:scale(.91);}
+.sound:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+.sound svg{display:block;}
+.sound .ico-play,.sound .ico-pause{fill:var(--emerald);}
+.sound .ico-pause{display:none;}
+.sound[data-playing="true"] .ico-play{display:none;}
+.sound[data-playing="true"] .ico-pause{display:block;}
+/* the gold ring only breathes while sound is actually coming out */
+.sound::after{
+  content:"";position:absolute;inset:-3px;border-radius:50%;
+  border:1px solid rgba(176,132,66,0);pointer-events:none;
+}
+@keyframes ring{
+  0%,100%{border-color:rgba(176,132,66,0)}
+  50%{border-color:rgba(176,132,66,.55)}
+}
+.sound[data-playing="true"]::after{animation:ring 2.2s ease-in-out infinite;}
+
+.audio-note{
+  position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);z-index:195;pointer-events:none;display:none;
+  padding:7px 18px;border-radius:999px;
+  background:rgba(255,249,240,.94);border:1px solid rgba(176,132,66,.3);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-family:var(--ui);font-size:11px;letter-spacing:.04em;color:#9A6060;
+}
+.audio-note.show{display:block;}
+
+@media (prefers-reduced-motion:reduce){
+  .sound[data-playing="true"]::after{animation:none;border-color:rgba(176,132,66,.4);}
+}
+
+/* ===== THE HORIZON =====================================================
+   A caravan crossing a brass horizon with a derrick and a pump jack at the
+   far end of it: old Saudi and new Saudi on one line. Same 1px brass
+   hairline as the arch, held low so it reads as distance.
+
+   The camels actually WALK. A camel paces -- both legs on one side swing
+   together, which is what gives it that rolling gait -- so the legs are two
+   groups in opposite phase, with the body bobbing at twice the leg rate.
+   The rigs actually WORK: the crank turns, the beam nods off the same
+   period, the polished rod strokes the well, the derrick's block travels. */
+.horizon{
+  position:relative;z-index:2;height:200px;overflow:hidden;margin-top:-2rem;
+}
+.horizon .ground{
+  position:absolute;left:0;right:0;bottom:52px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--brass-dim) 18%,
+             var(--brass-dim) 82%,transparent);
+  opacity:.45;
+}
+.horizon .haze{
+  position:absolute;left:0;right:0;bottom:0;height:140px;
+  background:linear-gradient(180deg,transparent,rgba(78,56,32,.16) 60%,transparent);
+}
+/* outer element carries the scroll position, inner one a slow steady march,
+   so the two transforms never fight over the same property */
+.caravan{
+  position:absolute;bottom:52px;left:0;width:100%;height:64px;
+  /* The svg is a fixed 300px wide, so travel is measured in px, not %:
+     start fully off the left edge, finish just short of the rigs. */
+  --cw:231px;
+  /* The caravan must cross the WHOLE frame over the section's scroll, not
+     spend most of it parked off the left edge. Travel therefore spans from
+     fully off-left to fully off-right: at the end the camels pass in front
+     of the rigs (they are the near ground, hence the higher z-index) and
+     walk out of frame, the way a caravan actually would. */
+  --travel:calc(100vw - 6px);
+  transform:translateX(calc(0px - var(--cw) + var(--c,0) * var(--travel)));
+}
+.drift{animation:march 30s linear infinite;}
+@keyframes march{from{transform:translateX(0)}to{transform:translateX(46px)}}
+.caravan svg{display:block;height:70px;overflow:visible;}
+.cml .hide,.cml .leg{fill:var(--brass);}
+.cml{opacity:.42;}
+.cml.b{opacity:.3;}
+.cml.c{opacity:.22;}
+
+.cml .leg{transform-box:fill-box;transform-origin:50% 0;}
+.cml .leg-n{opacity:1;}
+.cml .lg-far{opacity:.72;}
+@keyframes stride{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+.cml .lg-far  .leg{animation:stride 1.35s ease-in-out infinite;}
+.cml .lg-near .leg{animation:stride 1.35s ease-in-out infinite;animation-delay:-.675s;}
+.cml .bod{transform-box:fill-box;transform-origin:50% 100%;
+          animation:bob .675s ease-in-out infinite;}
+.cml.b .lg-far .leg,.cml.b .lg-near .leg{animation-duration:1.5s;}
+.cml.b .bod{animation-duration:.75s;}
+.cml.c .lg-far .leg,.cml.c .lg-near .leg{animation-duration:1.2s;}
+.cml.c .bod{animation-duration:.6s;}
+
+.grove{
+  position:absolute;bottom:52px;left:0;right:0;height:60px;
+  pointer-events:none;z-index:0;
+}
+.clump{
+  position:absolute;bottom:0;transform:translateX(-50%);
+  display:flex;align-items:flex-end;
+}
+.clump > * + *{margin-left:-7px;}      /* overlap, so a clump reads as one stand */
+.palmsvg,.bushsvg{display:block;overflow:visible;width:auto;}
+.grove path{
+  fill:none;stroke:var(--brass);vector-effect:non-scaling-stroke;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.grove .w-fine{stroke-width:.6;}
+.grove .w-hair{stroke-width:.4;opacity:.6;}
+.grove .fruit{fill:var(--brass);stroke:none;opacity:.55;transition:opacity .7s ease;}
+.grovefall{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.caravan{z-index:3;}
+.rig{z-index:2;}
+
+.rig{position:absolute;bottom:52px;right:3%;height:104px;opacity:.32;}
+.rig svg{display:block;height:104px;overflow:visible;}
+.rig path,.rig line,.rig rect,.rig circle{
+  fill:none;stroke:var(--brass);stroke-width:1;vector-effect:non-scaling-stroke;
+}
+.rig .solid{fill:var(--brass);stroke:none;}
+@keyframes turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes nod{0%,100%{transform:rotate(5.5deg)}50%{transform:rotate(-5.5deg)}}
+@keyframes stroke{0%,100%{transform:translateY(-5px)}50%{transform:translateY(5px)}}
+@keyframes travel{0%,100%{transform:translateY(0)}50%{transform:translateY(52px)}}
+.rig .beam{transform-origin:92px 26px;animation:nod 5s ease-in-out infinite;}
+.rig .crank{transform-origin:126px 70px;animation:turn 5s linear infinite;}
+.rig .rod{animation:stroke 5s ease-in-out infinite;}
+.rig .block{animation:travel 7.5s ease-in-out infinite;}
+
+
+/* ===== KAHWA AND DATES =================================================
+   What is on the table during long nights, centred above the heading.
+
+   Two things that made the earlier version read as clip-art:
+     - ONE stroke weight everywhere. Real drawn objects vary: the belly of
+       a pot carries more line than its finial. Three weights below.
+     - the pour was a fixed bezier revealed by a dash, i.e. a LINE BEING
+       DRAWN. Liquid does not do that. It is simulated on canvas instead:
+       it narrows as it accelerates, wobbles, breaks into droplets at the
+       tail, and disturbs the surface where it lands.                    */
+.kahwa{position:relative;width:min(52vw,168px);margin-bottom:.35rem;}
+.ornament{display:block;width:100%;height:auto;opacity:.66;}
+.pour{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.66;}
+
+.ornament path,.ornament circle,.ornament ellipse{
+  fill:none;stroke:var(--brass);
+  vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;
+}
+.ornament .w-body{stroke-width:1.35;}
+.ornament .w-mid {stroke-width:1.05;}
+.ornament .w-fine{stroke-width:.68;opacity:.8;}
+.ornament .w-hair{stroke-width:.42;opacity:.55;}
+
+.ornament .fruit{fill:var(--brass);stroke:none;opacity:.5;transition:opacity .7s ease;}
+.ornament .mk-spout,.ornament .mk-cup{stroke:none;fill:none;}
+
+/* ===== STAY A WHILE =====================================================
+   Restored: this block sat between the kahwa styles and the closing styles,
+   and a replace that spanned both headers took it out with them. Without
+   .together the section lost its flex centring and everything fell hard
+   left. Keep this comment as a marker so the range is obvious next time. */
+.together{
+  padding:6rem 1.5rem 4rem;position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:1.3rem;
+  text-align:center;
+}
+.together::before{
+  content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:min(90vw,760px);height:60%;pointer-events:none;
+  background:radial-gradient(60% 100% at 50% 100%, rgba(126,168,169,.09), transparent 70%);
+}
+.together-head{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(1.9rem,5.6vw,3.1rem);line-height:1.14;
+  color:var(--ivory);margin:.2rem 0 .6rem;text-wrap:balance;
+}
+.together-note{
+  margin:1.15rem 0 0;line-height:1.6;text-wrap:balance;
+  font-size:clamp(1.05rem,2.9vw,1.32rem);max-width:30ch;
+}
+.together .body-copy{text-align:center;}
+
+/* ===== CLOSING, with the fountain ======================================= */
+.closing{
+  position:relative;z-index:2;overflow:hidden;
+  padding:5rem 1.5rem 13rem;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:1.3rem;
+}
+.fountain{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+}
+.closing > *:not(.fountain){position:relative;z-index:1;}
+.ayah{
+  font-family:var(--mid);font-style:italic;
+  font-size:clamp(1.05rem,3vw,1.42rem);line-height:1.7;
+  color:var(--champagne);max-width:28rem;margin:0;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-wrap,.dates-wrap{height:auto;}
+  .hero-pin,.dates-pin{position:static;height:auto;min-height:100svh;}
+}
+/* NOTE ON ORDER: both phone blocks live at the END of the stylesheet.
+   A media query adds no specificity, so an override placed above the
+   rule it targets simply loses on source order -- which is how most
+   of the mobile type sizing was silently doing nothing. */
+
+/* ---- small screens: type ----------------------------------------------
+   Roughly 1.5x across the board. Two exceptions, both because the line must
+   not wrap: the names and the date numerals are capped at the largest size
+   that still fits inside the arch and the card at 360px. */
+@media (max-width:680px){
+  .eyebrow{font-size:18px;letter-spacing:.22em;}
+  .veil-names{font-size:18px;letter-spacing:.26em;}
+  .veil-cue,.scrollcue{font-size:16px;letter-spacing:.2em;}
+  .date-eyebrow{font-size:16px;letter-spacing:.18em;}
+  .date-month{font-size:16px;letter-spacing:.2em;}
+  .date-fine{font-size:15px;letter-spacing:.11em;}
+
+  .body-copy{font-size:1.5rem;line-height:1.75;max-width:26rem;}
+  .script{font-size:1.75rem;}
+  .together-note{font-size:1.55rem;line-height:1.5;max-width:22ch;}
+.ayah{font-size:1.9rem;line-height:1.55;}
+  .date-sub{font-size:1.45rem;}
+  .date-city{font-size:1.7rem;}
+
+  .veil-line{font-size:3.4rem;}
+  /* measured: the names run ~6.45em wide, so the ceiling is set by the
+     arch's inner box at 360px, not by taste. Side padding eases to 7%
+     on a phone to buy the extra room. */
+  .archbody{padding-inline:7%;}
+  /* The names must hold one line at every phone width, and the arch's
+     inner box scales with the viewport -- so the size has to as well.
+     Measured at ~6.45em wide: 12.4vw clears the inner box at 320, 360
+     and 390, and the rem cap stops it running away on a tablet. */
+  .names{font-size:min(12.4vw,3.1rem);}
+  .together-head{font-size:3.2rem;}
+  .date-main{font-size:2.9rem;}      /* capped: must stay on one line */
+}
+
+/* ---- narrow screens: element sizes ------------------------------------
+   Scaled up with the type. The horizon is the one place that cannot take a
+   full 1.5x: a 1.5x rig plus a 1.5x caravan will not fit across 390px
+   without the camels walking into the machinery, so that band goes to 1.25x
+   and its travel is recomputed to keep the clearance. */
+@media (max-width:680px){
+  .cml.c{display:none;}
+  .horizon{height:238px;}
+  .caravan{height:88px;--cw:290px;--travel:calc(100vw + 92px);}
+  .caravan svg{height:88px;}
+  .rig{height:122px;right:1.5%;}
+  .rig svg{height:122px;}
+  .grove{height:74px;}
+  .clump > * + *{margin-left:-8px;}
+  .kahwa{width:min(90vw,340px);}
+  .archstack{width:min(96vw,520px);}
+  .panel{width:min(94vw,460px);}
+  .after{width:min(96vw,560px);}
+  .sound{width:62px;height:62px;}
+  .sound svg{width:19px;height:19px;}
+  .reveal-sec{padding:4rem 1rem 7rem;}
+  .together{padding:4.5rem 1.1rem 3.5rem;}
+  .closing{padding:4rem 1.1rem 10rem;}
+}
+
+</style>
+  </head>
+  <body>
+<audio id="score" loop preload="auto" playsinline></audio>
+<script id="scoreb64" type="text/plain"><!--SCORE_B64--></script>
+<button class="sound" id="sound" data-playing="false" aria-label="Play music">
+  <svg class="ico-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3.5 2.2 L11.5 7 L3.5 11.8 Z"/>
+  </svg>
+  <svg class="ico-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+    <rect x="2.5" y="2" width="3.5" height="10" rx="1.2"/>
+    <rect x="8" y="2" width="3.5" height="10" rx="1.2"/>
+  </svg>
+</button>
+<div class="audio-note" id="audionote">Music is unavailable right now.</div>
+
+<div class="veil" id="veil" role="button" tabindex="0" aria-label="Enter">
+  <p class="veil-names">Eman &amp; Hamza</p>
+  <p class="veil-line">We have news.</p>
+  <hr class="rule veil-rule">
+  <p class="veil-cue">Tap anywhere</p>
+</div>
+
+<div class="atmos"></div>
+
+<!-- ===== HERO ============================================================ -->
+<section class="hero-wrap" id="heroWrap" style="--p:0">
+  <div class="hero-pin">
+    <div class="archstack">
+      <!-- The dome's box matches its viewBox aspect (5:3), so scaling stays
+           uniform and stroke-dasharray measures true. Both halves start at
+           the apex, so it opens symmetrically. -->
+      <svg class="dome" viewBox="0 -20 200 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="draw" d="M100,0 A100,100 0 0,0 0,100"/>
+        <path class="draw" d="M100,0 A100,100 0 0,1 200,100"/>
+        <path class="draw inner" d="M100,14 A86,86 0 0,0 14,100"/>
+        <path class="draw inner" d="M100,14 A86,86 0 0,1 186,100"/>
+        <path class="bud" d="M100,-14 C109,-2 109,8 100,20 C91,8 91,-2 100,-14 Z"/>
+      </svg>
+      <div class="archbody">
+        <span class="leg l"></span>
+        <span class="leg r"></span>
+        <span class="leg inner l"></span>
+        <span class="leg inner r"></span>
+
+        <p class="eyebrow hero-eyebrow">You&rsquo;re invited</p>
+
+        <div class="namewrap">
+          <h1 class="names outline">Eman <span class="amp">&amp;</span> Hamza</h1>
+          <h1 class="names fill" aria-hidden="true">Eman <span class="amp">&amp;</span> Hamza</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="after">
+      <hr class="rule" style="width:110px">
+      <p class="script" style="margin:0;font-size:1rem">Jeddah, by the sea, this December</p>
+    </div>
+
+    <p class="scrollcue">Scroll</p>
+  </div>
+</section>
+
+<!-- ===== DATES =========================================================== -->
+<section class="dates-wrap" id="datesWrap" style="--q:0">
+  <div class="dates-pin">
+    <div class="dates-head">
+      <p class="eyebrow">The dates</p>
+    </div>
+
+    <div class="panel">
+      <div class="plate">
+        <svg class="veins" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-10,86 C60,66 100,124 168,102 C226,84 262,132 310,112"/>
+          <path class="thin" d="M-10,150 C52,134 92,180 152,162 C214,144 256,186 310,172"/>
+          <path d="M-10,286 C74,266 112,314 178,296 C242,278 274,310 310,300"/>
+          <path class="thin" d="M52,-10 C64,74 40,146 58,232 C74,308 56,354 62,410"/>
+          <path class="thin" d="M232,-10 C220,66 246,134 228,212 C212,282 236,340 228,410"/>
+        </svg>
+      </div>
+
+      <div class="datelayer">
+        <p class="date-eyebrow">Three days with you</p>
+        <p class="date-main">11 <span class="dot">&middot;</span> 12 <span class="dot">&middot;</span> 13</p>
+        <p class="date-month">December 2026</p>
+        <p class="date-city">Jeddah</p>
+        <p class="date-fine">Venues to follow</p>
+      </div>
+
+      <div class="cover"></div>
+
+      <canvas class="water" id="water" aria-hidden="true"></canvas>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== THE HORIZON ==================================================== -->
+<section class="horizon" id="horizon">
+  <div class="haze"></div>
+  <div class="ground"></div>
+
+  <div class="caravan" id="caravan">
+   <div class="drift">
+    <svg viewBox="0 0 330 100" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <defs>
+        <!-- one leg: tapers, bends at the knee, ends in a foot -->
+        <path id="cmlleg" d="M0,0 C1.6,0 2.4,1 2.3,3.4 L1.7,20 C1.5,25 1.9,30 2.3,35
+                             L2.9,44 C3,45.8 2.1,46.6 0.9,46.6 L-0.9,46.6
+                             C-2.1,46.6 -2.8,45.8 -2.6,44 L-1.9,35 C-1.5,30 -1.2,25 -1.4,20
+                             L-1.9,3.4 C-2,1 -1.6,0 0,0 Z"/>
+      </defs>
+      <g><g class="cml "><g class="lg lg-far"><g transform="translate(66,54)"><use class="leg" href="#cmlleg"/></g><g transform="translate(35,54)"><use class="leg" href="#cmlleg"/></g></g><g class="bod"><path class="hide" d="M27,44 C28,38 31,33 36,31 C40,24 46,19 52,20 C58,21 61,27 63,33 C64,35 64.5,36 65.5,36.5 C70,29 77,21 83,16 C85,14.4 88,14 90.5,15.4 C94,17 96.5,18.6 96.5,20 C96.5,21.4 94,21.8 91,21.4 C88,21 85.5,21.8 83,24 C79,27.6 76,32 74,37 C72,42 70.5,48 69,53 C68,56 67,57.6 65,58 C57,59.6 43,59.6 35,57.6 C30.6,56.4 28,52 27.4,47 C27.2,45.6 27,44.8 27,44 Z"/><path class="hide" d="M27.4,45.6 C23,48.6 21,53.6 21.8,58.6 C22.1,60.4 24,60.4 24,58.6 C23.5,54.4 24.7,50.8 28,48.2 Z"/></g><g class="lg lg-near"><g transform="translate(70,55)"><use class="leg leg-n" href="#cmlleg"/></g><g transform="translate(31,55)"><use class="leg leg-n" href="#cmlleg"/></g></g></g></g>
+      <g transform="translate(115,10) scale(0.88)"><g class="cml b"><g class="lg lg-far"><g transform="translate(66,54)"><use class="leg" href="#cmlleg"/></g><g transform="translate(35,54)"><use class="leg" href="#cmlleg"/></g></g><g class="bod"><path class="hide" d="M27,44 C28,38 31,33 36,31 C40,24 46,19 52,20 C58,21 61,27 63,33 C64,35 64.5,36 65.5,36.5 C70,29 77,21 83,16 C85,14.4 88,14 90.5,15.4 C94,17 96.5,18.6 96.5,20 C96.5,21.4 94,21.8 91,21.4 C88,21 85.5,21.8 83,24 C79,27.6 76,32 74,37 C72,42 70.5,48 69,53 C68,56 67,57.6 65,58 C57,59.6 43,59.6 35,57.6 C30.6,56.4 28,52 27.4,47 C27.2,45.6 27,44.8 27,44 Z"/><path class="hide" d="M27.4,45.6 C23,48.6 21,53.6 21.8,58.6 C22.1,60.4 24,60.4 24,58.6 C23.5,54.4 24.7,50.8 28,48.2 Z"/></g><g class="lg lg-near"><g transform="translate(70,55)"><use class="leg leg-n" href="#cmlleg"/></g><g transform="translate(31,55)"><use class="leg leg-n" href="#cmlleg"/></g></g></g></g>
+      <g transform="translate(220,22) scale(0.76)"><g class="cml c"><g class="lg lg-far"><g transform="translate(66,54)"><use class="leg" href="#cmlleg"/></g><g transform="translate(35,54)"><use class="leg" href="#cmlleg"/></g></g><g class="bod"><path class="hide" d="M27,44 C28,38 31,33 36,31 C40,24 46,19 52,20 C58,21 61,27 63,33 C64,35 64.5,36 65.5,36.5 C70,29 77,21 83,16 C85,14.4 88,14 90.5,15.4 C94,17 96.5,18.6 96.5,20 C96.5,21.4 94,21.8 91,21.4 C88,21 85.5,21.8 83,24 C79,27.6 76,32 74,37 C72,42 70.5,48 69,53 C68,56 67,57.6 65,58 C57,59.6 43,59.6 35,57.6 C30.6,56.4 28,52 27.4,47 C27.2,45.6 27,44.8 27,44 Z"/><path class="hide" d="M27.4,45.6 C23,48.6 21,53.6 21.8,58.6 C22.1,60.4 24,60.4 24,58.6 C23.5,54.4 24.7,50.8 28,48.2 Z"/></g><g class="lg lg-near"><g transform="translate(70,55)"><use class="leg leg-n" href="#cmlleg"/></g><g transform="translate(31,55)"><use class="leg leg-n" href="#cmlleg"/></g></g></g></g>
+    </svg>
+   </div>
+  </div>
+
+
+  <!-- A palm belt is clumps, not a row of evenly spaced singles: two or
+       three trees together with scrub round their feet, then a gap.
+       Each clump is a flex row on a shared baseline, its children
+       overlapping slightly so they read as one stand of trees. -->
+  <div class="grove">
+      <div class="clump" style="left:7%">
+        <svg class="bushsvg" style="height:13px;opacity:0.24" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:44px;opacity:0.32" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="palmsvg" style="height:30px;opacity:0.26" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="bushsvg" style="height:11px;opacity:0.22" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g transform="scale(-1,1)">
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="clump" style="left:18%">
+        <svg class="bushsvg" style="height:15px;opacity:0.24" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="bushsvg" style="height:10px;opacity:0.2" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g transform="scale(-1,1)">
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="clump" style="left:28%">
+        <svg class="palmsvg" style="height:54px;opacity:0.34" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="palmsvg" style="height:37px;opacity:0.28" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="bushsvg" style="height:16px;opacity:0.24" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="bushsvg" style="height:12px;opacity:0.21" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g transform="scale(-1,1)">
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="clump" style="left:41%">
+        <svg class="bushsvg" style="height:12px;opacity:0.22" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:33px;opacity:0.26" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+      </div>
+      <div class="clump" style="left:52%">
+        <svg class="bushsvg" style="height:13px;opacity:0.23" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:40px;opacity:0.3" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="palmsvg" style="height:50px;opacity:0.33" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="palmsvg" style="height:29px;opacity:0.25" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="bushsvg" style="height:14px;opacity:0.23" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g transform="scale(-1,1)">
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="clump" style="left:66%">
+        <svg class="palmsvg" style="height:35px;opacity:0.27" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="bushsvg" style="height:15px;opacity:0.24" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:46px;opacity:0.31" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+      </div>
+      <div class="clump" style="left:78%">
+        <svg class="bushsvg" style="height:11px;opacity:0.21" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:31px;opacity:0.25" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+      </div>
+      <div class="clump" style="left:89%">
+        <svg class="bushsvg" style="height:13px;opacity:0.23" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g>
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+        <svg class="palmsvg" style="height:42px;opacity:0.29" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="palmsvg" style="height:28px;opacity:0.24" viewBox="-22 -52 44 52" aria-hidden="true">
+          <path class="w-fine" d="M0,0 C-1.6,-12 1.6,-24 0.5,-34"/>
+          <path class="w-hair" d="M-2,-8 L2.4,-8.6 M-2.2,-14 L2.2,-14.6 M-1.8,-20 L2.4,-20.5 M-1.6,-26 L2.2,-26.4"/>
+          <path class="w-fine" d="M0.5,-34 C6,-41 14,-43 20,-37"/>
+          <path class="w-fine" d="M0.5,-34 C7,-38 15,-36.5 21,-29"/>
+          <path class="w-fine" d="M0.5,-34 C5,-44 10,-49 15.5,-48.5"/>
+          <path class="w-fine" d="M0.5,-34 C-5,-41 -13,-43 -19,-37"/>
+          <path class="w-fine" d="M0.5,-34 C-6,-38 -14,-36.5 -20,-29"/>
+          <path class="w-fine" d="M0.5,-34 C-4,-44 -9,-49 -14.5,-48.5"/>
+          <ellipse class="fruit" cx="-3.8" cy="-28.4" rx="1.9" ry="2.9"/>
+          <ellipse class="fruit" cx="1.2" cy="-26.6" rx="2" ry="3"/>
+          <ellipse class="fruit" cx="5.6" cy="-29" rx="1.8" ry="2.7"/>
+        </svg>
+        <svg class="bushsvg" style="height:10px;opacity:0.2" viewBox="-13 -19 26 19" aria-hidden="true">
+          <g transform="scale(-1,1)">
+            <path class="w-hair" d="M0,0 C-2,-5 -6,-7.6 -10.4,-8.6"/>
+            <path class="w-hair" d="M0,0 C-2.2,-7 -4.4,-11 -7.4,-14"/>
+            <path class="w-fine" d="M0,0 C-0.6,-8 0,-13 1,-17"/>
+            <path class="w-hair" d="M0,0 C2.2,-7 5,-11 8.4,-13.4"/>
+            <path class="w-hair" d="M0,0 C2.2,-5 6,-7 10.6,-8"/>
+            <path class="w-hair" d="M0,0 C1.2,-6 3.2,-9.4 5.4,-11.6"/>
+            <path class="w-hair" d="M0,0 C-1.2,-6 -2.2,-9.4 -3.4,-12.4"/>
+          </g>
+        </svg>
+      </div>
+  </div>
+  <canvas class="grovefall" aria-hidden="true"></canvas>
+
+  <div class="rig">
+    <svg viewBox="0 0 150 104" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+      <!-- derrick, with a travelling block on the drill line -->
+      <path d="M8,104 L30,10 L52,104"/>
+      <path d="M14,78 L46,78 M17,58 L43,58 M20,38 L40,38 M23,22 L37,22"/>
+      <path d="M14,78 L43,58 M17,58 L40,38 M20,38 L37,22"/>
+      <path d="M24,10 L36,10"/>
+      <path d="M30,14 L30,104"/>
+      <g class="block"><rect x="24" y="18" width="12" height="4.5"/></g>
+      <!-- pump jack: samson post, walking beam, pitman, crank, polished rod -->
+      <path d="M78,104 L92,44 L106,104"/>
+      <path d="M84,80 L100,80"/>
+      <g class="beam">
+        <path d="M58,25.5 L132,25.5" stroke-width="2.6"/>
+        <path d="M60,25 C51,27 51,41 60,43 L65,40 C58,38 58,30 65,28 Z" class="solid"/>
+        <path d="M126,26 L126,44"/>
+      </g>
+      <g class="rod"><path d="M62,44 L62,104"/><rect x="58" y="44" width="8" height="3"/></g>
+      <g class="crank">
+        <circle cx="126" cy="70" r="10"/>
+        <path d="M126,70 L126,61"/>
+        <circle cx="126" cy="63" r="2.6" class="solid"/>
+      </g>
+      <path d="M112,104 L140,104"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== STAY A WHILE ==================================================== -->
+<section class="together">
+  <div class="kahwa">
+  <svg class="ornament" viewBox="0 0 104 74" aria-hidden="true">
+    <!-- Just the service now. The palms moved to the horizon, where they
+         are landscape rather than tableware -- a palm and a coffee pot at
+         the same height was the thing that read as two objects parked
+         beside each other. Cup and pot share one baseline and sit close,
+         because they are a set. -->
+    <g transform="translate(6,49.7)">
+      <path class="w-mid" d="M0,0 C0.6,8 4,13.5 10.5,14 C17,13.5 20.4,8 21,0"/>
+      <path class="w-fine" d="M-3.4,-0.6 C4,1.2 17,1.2 24.4,-0.6"/>
+      <path class="w-fine" d="M3,18.5 C8,17.6 13,17.6 18,18.5"/>
+      <circle class="mk-cup" cx="10.5" cy="2" r="0.01"/>
+    </g>
+    <g transform="translate(34,0) scale(0.62)">
+     <g class="dallah">
+      <path class="w-body" d="M32,110 C20,106 16,92 19,76 C21,64 26,56 34,51
+                              L34,45 L66,45 L66,51 C74,56 79,64 81,76
+                              C84,92 80,106 68,110 Z"/>
+      <path class="w-mid"  d="M28,112.5 C40,116 60,116 72,112.5"/>
+      <path class="w-mid"  d="M34,45 C37,34 42,27 50,22 C58,27 63,34 66,45"/>
+      <path class="w-fine" d="M50,22 L50,13"/>
+      <path class="w-fine" d="M46.6,13 C47.8,8.6 52.2,8.6 53.4,13 C52.2,17 47.8,17 46.6,13 Z"/>
+      <path class="w-mid"  d="M19,74 C6,64 4,44 13,32 C17,26 23,24 28,26"/>
+      <path class="w-mid"  d="M28,26 L20,36"/>
+      <path class="w-mid"  d="M80,62 C94,65 95,92 74,98"/>
+      <circle class="mk-spout" cx="28" cy="26" r="0.01"/>
+     </g>
+    </g>
+  </svg>
+  <canvas class="pour" aria-hidden="true"></canvas>
+  </div>
+  <p class="eyebrow">Jeddah &middot; December 2026</p>
+  <h2 class="together-head">Long tables, late nights.</h2>
+
+  <p class="body-copy">
+    Some of you are close by. Some of you are flying most of a day to get
+    here. So we made it three days, and we want you for all of them &mdash;
+    long enough to share old stories, and make new memories to carry home.
+  </p>
+
+  <hr class="rule" style="width:110px;margin:1.2rem 0 .2rem">
+
+  <p class="script together-note">
+    This is where it begins.<br>
+    We&rsquo;d like to begin it with you.
+  </p>
+</section>
+
+<!-- ===== CLOSING =========================================================
+     The King Fahd Fountain -- the jet of Red Sea water that stands over
+     Jeddah every night -- rises behind the last words and falls back as
+     spray. It lives here, at the very bottom, and nowhere else.         -->
+<section class="closing" id="closing">
+  <canvas class="fountain" id="fountain" aria-hidden="true"></canvas>
+  <hr class="rule" style="width:150px">
+  <p class="ayah">&ldquo;And He placed between you affection and mercy.&rdquo;</p>
+  <p class="eyebrow">Qur&rsquo;an 30:21</p>
+
+  <p class="body-copy" style="margin-top:.6rem">
+    Where to stay, how to get here, and what each day holds &mdash; we&rsquo;ll
+    share all of it with you soon. For now, just hold the dates.
+  </p>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+
+
+  /* --- The score ---------------------------------------------------------
+     Follows the deployed Nikaah invite: ask to play outright, and if the
+     browser refuses, wait for the first real gesture. Two things carried
+     over from debugging this the hard way --
+
+       - scroll and wheel are NOT user activation in Chrome. Only
+         mousedown/touchstart/keydown count, so only those start it.
+       - the control shows what is TRUE, repainted every frame, because the
+         browser can pause playback behind our back.
+
+     Kept from this page: the track is a Blob rather than a data: URI, and
+     volume is TARGET * env * gain -- env being a 3.5s ramp at both ends of
+     the loop so the seam is a breath, gain the fade on play/pause.      */
+  (function(){
+    var a    = document.getElementById("score");
+    var btn  = document.getElementById("sound");
+    var src  = document.getElementById("scoreb64");
+    var note = document.getElementById("audionote");
+    if(!a || !btn || !src) return;
+
+    try{
+      var bin = atob(src.textContent.trim());
+      var bytes = new Uint8Array(bin.length);
+      for(var i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
+      a.src = URL.createObjectURL(new Blob([bytes], {type:"audio/mpeg"}));
+      src.textContent = "";
+    }catch(e){
+      a.src = "data:audio/mpeg;base64," + src.textContent.trim();
+    }
+
+    var TARGET = 0.5;   /* half volume */
+    var RAMP = 3.5;     /* seconds of fade at each end of the loop */
+    var gain = 0, want = 0, dead = false;
+
+    a.volume = 0;
+
+    a.addEventListener("error", function(){
+      dead = true;
+      btn.style.display = "none";
+      if(note) note.classList.add("show");
+    });
+
+    function sounding(){ return !dead && !a.paused && want === 1; }
+    function paint(){
+      var on = sounding();
+      btn.setAttribute("data-playing", on ? "true" : "false");
+      btn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+    }
+
+    function tick(){
+      if(!a.paused){
+        var env = 1;
+        if(a.duration && isFinite(a.duration)){
+          var t = a.currentTime, left = a.duration - t;
+          if(t < RAMP)    env = Math.min(env, t / RAMP);
+          if(left < RAMP) env = Math.min(env, left / RAMP);
+        }
+        gain += (want - gain) * 0.014;
+        if(want === 0 && gain < 0.005){ gain = 0; a.pause(); }
+        a.volume = Math.max(0, Math.min(1, TARGET * env * gain));
+      }
+      paint();
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    /* Play on load, as far as the browser will allow.
+
+       Unmuted autoplay needs "user activation" and no amount of code grants
+       that -- it is a browser policy. So this does the next best thing, in
+       three steps:
+
+         1. ASK outright. Where the browser permits it (Chrome grants it to
+            sites you visit often, via its Media Engagement Index), the song
+            simply starts on load with no click at all.
+         2. If refused, start MUTED anyway -- muted playback is always
+            allowed. The transport is now running and buffered.
+         3. The first real gesture just flips the mute off, so sound is
+            instant rather than waiting on a fresh play() and a buffer.
+
+       Unmuting a muted-autoplay element WITHOUT activation makes Chrome
+       pause it, so step 3 only ever runs from mousedown/touchstart/keydown.
+       Scroll and wheel do not count as activation and are not listened for. */
+    function start(){
+      if(dead) return;
+      a.muted = false;
+      var pr = a.play();
+      if(pr && pr.then){
+        pr.then(function(){ want = 1; paint(); })
+          .catch(function(){ primeMuted(); });
+      }else{ want = 1; paint(); }
+    }
+
+    /* keep the transport warm and silent until someone touches the page */
+    function primeMuted(){
+      if(dead) return;
+      a.muted = true;
+      want = 0;
+      var pr = a.play();
+      if(pr && pr.catch) pr.catch(function(){});
+      paint();
+    }
+
+    function unmute(){
+      if(dead || want === 1) return;
+      a.muted = false;
+      want = 1;
+      if(a.paused){
+        var pr = a.play();
+        if(pr && pr.catch) pr.catch(function(){ primeMuted(); });
+      }
+      paint();
+    }
+
+    function stop(){ want = 0; paint(); }   /* tick fades out, then pauses */
+
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      sounding() ? stop() : (a.muted ? unmute() : start());
+    });
+
+    /* Warm the transport silently right away, then let the veil's tap --
+       which IS a genuine user activation -- turn the sound on. Anything
+       else that grants activation works too, in case the veil is skipped. */
+    primeMuted();
+    window.__score = { on: unmute };
+
+    var evs = ["mousedown","touchstart","keydown"];
+    var go = function(){
+      evs.forEach(function(ev){ document.removeEventListener(ev, go); });
+      unmute();
+    };
+    evs.forEach(function(ev){ document.addEventListener(ev, go, {passive:true}); });
+  })();
+
+
+  /* --- The veil -----------------------------------------------------------
+     One tap does three things at once: dissolves the veil, releases the
+     scroll, and turns the music on. The gesture the browser insists on is
+     spent opening the site rather than apologising for itself.          */
+  (function(){
+    var veil = document.getElementById("veil");
+    if(!veil) return;
+    var opened = false;
+    function open(){
+      if(opened) return;
+      opened = true;
+      document.body.classList.add("entered");
+      if(window.__score && window.__score.on) window.__score.on();
+      setTimeout(function(){ veil.hidden = true; }, 950);
+      window.scrollTo(0, 0);
+    }
+    veil.addEventListener("click", open);
+    veil.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); }
+    });
+  })();
+
+  /* --- Scroll progress for the two pinned sections ---------------------- */
+  var hero  = document.getElementById("heroWrap");
+  var dates = document.getElementById("datesWrap");
+  var panel = document.querySelector(".panel");
+  var horizon = document.getElementById("horizon");
+
+  /* vector-effect:non-scaling-stroke makes stroke-dasharray resolve in SCREEN
+     pixels, while getTotalLength() reports USER units. Set the dash from the
+     raw length and the line stops short of its end -- which is what left the
+     arch as a stub near the apex. Convert through the element's own CTM, and
+     redo it on resize because the scale moves with the viewport. */
+  var ARCH = [];
+  function measureArch(){
+    ARCH.length = 0;
+    document.querySelectorAll(".dome .draw").forEach(function(e){
+      var m = e.getScreenCTM ? e.getScreenCTM() : null;
+      var s = m ? Math.sqrt(Math.abs(m.a * m.d - m.b * m.c)) : 1;
+      if(!isFinite(s) || s <= 0) s = 1;
+      var L = (e.getTotalLength ? e.getTotalLength() : 400) * s;
+      e.style.strokeDasharray  = L;
+      e.style.strokeDashoffset = L;
+      ARCH.push([e, L]);
+    });
+  }
+  measureArch();
+
+  function progress(sec){
+    var total = sec.offsetHeight - window.innerHeight;
+    if(total <= 0) return 1;
+    return clamp(-sec.getBoundingClientRect().top / total, 0, 1);
+  }
+
+  /* The water is measured from the PANEL entering the viewport, not from the
+     sticky section reaching the top -- otherwise nothing happens until the
+     block has centred itself. And it latches: a reveal that un-reveals when
+     you scroll back up means waiting for it to fill a second time. */
+  var frontLatch = 0;
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var p = reduce ? 1 : progress(hero);
+    var q = reduce ? 1 : progress(dates);
+    hero.style.setProperty("--p", p);
+    dates.style.setProperty("--q", q);
+    /* the waterline: a beat of stillness, then the fall, then time to settle */
+    if(panel){
+      var pr = panel.getBoundingClientRect();
+      var vh = window.innerHeight || 1;
+      /* 0 when the panel's top is at the bottom of the screen, 1 by the time
+         it has risen almost a full screen -- which is roughly when it pins */
+      var raw = reduce ? 1 : clamp((vh - pr.top) / (vh * 0.85), 0, 1);
+      if(raw > frontLatch) frontLatch = raw;
+      panel.style.setProperty("--front", frontLatch);
+    }
+    /* the caravan walks as the horizon crosses the viewport */
+    if(horizon){
+      var hr = horizon.getBoundingClientRect();
+      var span = window.innerHeight + hr.height;
+      horizon.style.setProperty("--c",
+        reduce ? 0.5 : clamp((window.innerHeight - hr.top) / span, 0, 1));
+    }
+    /* the dome draws over the first 45%; the legs follow in CSS */
+    var a = clamp(p / 0.45, 0, 1);
+    for(var i=0;i<ARCH.length;i++){
+      ARCH[i][0].style.strokeDashoffset = ARCH[i][1] * (1 - a);
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", function(){ measureArch(); update(); });
+  update();
+
+  /* --- The water that comes down the mehrab ------------------------------
+     Not a gradient sliding down: a wave that BREAKS. The reference is surf,
+     and surf is three things a flowing edge does not have --
+
+       CREST      an irregular line, several sine octaves deep, so it peaks
+                  and troughs instead of rippling evenly
+       WHITEWATER overlapping foam cells packed along that crest and dragged
+                  below it. Foam is what makes water read as water; a line
+                  alone always looks like a gradient stop
+       SPRAY      droplets thrown UP off the peaks, hardest where the crest
+                  is highest, then falling on gravity
+
+     Palette is the page's own: sea #7EA8A9 for the body, champagne/ivory
+     standing in for white foam. No blue anywhere.                       */
+  (function(){
+    var cv = document.getElementById("water");
+    if(!cv) return;
+    var c = cv.getContext("2d");
+    var panel = cv.parentElement;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var TAU = Math.PI * 2;
+    var W = 0, H = 0, streaks = [], foam = [], spray = [], lastFront = 0, running = false;
+
+    function size(){
+      var r = panel.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width  = Math.max(1, Math.round(W * dpr));
+      cv.height = Math.max(1, Math.round(H * dpr));
+      c.setTransform(dpr,0,0,dpr,0,0);
+
+      streaks = [];
+      for(var i=0;i<54;i++){
+        streaks.push({
+          x: Math.random() * W, off: Math.random(),
+          len: 0.10 + Math.random() * 0.30,
+          sp: 0.5 + Math.random() * 1.2,
+          w: Math.random() < 0.24 ? 1.5 : 0.8
+        });
+      }
+      /* foam cells: a crowd of soft discs that live on the crest */
+      /* seeded in clumps: surf is heavy in some places and thin in others,
+         and an even sprinkle reads as a dotted line instead of foam */
+      foam = [];
+      var clumps = 9;
+      for(var q=0;q<clumps;q++){
+        var cu = Math.random();
+        var heavy = 0.45 + Math.random() * 0.55;
+        var n = 9 + Math.round(Math.random() * 14);
+        for(var j=0;j<n;j++){
+          foam.push({
+            u: (cu + (Math.random() - 0.5) * 0.16 + 1) % 1,
+            dy: (Math.random() - 0.32) * 22,
+            r: (1.5 + Math.random() * 7.5) * heavy,
+            a: (0.09 + Math.random() * 0.38) * heavy,
+            ph: Math.random() * TAU,
+            sp: 0.4 + Math.random() * 1.3
+          });
+        }
+      }
+    }
+
+    /* the crest: several octaves so it peaks unevenly, like real surf */
+    function crest(x, t){
+      return Math.sin(x * 0.0092 + t * 0.0009) * 12.5
+           + Math.sin(x * 0.021  + t * 0.0016) * 7.5
+           + Math.sin(x * 0.047  - t * 0.0023) * 3.6
+           + Math.sin(x * 0.089  + t * 0.0031) * 1.7;
+    }
+
+    function burst(x, y, n, force){
+      for(var i=0;i<n;i++){
+        spray.push({
+          x: x + (Math.random() - 0.5) * 22,
+          y: y - Math.random() * 4,
+          vx: (Math.random() - 0.5) * 3.2,
+          vy: (-2.2 - Math.random() * 4.4) * force,   /* thrown UP, hard */
+          r: 0.6 + Math.random() * 2.1,
+          life: 0,
+          max: 46 + Math.random() * 58
+        });
+      }
+    }
+
+    function draw(front, t){
+      c.clearRect(0,0,W,H);
+      var y = front * H;
+      var pour = 1 - clamp((front - 0.78) / 0.22, 0, 1);
+
+      /* the falling sheet */
+      if(pour > 0.01){
+        for(var i=0;i<streaks.length;i++){
+          var s2 = streaks[i];
+          var head = ((s2.off + t * 0.0006 * s2.sp) % 1) * (y + 46);
+          var len = s2.len * H;
+          var g = c.createLinearGradient(0, head - len, 0, head);
+          g.addColorStop(0, "rgba(96,136,138,0)");
+          g.addColorStop(0.72, "rgba(96,136,138," + (0.28 * pour) + ")");
+          g.addColorStop(1, "rgba(74,112,114," + (0.44 * pour) + ")");
+          c.fillStyle = g;
+          c.fillRect(s2.x, Math.max(0, head - len), s2.w, Math.min(len, head));
+        }
+      }
+
+      var live = front > 0.004 && front < 0.995;
+
+      if(live){
+        /* body of the wave sitting under the crest */
+        var wet = c.createLinearGradient(0, y - 54, 0, y + 6);
+        wet.addColorStop(0, "rgba(96,136,138,0)");
+        wet.addColorStop(1, "rgba(96,136,138,.34)");
+        c.fillStyle = wet;
+        c.fillRect(0, Math.max(0, y - 54), W, Math.min(60, y + 6));
+
+        /* WHITEWATER -- overlapping foam cells packed onto the crest */
+        for(var k=0;k<foam.length;k++){
+          var f = foam[k];
+          var fx = (((f.u + t * 0.000045 * f.sp) % 1) + 1) % 1 * (W + 70) - 35;
+          var fy = y + crest(fx, t) + f.dy;
+          var rr = f.r * (0.78 + 0.34 * Math.sin(t * 0.0028 + f.ph));
+          c.fillStyle = "rgba(240,232,208," + f.a + ")";
+          c.beginPath(); c.arc(fx, fy, Math.max(0.4, rr), 0, TAU); c.fill();
+        }
+        /* a thin bright lip riding the very top of the crest */
+        c.beginPath();
+        for(var x=0;x<=W;x+=3){
+          var cy = y + crest(x, t) - 3;
+          if(x === 0) c.moveTo(x, cy); else c.lineTo(x, cy);
+        }
+        c.strokeStyle = "rgba(248,242,224,.62)";
+        c.lineWidth = 1.4;
+        c.stroke();
+
+        /* SPRAY -- hardest where the crest peaks, plus a kick when you scroll */
+        var advance = Math.max(0, front - lastFront);
+        for(var b=0;b<5;b++){
+          var bx = Math.random() * W;
+          var peak = -crest(bx, t);                /* negative = higher up */
+          if(peak > 4 || Math.random() < 0.3){
+            burst(bx, y + crest(bx, t),
+                  2 + Math.round(Math.max(0, peak) * 0.8),
+                  0.95 + Math.max(0, peak) * 0.07);
+          }
+        }
+        if(advance > 0.0005) burst(Math.random() * W, y, Math.round(advance * 900), 1.3);
+      }
+      lastFront = front;
+
+      /* spray physics */
+      for(var j=spray.length-1;j>=0;j--){
+        var d = spray[j];
+        d.life++; d.vy += 0.16; d.vx *= 0.992; d.x += d.vx; d.y += d.vy;
+        if(d.life > d.max || d.y > H + 10){ spray.splice(j,1); continue; }
+        var fa = 1 - d.life / d.max;
+        c.fillStyle = d.vy < 0
+          ? "rgba(248,242,224," + (0.72 * fa) + ")"
+          : "rgba(150,186,182," + (0.5 * fa) + ")";
+        c.beginPath(); c.arc(d.x, d.y, d.r * (0.5 + fa * 0.5), 0, TAU); c.fill();
+      }
+      if(spray.length > 900) spray.splice(0, spray.length - 900);
+
+      /* the pool that stays, with its own foam line */
+      var settle = clamp((front - 0.42) / 0.4, 0, 1);
+      if(settle > 0){
+        var ph = H * 0.075 * settle;
+        var top = H - ph;
+        c.fillStyle = "rgba(96,136,138,.26)";
+        c.fillRect(0, top, W, ph);
+        for(var m=0;m<26;m++){
+          var mx = (((m / 26) + t * 0.00003) % 1) * (W + 40) - 20;
+          var my = top + Math.sin(mx * 0.03 + t * 0.0012) * 1.8;
+          c.fillStyle = "rgba(240,232,208," + (0.16 * settle) + ")";
+          c.beginPath(); c.arc(mx, my, 2.4, 0, TAU); c.fill();
+        }
+        c.beginPath();
+        for(var px=0;px<=W;px+=4){
+          var pw = Math.sin(px * 0.03 + t * 0.0012) * 1.8
+                 + Math.sin(px * 0.011 - t * 0.0008) * 1.2;
+          if(px === 0) c.moveTo(px, top + pw); else c.lineTo(px, top + pw);
+        }
+        c.strokeStyle = "rgba(240,228,196," + (0.45 * settle) + ")";
+        c.lineWidth = 1;
+        c.stroke();
+      }
+    }
+
+    var raf = 0;
+    function frame(now){
+      if(!running) return;
+      var r = panel.getBoundingClientRect();
+      if(Math.abs(r.width - W) > 0.5 || Math.abs(r.height - H) > 0.5) size();
+      draw(parseFloat(panel.style.getPropertyValue("--front")) || 0, now);
+      raf = requestAnimationFrame(frame);
+    }
+    size();
+    window.addEventListener("resize", function(){ size(); });
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting && !running){
+          running = true; size(); raf = requestAnimationFrame(frame);
+        }else if(!e.isIntersecting){
+          running = false; cancelAnimationFrame(raf); spray.length = 0;
+        }
+      });
+    }, {threshold:0.02}).observe(panel);
+
+    if(reduce){ running = false; size(); spray.length = 0; draw(1, 0); }
+  })();
+
+
+  /* --- The kahwa ----------------------------------------------------------
+     The tilt and the stream share one clock, so the pot cannot pour before
+     it has tipped. The stream is not a path: it is a column of overlapping
+     discs whose radius shrinks as they fall, because a falling stream
+     accelerates and must narrow to carry the same volume. Near the tail it
+     stops being continuous and becomes droplets, which is what actually
+     happens to a thin pour, and where it lands it disturbs the surface. */
+  (function(){
+    var box = document.querySelector(".kahwa");
+    if(!box) return;
+    var cv  = box.querySelector(".pour");
+    var pot = box.querySelector(".dallah");
+    var mkS = box.querySelector(".mk-spout");
+    var mkC = box.querySelector(".mk-cup");
+    if(!cv || !pot || !mkS || !mkC) return;
+    var c = cv.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W=0, H=0, ripples=[], run=false, raf=0;
+    var CYCLE = 13000;   /* long quiet, brief pour */
+    /* The clock starts when the vignette first comes into view, not at page
+       load. Running off the global clock meant you arrived at a random
+       point in the cycle and usually landed in the quiet stretch -- so the
+       pot looked broken. Now it always pours shortly after you get here. */
+    var t0 = 0;
+
+    function size(){
+      var r = box.getBoundingClientRect();
+      W=r.width; H=r.height;
+      cv.width=Math.max(1,Math.round(W*dpr));
+      cv.height=Math.max(1,Math.round(H*dpr));
+      c.setTransform(dpr,0,0,dpr,0,0);
+    }
+    /* getBoundingClientRect() reports zeros for a node with no fill and no
+       stroke, so the stream was being drawn from the origin to the origin.
+       The CTM gives a true position for an element that is present but
+       invisible, and it already carries the pot's live rotation. */
+    var svg = box.querySelector(".ornament");
+    function at(el){
+      var m = el.getScreenCTM();
+      if(!m) return {x:0,y:0};
+      var pt = svg.createSVGPoint();
+      pt.x = parseFloat(el.getAttribute("cx"));
+      pt.y = parseFloat(el.getAttribute("cy"));
+      var q = pt.matrixTransform(m);
+      var b = box.getBoundingClientRect();
+      return { x: q.x - b.left, y: q.y - b.top };
+    }
+    function ease(x){ return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
+    function seg(t,a,b){ return clamp((t-a)/(b-a),0,1); }
+
+    function frame(now){
+      if(!run) return;
+      var r = box.getBoundingClientRect();
+      if(Math.abs(r.width-W)>.5||Math.abs(r.height-H)>.5) size();
+      if(!t0) t0 = now;
+      var t = ((now - t0) % CYCLE) / CYCLE;
+
+      /* tip, hold, right itself */
+      var tilt = 0;
+      if(t < .11)      tilt = -13 * ease(seg(t,.04,.11));
+      else if(t < .34) tilt = -13;
+      else if(t < .42) tilt = -13 * (1 - ease(seg(t,.34,.42)));
+      pot.setAttribute("transform","rotate("+tilt.toFixed(2)+" 50 112)");
+
+      /* the stream exists between the tip and the righting */
+      var head = seg(t,.11,.15);           /* leading edge falls, fast */
+      var tail = seg(t,.32,.36);           /* top detaches */
+      c.clearRect(0,0,W,H);
+
+      if(head > 0 && tail < 1){
+        var A = at(mkS), B = at(mkC);
+        var dx = B.x-A.x, dy = B.y-A.y;
+        var w0 = Math.max(1.1, W*0.0062);
+        for(var i=0;i<=200;i++){
+          var u = i/200;
+          if(u < tail || u > head) continue;
+          /* gravity: horizontal is linear, vertical accelerates */
+          var x = A.x + dx*u + Math.sin(u*7.5 + now*0.004)*w0*0.7*u;
+          var y = A.y + dy*Math.pow(u,1.55);
+          var wid = w0*(1 - 0.62*u);
+          /* the tail breaks up rather than tapering to a point */
+          if(u > 0.78){
+            var n = Math.sin(u*58 + now*0.013);
+            if(n < -0.25) continue;
+            wid *= 0.72 + 0.28*n;
+            x += n*w0*0.5;
+          }
+          c.fillStyle = "rgba(232,215,170," + (0.34 + 0.3*(1-u)) + ")";
+          c.beginPath(); c.arc(x, y, Math.max(0.35, wid/2), 0, Math.PI*2); c.fill();
+        }
+        /* it lands: the surface answers */
+        if(head > .96 && tail === 0 && Math.random() < .5){
+          ripples.push({x:B.x + (Math.random()-.5)*w0*2, y:B.y, r:0.5, life:0});
+        }
+      }
+
+      for(var k=ripples.length-1;k>=0;k--){
+        var rp = ripples[k];
+        rp.life++; rp.r += 0.42;
+        if(rp.life > 26){ ripples.splice(k,1); continue; }
+        c.strokeStyle = "rgba(232,215,170," + (0.34*(1-rp.life/26)) + ")";
+        c.lineWidth = 0.9;
+        c.beginPath(); c.ellipse(rp.x, rp.y, rp.r, rp.r*0.34, 0, 0, Math.PI*2); c.stroke();
+      }
+
+      raf = requestAnimationFrame(frame);
+    }
+
+    size();
+    window.addEventListener("resize", size);
+    if(reduce){ pot.setAttribute("transform","rotate(0 50 112)"); return; }
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting && !run){ run=true; size(); raf=requestAnimationFrame(frame); }
+        else if(!e.isIntersecting){ run=false; cancelAnimationFrame(raf); ripples.length=0; }
+      });
+    },{threshold:.06}).observe(box);
+  })();
+
+
+  /* --- Dates falling from the grove --------------------------------------
+     Same idea as before but where it belongs: fruit drops from a distant
+     palm onto the horizon rather than onto a heading. One goes at a time,
+     fades before it lands, and grows back later, so the grove is never
+     bare. Timers arm on first sight, not at page load.                  */
+  (function(){
+    var band = document.getElementById("horizon");
+    if(!band || reduce) return;
+    var cv = band.querySelector(".grovefall");
+    var svg = band.querySelector(".palmsvg");
+    if(!cv || !svg) return;
+    var c = cv.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W=0,H=0,falls=[],run=false,raf=0;
+    var fruits = Array.prototype.slice.call(band.querySelectorAll(".grove .fruit"));
+
+    function size(){
+      var r = band.getBoundingClientRect();
+      W=r.width; H=r.height;
+      cv.width=Math.max(1,Math.round(W*dpr));
+      cv.height=Math.max(1,Math.round(H*dpr));
+      c.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function at(el){
+      var m = el.getScreenCTM();
+      if(!m) return null;
+      var pt = svg.createSVGPoint();
+      pt.x = parseFloat(el.getAttribute("cx"));
+      pt.y = parseFloat(el.getAttribute("cy"));
+      var q = pt.matrixTransform(m);
+      var b = band.getBoundingClientRect();
+      return { x:q.x-b.left, y:q.y-b.top, s:Math.hypot(m.a,m.b) };
+    }
+    fruits.forEach(function(el){ el.__state = 0; el.__next = 0; });
+
+    function frame(now){
+      if(!run) return;
+      var r = band.getBoundingClientRect();
+      if(Math.abs(r.width-W)>.5||Math.abs(r.height-H)>.5) size();
+      c.clearRect(0,0,W,H);
+
+      for(var i=0;i<fruits.length;i++){
+        var el = fruits[i];
+        if(!el.__next){ el.__next = now + 1800 + Math.random()*11000 + i*900; continue; }
+        if(el.__state === 0 && now > el.__next){
+          var p = at(el);
+          if(p) falls.push({
+            x:p.x, y:p.y,
+            rx:parseFloat(el.getAttribute("rx"))*p.s,
+            ry:parseFloat(el.getAttribute("ry"))*p.s,
+            vx:(Math.random()-.5)*.18, vy:.15,
+            rot:0, spin:(Math.random()-.5)*.045,
+            life:0, max:64+Math.random()*36
+          });
+          el.__state = 1;
+          el.style.opacity = "0";
+          el.__regrow = now + 6000 + Math.random()*9000;
+        }
+        if(el.__state === 1 && now > el.__regrow){
+          el.__state = 0;
+          el.style.opacity = "";
+          el.__next = now + 11000 + Math.random()*18000;
+        }
+      }
+
+      for(var k=falls.length-1;k>=0;k--){
+        var d = falls[k];
+        d.life++; d.vy += .05; d.y += d.vy; d.x += d.vx; d.rot += d.spin;
+        if(d.life > d.max){ falls.splice(k,1); continue; }
+        var alpha = .42 * Math.pow(1 - d.life/d.max, 1.4);
+        c.save();
+        c.translate(d.x, d.y); c.rotate(d.rot);
+        c.fillStyle = "rgba(176,132,66," + alpha + ")";
+        c.beginPath(); c.ellipse(0,0,d.rx,d.ry,0,0,Math.PI*2); c.fill();
+        c.restore();
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    size();
+    window.addEventListener("resize", size);
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting && !run){ run=true; size(); raf=requestAnimationFrame(frame); }
+        else if(!e.isIntersecting){ run=false; cancelAnimationFrame(raf); falls.length=0; }
+      });
+    },{threshold:.05}).observe(band);
+  })();
+
+  /* --- The fountain, at the bottom only ---------------------------------
+     A jet that climbs, breaks, and falls back as spray. Particles get one
+     strong upward impulse from a narrow throat and then gravity does the
+     rest, which is what gives the column its taper and the mist its lazy
+     fall. Champagne on the way up where the light catches it, sea-green on
+     the way down. Runs only while the closing is on screen.            */
+  (function(){
+    var cv = document.getElementById("fountain");
+    if(!cv || reduce) return;
+    var c = cv.getContext("2d");
+    var host = document.getElementById("closing");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0, drops = [], running = false, born = 0;
+
+    function size(){
+      var r = host.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width  = Math.max(1, Math.round(W * dpr));
+      cv.height = Math.max(1, Math.round(H * dpr));
+      c.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function seed(n){
+      for(var i=0;i<n;i++){
+        var power = 7.2 + Math.random() * 3.6;
+        drops.push({
+          x: W/2 + (Math.random()-0.5) * 11,
+          y: H + 6,
+          vx: (Math.random()-0.5) * 1.9,
+          vy: -power,
+          r: 0.7 + Math.random() * 1.7,
+          life: 0,
+          max: 150 + Math.random() * 90
+        });
+      }
+    }
+    function frame(){
+      if(!running) return;
+      c.clearRect(0,0,W,H);
+      born++;
+      var surge = Math.min(1, born / 90);
+      if(drops.length < 880) seed(Math.round(5 + surge * 7));
+      for(var i=drops.length-1;i>=0;i--){
+        var d = drops[i];
+        d.life++; d.vy += 0.088; d.vx *= 0.995; d.x += d.vx; d.y += d.vy;
+        if(d.life > d.max || d.y > H + 14){ drops.splice(i,1); continue; }
+        var fade = 1 - d.life / d.max;
+        /* thin the spray across the upper third, where the ayah sits -- the
+           jet should pass behind the words, not through them */
+        var clear = 0.22 + 0.78 * clamp(d.y / (H * 0.55), 0, 1);
+        c.fillStyle = d.vy < 0
+          ? "rgba(232,215,170," + (0.5 * fade * clear) + ")"
+          : "rgba(126,168,169," + (0.34 * fade * clear) + ")";
+        c.beginPath();
+        c.arc(d.x, d.y, d.r * (0.55 + fade * 0.45), 0, Math.PI*2);
+        c.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    size();
+    window.addEventListener("resize", size);
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting && !running){
+          running = true; born = 0; size(); requestAnimationFrame(frame);
+        }else if(!e.isIntersecting){
+          running = false; drops.length = 0;
+        }
+      });
+    }, {threshold:0.12}).observe(host);
+  })();
+})();
+</script>
+  </body>
+</html>
