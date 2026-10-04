@@ -182,8 +182,8 @@ function notionHeaders(token) {
 
 function notion(p, when) {
   var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty('NOTION_TOKEN');
-  var db = props.getProperty('NOTION_DB');
+  var token = (props.getProperty('NOTION_TOKEN') || '').trim();
+  var db = (props.getProperty('NOTION_DB') || '').trim();
   if (!token || !db) return;
 
   var rt = function (s) { return { rich_text: s ? [{ text: { content: String(s).slice(0, 2000) } }] : [] }; };
@@ -216,13 +216,14 @@ function notion(p, when) {
 /** Run once from the editor after setting NOTION_TOKEN and NOTION_PARENT_PAGE. */
 function setupNotion() {
   var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty('NOTION_TOKEN');
-  var parent = props.getProperty('NOTION_PARENT_PAGE');
-  if (!token || !parent) throw new Error('Set NOTION_TOKEN and NOTION_PARENT_PAGE in Project Settings -> Script properties first.');
+  var token = (props.getProperty('NOTION_TOKEN') || '').trim();
+  // keep only the 32 hex characters, whatever else got pasted around them
+  var parent = ((props.getProperty('NOTION_PARENT_PAGE') || '').match(/[0-9a-f]{32}/i) || [''])[0];
+  if (!token || !parent) throw new Error('Set NOTION_TOKEN and NOTION_PARENT_PAGE (the 32-character page ID) in Project Settings -> Script properties first.');
   if (props.getProperty('NOTION_DB')) { Logger.log('Already set up: ' + props.getProperty('NOTION_DB')); return; }
 
   var body = {
-    parent: { type: 'page_id', page_id: parent.replace(/-/g, '') },
+    parent: { type: 'page_id', page_id: parent },
     title: [{ type: 'text', text: { content: 'RSVPs · Eman & Hamza' } }],
     properties: {
       'Name':          { title: {} },
